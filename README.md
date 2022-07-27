@@ -1,4 +1,4 @@
-# arrus-public
+# arrus-docs
 
 ## Documentation:
 
