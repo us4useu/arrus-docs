@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Release notes &mdash; ARRUS (cpp) 0.8.0-dev20220921 documentation</title>
+  <title>Release notes &mdash; ARRUS (cpp) 0.8.0-dev20220922 documentation</title>
   
 
   
@@ -195,6 +195,8 @@
 <li><p>us4R: exposed hardware Digital Down Conversion,</p></li>
 <li><p>us4R: scheme stopping procedure was improved (should take less time)</p></li>
 <li><p>us4R: exposed a function that allows to read us4OEM FPGA Wallclock</p></li>
+<li><p>us4R: enabled hardware high-pass filter, by default us4OEMs will be initialized with 300 kHz cutoff frequency</p></li>
+<li><p>us4R: exposed the possibility to change hardware high-pass filter (HPF) cutoff frequency or to disable HPF</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -203,6 +205,7 @@
 <div><ul class="simple">
 <li><p>Implemented new module <cite>arrus.utils.probe_check</cite> for probe checking and automatic channel health, see example: examples/check_probe.py</p></li>
 <li><p>exposed hardware Digital Down Conversion</p></li>
+<li><p>us4R: exposed the possibility to change hardware high-pass filter cutoff frequency</p></li>
 </ul>
 </div></blockquote>
 </li>
