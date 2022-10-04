@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Reference &mdash; ARRUS (python) 0.8.0-dev20220927 documentation</title>
+  <title>API Reference &mdash; ARRUS (python) 0.8.0-dev20221004 documentation</title>
   
 
   
@@ -510,6 +510,12 @@ the system.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.disable_hv">
+<code class="sig-name descname">disable_hv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.disable_hv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns off HV.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="arrus.devices.us4r.Us4R.sampling_frequency">
 <em class="property">property </em><code class="sig-name descname">sampling_frequency</code><a class="headerlink" href="#arrus.devices.us4r.Us4R.sampling_frequency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Device NOMINAL sampling frequency [Hz].</p>
@@ -701,7 +707,7 @@ The processing will be performed on a given device (‘placement’).
 
 <dl class="py class">
 <dt id="arrus.utils.imaging.BandpassFilter">
-<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.imaging.</code><code class="sig-name descname">BandpassFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">numtaps</span><span class="o">=</span><span class="default_value">7</span></em>, <em class="sig-param"><span class="n">bounds</span><span class="o">=</span><span class="default_value">(0.5, 1.5)</span></em>, <em class="sig-param"><span class="n">filter_type</span><span class="o">=</span><span class="default_value">'butter'</span></em>, <em class="sig-param"><span class="n">num_pkg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filter_pkg</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.imaging.BandpassFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.imaging.</code><code class="sig-name descname">BandpassFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">15</span></em>, <em class="sig-param"><span class="n">bounds</span><span class="o">=</span><span class="default_value">(0.5, 1.5)</span></em>, <em class="sig-param"><span class="n">filter_type</span><span class="o">=</span><span class="default_value">'hamming'</span></em>, <em class="sig-param"><span class="n">num_pkg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filter_pkg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.imaging.BandpassFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">arrus.utils.imaging.Operation</span></code></p>
 <p>Bandpass filtering to apply to signal data.</p>
 <p>A bandwidth [0.5, 1.5]*center_frequency is currently used.</p>
@@ -720,10 +726,10 @@ define what kind of filter is used (e.g. by providing filter coefficients).</p>
 
 <dl class="py class">
 <dt id="arrus.utils.imaging.Decimation">
-<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.imaging.</code><code class="sig-name descname">Decimation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">decimation_factor</span></em>, <em class="sig-param"><span class="n">cic_order</span></em>, <em class="sig-param"><span class="n">num_pkg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">impl</span><span class="o">=</span><span class="default_value">'legacy'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.imaging.Decimation" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.imaging.</code><code class="sig-name descname">Decimation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">decimation_factor</span></em>, <em class="sig-param"><span class="n">filter_type</span><span class="o">=</span><span class="default_value">'cic'</span></em>, <em class="sig-param"><span class="n">filter_coeffs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cic_order</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">num_pkg</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.imaging.Decimation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">arrus.utils.imaging.Operation</span></code></p>
-<p>Decimation + CIC (Cascade Integrator-Comb) filter.</p>
-<p>See: <a class="reference external" href="https://en.wikipedia.org/wiki/Cascaded_integrator%E2%80%93comb_filter">https://en.wikipedia.org/wiki/Cascaded_integrator%E2%80%93comb_filter</a></p>
+<p>Downsampling + Low-pass filter.</p>
+<p>By default CIC filter is used.</p>
 </dd></dl>
 
 <dl class="py class">
