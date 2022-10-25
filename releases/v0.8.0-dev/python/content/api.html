@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Reference &mdash; ARRUS (python) 0.8.0-dev20221007 documentation</title>
+  <title>API Reference &mdash; ARRUS (python) 0.8.0-dev20221025 documentation</title>
   
 
   
@@ -516,9 +516,34 @@ the system.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.get_afe">
+<code class="sig-name descname">get_afe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.get_afe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads AFE register value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>addr</strong> – register address (8-bit)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="arrus.devices.us4r.Us4R.sampling_frequency">
 <em class="property">property </em><code class="sig-name descname">sampling_frequency</code><a class="headerlink" href="#arrus.devices.us4r.Us4R.sampling_frequency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Device NOMINAL sampling frequency [Hz].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.set_afe">
+<code class="sig-name descname">set_afe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">addr</span></em>, <em class="sig-param"><span class="n">reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.set_afe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes AFE register</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>addr</strong> – register address (8-bit)</p></li>
+<li><p><strong>k</strong> – write value (16-bit)</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
