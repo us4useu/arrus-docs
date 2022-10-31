@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Reference &mdash; ARRUS (python) 0.8.0-dev20221026 documentation</title>
+  <title>API Reference &mdash; ARRUS (python) 0.8.0-dev20221031 documentation</title>
   
 
   
@@ -402,6 +402,20 @@ broadcasted to the size of the largest array.</p>
 <dt id="arrus.ops.us4r.TxRxSequence.get_n_samples">
 <code class="sig-name descname">get_n_samples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.ops.us4r.TxRxSequence.get_n_samples" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a set of number of samples that the Tx/Rx sequence defines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.ops.us4r.TxRxSequence.get_sample_range">
+<code class="sig-name descname">get_sample_range</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.ops.us4r.TxRxSequence.get_sample_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of sample ranges that the Tx/Rx sequence defines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.ops.us4r.TxRxSequence.get_sample_range_unique">
+<code class="sig-name descname">get_sample_range_unique</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.ops.us4r.TxRxSequence.get_sample_range_unique" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a unique sample range that the Tx/Rx sequence defines.
+If there are couple of different number of samples in a single sequence,
+a ValueError will be raised.</p>
 </dd></dl>
 
 </dd></dl>
