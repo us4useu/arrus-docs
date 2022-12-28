@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>C++ API Reference &mdash; ARRUS (cpp) 0.8.0-dev20221218 documentation</title>
+  <title>C++ API Reference &mdash; ARRUS (cpp) 0.8.0-dev20221228 documentation</title>
   
 
   
@@ -336,7 +336,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion">
-<span id="_CPPv3N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion"></span><span id="_CPPv2N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion"></span><span id="arrus::ops::us4r::Scheme::Scheme__TxRxSequence.uint16.framework::DataBufferSpecCR.WorkMode.DigitalDownConversion"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Scheme_1ada665fe110b4368241896929ddd315b6"></span><em class="property">inline</em> <code class="sig-name descname">Scheme</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5arrus3ops4us4r12TxRxSequenceE" title="arrus::ops::us4r::TxRxSequence">TxRxSequence</a> <em>txRxSequence</em>, uint16 <em>rxBufferSize</em>, <em class="property">const</em> framework::<a class="reference internal" href="#_CPPv4N5arrus9framework14DataBufferSpecE" title="arrus::framework::DataBufferSpec">DataBufferSpec</a> &amp;<em>outputBuffer</em>, <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r6Scheme8WorkModeE" title="arrus::ops::us4r::Scheme::WorkMode">WorkMode</a> <em>workMode</em>, DigitalDownConversion <em>digitalDownConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion"></span><span id="_CPPv2N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion"></span><span id="arrus::ops::us4r::Scheme::Scheme__TxRxSequence.uint16.framework::DataBufferSpecCR.WorkMode.DigitalDownConversion"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Scheme_1ada665fe110b4368241896929ddd315b6"></span><em class="property">inline</em> <code class="sig-name descname">Scheme</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5arrus3ops4us4r12TxRxSequenceE" title="arrus::ops::us4r::TxRxSequence">TxRxSequence</a> <em>txRxSequence</em>, uint16 <em>rxBufferSize</em>, <em class="property">const</em> framework::<a class="reference internal" href="#_CPPv4N5arrus9framework14DataBufferSpecE" title="arrus::framework::DataBufferSpec">DataBufferSpec</a> &amp;<em>outputBuffer</em>, <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r6Scheme8WorkModeE" title="arrus::ops::us4r::Scheme::WorkMode">WorkMode</a> <em>workMode</em>, <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r21DigitalDownConversionE" title="arrus::ops::us4r::DigitalDownConversion">DigitalDownConversion</a> <em>digitalDownConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#classarrus_1_1ops_1_1us4r_1_1Scheme"><span class="std std-ref">Scheme</span></a> constructor. This scheme turns on hardware IQ demodulator (sees digital down conversion parameter).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -577,6 +577,32 @@
 <dt>
 <span class="target" id="classarrus_1_1ops_1_1us4r_1_1TxRxSequence_1a4a25ebfa6efc46a95aab9cc96080d9d4"></span><em class="property">inline</em> <em class="property">const</em> std::optional&lt;float&gt; <code class="sig-name descname">getSri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><br /></dt>
 <dd><p>Returns sequence repetition interval (the total time the given sequence should actually take). nullopt means that the frame acquisition time should be determined by total PRI only. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv4N5arrus3ops4us4r21DigitalDownConversionE">
+<span id="_CPPv3N5arrus3ops4us4r21DigitalDownConversionE"></span><span id="_CPPv2N5arrus3ops4us4r21DigitalDownConversionE"></span><span id="arrus::ops::us4r::DigitalDownConversion"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1DigitalDownConversion"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::ops::us4r<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">DigitalDownConversion</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r21DigitalDownConversionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus3ops4us4r21DigitalDownConversion21DigitalDownConversionEfNSt6vectorIfEEf">
+<span id="_CPPv3N5arrus3ops4us4r21DigitalDownConversion21DigitalDownConversionEfNSt6vectorIfEEf"></span><span id="_CPPv2N5arrus3ops4us4r21DigitalDownConversion21DigitalDownConversionEfNSt6vectorIfEEf"></span><span id="arrus::ops::us4r::DigitalDownConversion::DigitalDownConversion__float.std::vector:float:.float"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1DigitalDownConversion_1a4037c4b7f7872a0517b9a38063a8e402"></span><em class="property">inline</em> <code class="sig-name descname">DigitalDownConversion</code><span class="sig-paren">(</span>float <em>demodulationFrequency</em>, std::vector&lt;float&gt; <em>firCoefficients</em>, float <em>decimationFactor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r21DigitalDownConversion21DigitalDownConversionEfNSt6vectorIfEEf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Us4R Digital Down Conversion block.</p>
+<p>Note: the decimation factor can also have a fractional part: 0.25, 0.5 or 0.75.</p>
+<p>Note: the FIR filter order (i.e. total number of taps)depends on the decimation factor and should be equal: decimationFactor*16 for integer decimation factor; decimationFactor*32 for decimation factor with fractional part 0.5; decimationFactor*64 for decimation facator with fractional part 0.25 or 0.75.</p>
+<p>Note: only a upper half of the FIR filter coefficients should be provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>demodulationFrequency</strong> – demodulation frequency to apply [Hz] </p></li>
+<li><p><strong>firCoefficients</strong> – FIR filter coefficients to apply </p></li>
+<li><p><strong>decimationFactor</strong> – decimation factor to apply, should be in range [2, 63] </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
