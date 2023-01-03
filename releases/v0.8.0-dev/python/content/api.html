@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Reference &mdash; ARRUS (python) 0.8.0-dev20221228 documentation</title>
+  <title>API Reference &mdash; ARRUS (python) 0.8.0-dev20230103 documentation</title>
   
 
   
@@ -216,6 +216,12 @@ methods (e.g. upload, startScheme..) will result in exception.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="arrus.Session.get_parameter">
+<code class="sig-name descname">get_parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; Sequence<span class="p">[</span>numbers.Number<span class="p">]</span><a class="headerlink" href="#arrus.Session.get_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value for parameter with the given name.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="arrus.Session.run">
 <code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Session.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs the uploaded scheme.</p>
@@ -225,6 +231,13 @@ methods (e.g. upload, startScheme..) will result in exception.</p>
 <blockquote>
 <div><p>The run function can be called only once (before the scheme is stopped).</p>
 </div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.Session.set_parameter">
+<code class="sig-name descname">set_parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Sequence<span class="p">[</span>numbers.Number<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Session.set_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the value for parameter with the given name.
+TODO: note: this method currently is not thread-safe</p>
 </dd></dl>
 
 <dl class="py method">
@@ -734,7 +747,7 @@ using</p>
 <h3>B-mode imaging pipeline using cupy/numpy<a class="headerlink" href="#b-mode-imaging-pipeline-using-cupy-numpy" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt id="arrus.utils.imaging.Pipeline">
-<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.imaging.</code><code class="sig-name descname">Pipeline</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">steps</span></em>, <em class="sig-param"><span class="n">placement</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.imaging.Pipeline" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.imaging.</code><code class="sig-name descname">Pipeline</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">steps</span></em>, <em class="sig-param"><span class="n">placement</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.imaging.Pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Imaging pipeline.</p>
 <p>Processes given data using a given sequence of steps.
@@ -744,11 +757,6 @@ The processing will be performed on a given device (‘placement’).
 <blockquote>
 <div><p>default: GPU:0</p>
 </div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>callback</strong> – callback to run when output data is ready. By default</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py class">
@@ -759,7 +767,7 @@ The processing will be performed on a given device (‘placement’).
 
 <dl class="py class">
 <dt id="arrus.utils.imaging.BandpassFilter">
-<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.imaging.</code><code class="sig-name descname">BandpassFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">15</span></em>, <em class="sig-param"><span class="n">bounds</span><span class="o">=</span><span class="default_value">(0.5, 1.5)</span></em>, <em class="sig-param"><span class="n">filter_type</span><span class="o">=</span><span class="default_value">'hamming'</span></em>, <em class="sig-param"><span class="n">num_pkg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filter_pkg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.imaging.BandpassFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.imaging.</code><code class="sig-name descname">BandpassFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">63</span></em>, <em class="sig-param"><span class="n">bounds</span><span class="o">=</span><span class="default_value">(0.5, 1.5)</span></em>, <em class="sig-param"><span class="n">filter_type</span><span class="o">=</span><span class="default_value">'hamming'</span></em>, <em class="sig-param"><span class="n">num_pkg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filter_pkg</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.imaging.BandpassFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">arrus.utils.imaging.Operation</span></code></p>
 <p>Bandpass filtering to apply to signal data.</p>
 <p>A bandwidth [0.5, 1.5]*center_frequency is currently used.</p>
@@ -966,7 +974,7 @@ acquired frames.</p></li>
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2022, us4us Ltd.
+        &copy; Copyright 2023, us4us Ltd.
 
     </p>
   </div>
