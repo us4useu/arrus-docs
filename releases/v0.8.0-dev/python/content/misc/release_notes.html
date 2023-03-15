@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Release notes &mdash; ARRUS (python) 0.8.0-dev20230309 documentation</title>
+  <title>Release notes &mdash; ARRUS (python) 0.8.0-dev20230315 documentation</title>
   
 
   
@@ -200,6 +200,7 @@
 <li><p>us4R: exposed a function that allows to read us4OEM FPGA Wallclock</p></li>
 <li><p>us4R: enabled hardware high-pass filter, by default us4OEMs will be initialized with 300 kHz cutoff frequency</p></li>
 <li><p>us4R: exposed the possibility to change hardware high-pass filter (HPF) cutoff frequency or to disable HPF</p></li>
+<li><p>us4R: exposed methods to read us4OEM serial and revision number (currently mocked up)</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -214,6 +215,7 @@
 <li><p>Implemented a general delay and sum look up table beamformer for 3D output volume reconstruction</p></li>
 <li><p>From now on TGC curve gain values will be clipped to the [min hardware gain, max hardware gain] range by default. Change arrus.ops.tgc.LinearTGC.clip to False to restore the previous behavior.</p></li>
 <li><p>Changed stop_scheme behavior to close processing runner (fixes the issue with closing arrus.utils processing on session close).</p></li>
+<li><p>Exposed the possibility to change LNA/PGA gain and DTGC attenuation.</p></li>
 </ul>
 </div></blockquote>
 </li>

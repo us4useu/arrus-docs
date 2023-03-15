@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Reference &mdash; ARRUS (python) 0.8.0-dev20230309 documentation</title>
+  <title>API Reference &mdash; ARRUS (python) 0.8.0-dev20230315 documentation</title>
   
 
   
@@ -567,6 +567,18 @@ the system.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.get_backplane">
+<code class="sig-name descname">get_backplane</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#arrus.devices.us4r.Backplane" title="arrus.devices.us4r.Backplane">arrus.devices.us4r.Backplane</a><a class="headerlink" href="#arrus.devices.us4r.Us4R.get_backplane" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a handle to us4R digital backplane.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.get_us4oem">
+<code class="sig-name descname">get_us4oem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ordinal</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#arrus.devices.us4oem.Us4OEM" title="arrus.devices.us4oem.Us4OEM">arrus.devices.us4oem.Us4OEM</a><a class="headerlink" href="#arrus.devices.us4r.Us4R.get_us4oem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a handle to us4OEM with the given number.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="arrus.devices.us4r.Us4R.sampling_frequency">
 <em class="property">property </em><code class="sig-name descname">sampling_frequency</code><a class="headerlink" href="#arrus.devices.us4r.Us4R.sampling_frequency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Device NOMINAL sampling frequency [Hz].</p>
@@ -582,6 +594,22 @@ the system.</p>
 <li><p><strong>addr</strong> – register address (8-bit)</p></li>
 <li><p><strong>k</strong> – write value (16-bit)</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.set_dtgc_attenuation">
+<code class="sig-name descname">set_dtgc_attenuation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attenuation</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.set_dtgc_attenuation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets DTGC attenuation.</p>
+<p>Available: 0, 6, 12, 18, 24, 30, 36, 42 [dB] or None;
+None turns off DTGC.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attenuation</strong> – attenuation value to set</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -607,6 +635,30 @@ Available corner frequency values (Hz): 4520’000, 2420’000,
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>voltage</strong> – voltage to set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.set_lna_gain">
+<code class="sig-name descname">set_lna_gain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gain</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.set_lna_gain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets LNA gain.</p>
+<p>Available: 12, 18, 24 [dB].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>gain</strong> – gain value to set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.set_pga_gain">
+<code class="sig-name descname">set_pga_gain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gain</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.set_pga_gain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets PGA gain.</p>
+<p>Available: 24, 30 [dB].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>gain</strong> – gain value to set</p>
 </dd>
 </dl>
 </dd></dl>
@@ -647,6 +699,18 @@ Available corner frequency values (Hz): 4520’000, 2420’000,
 </dd></dl>
 
 <dl class="py method">
+<dt id="arrus.devices.us4oem.Us4OEM.get_revision">
+<code class="sig-name descname">get_revision</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#arrus.devices.us4oem.Us4OEM.get_revision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns revision number of the device.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4oem.Us4OEM.get_serial_number">
+<code class="sig-name descname">get_serial_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#arrus.devices.us4oem.Us4OEM.get_serial_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns serial number of the device.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="arrus.devices.us4oem.Us4OEM.get_tx_firmware_version">
 <code class="sig-name descname">get_tx_firmware_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#arrus.devices.us4oem.Us4OEM.get_tx_firmware_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns TX Firmware version.</p>
@@ -662,6 +726,25 @@ Available corner frequency values (Hz): 4520’000, 2420’000,
 <dt id="arrus.devices.us4oem.Us4OEM.get_ucd_temperature">
 <code class="sig-name descname">get_ucd_temperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#arrus.devices.us4oem.Us4OEM.get_ucd_temperature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns Us4OEM UCD temperature [Celsius]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="arrus.devices.us4r.Backplane">
+<em class="property">class </em><code class="sig-prename descclassname">arrus.devices.us4r.</code><code class="sig-name descname">Backplane</code><a class="headerlink" href="#arrus.devices.us4r.Backplane" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Digital backplane of the us4R device.</p>
+<dl class="py method">
+<dt id="arrus.devices.us4r.Backplane.get_revision">
+<code class="sig-name descname">get_revision</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#arrus.devices.us4r.Backplane.get_revision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns revision number of the digital backplane.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4r.Backplane.get_serial_number">
+<code class="sig-name descname">get_serial_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#arrus.devices.us4r.Backplane.get_serial_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns serial number of the digital backplane.</p>
 </dd></dl>
 
 </dd></dl>
