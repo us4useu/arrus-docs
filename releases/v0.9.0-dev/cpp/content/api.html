@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>C++ API Reference &mdash; ARRUS (cpp) 0.9.0-dev20230703 documentation</title>
+  <title>C++ API Reference &mdash; ARRUS (cpp) 0.9.0-dev20230725 documentation</title>
   
 
   
@@ -30,6 +30,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -85,6 +86,7 @@
               <p class="caption"><span class="caption-text">User Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions.html">Glossary and assumptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">C++ API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#notation">Notation</a></li>
@@ -627,10 +629,24 @@
 <dl class="cpp class">
 <dt id="_CPPv4N5arrus7devices4Us4RE">
 <span id="_CPPv3N5arrus7devices4Us4RE"></span><span id="_CPPv2N5arrus7devices4Us4RE"></span><span id="arrus::devices::Us4R"></span><span class="target" id="classarrus_1_1devices_1_1Us4R"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::devices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Us4R</code> : <em class="property">public</em> arrus::devices::DeviceWithComponents<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4RE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#classarrus_1_1devices_1_1Us4R"><span class="std std-ref">Us4R</span></a> system: a group of Us4OEM modules and related components.</p>
+<dd><p><a class="reference internal" href="#classarrus_1_1devices_1_1Us4R"><span class="std std-ref">Us4R</span></a> system: a group of <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a> modules and related components.</p>
 <p>By default system starts with IQ demodulator turned off. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices4Us4R9getUs4OEME7Ordinal">
+<span id="_CPPv3N5arrus7devices4Us4R9getUs4OEME7Ordinal"></span><span id="_CPPv2N5arrus7devices4Us4R9getUs4OEME7Ordinal"></span><span id="arrus::devices::Us4R::getUs4OEM__Ordinal"></span><span class="target" id="classarrus_1_1devices_1_1Us4R_1ad30c23f56bcfe01978a2c5c5f1606771"></span><em class="property">virtual</em> <a class="reference internal" href="#_CPPv4N5arrus7devices6Us4OEME" title="arrus::devices::Us4OEM">Us4OEM</a> *<code class="sig-name descname">getUs4OEM</code><span class="sig-paren">(</span>Ordinal <em>ordinal</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4R9getUs4OEME7Ordinal" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a handle to <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a> identified by given ordinal number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ordinal</strong> – ordinal number of the us4oem to get </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to the us4oem module </p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="cpp function">
 <dt id="_CPPv4N5arrus7devices4Us4R10setVoltageE7Voltage">
 <span id="_CPPv3N5arrus7devices4Us4R10setVoltageE7Voltage"></span><span id="_CPPv2N5arrus7devices4Us4R10setVoltageE7Voltage"></span><span id="arrus::devices::Us4R::setVoltage__Voltage"></span><span class="target" id="classarrus_1_1devices_1_1Us4R_1a7e00a55af9392d426424036c5c85f547"></span><em class="property">virtual</em> void <code class="sig-name descname">setVoltage</code><span class="sig-paren">(</span>Voltage <em>voltage</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4R10setVoltageE7Voltage" title="Permalink to this definition">¶</a><br /></dt>
@@ -785,6 +801,96 @@
 <dd class="field-even"><p>a pair (min, max) acceptable sample value. </p>
 </dd>
 </dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv4N5arrus7devices6Us4OEME">
+<span id="_CPPv3N5arrus7devices6Us4OEME"></span><span id="_CPPv2N5arrus7devices6Us4OEME"></span><span id="arrus::devices::Us4OEM"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::devices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Us4OEM</code> : <em class="property">public</em> arrus::devices::Device, <em class="property">public</em> arrus::devices::TriggerGenerator<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEME" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM20getSamplingFrequencyEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM20getSamplingFrequencyEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM20getSamplingFrequencyEv"></span><span id="arrus::devices::Us4OEM::getSamplingFrequency"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1aaf48bd83ddcca34b103b36192e2efe58"></span><em class="property">virtual</em> float <code class="sig-name descname">getSamplingFrequency</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM20getSamplingFrequencyEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns nominal sampling frequency on the us4OEM device. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM18getFPGATemperatureEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM18getFPGATemperatureEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM18getFPGATemperatureEv"></span><span id="arrus::devices::Us4OEM::getFPGATemperature"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a2b409ccde271e5bcc02d85889cca3cfc"></span><em class="property">virtual</em> float <code class="sig-name descname">getFPGATemperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM18getFPGATemperatureEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns temperature measured by <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a>’s FPGA [Celsius]. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM17getUCDTemperatureEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM17getUCDTemperatureEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM17getUCDTemperatureEv"></span><span id="arrus::devices::Us4OEM::getUCDTemperature"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1afb702fb805f85a3519ba49b37700e0b1"></span><em class="property">virtual</em> float <code class="sig-name descname">getUCDTemperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM17getUCDTemperatureEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns temperature measured by <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a>’s UCD [Celsius] </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM25getUCDExternalTemperatureEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM25getUCDExternalTemperatureEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM25getUCDExternalTemperatureEv"></span><span id="arrus::devices::Us4OEM::getUCDExternalTemperature"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a8989ba2db27056876e8064a79c785c98"></span><em class="property">virtual</em> float <code class="sig-name descname">getUCDExternalTemperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM25getUCDExternalTemperatureEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns external temperature measured by <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a>’s UCD [Celsius] </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM21getUCDMeasuredVoltageE7uint8_t">
+<span id="_CPPv3N5arrus7devices6Us4OEM21getUCDMeasuredVoltageE7uint8_t"></span><span id="_CPPv2N5arrus7devices6Us4OEM21getUCDMeasuredVoltageE7uint8_t"></span><span id="arrus::devices::Us4OEM::getUCDMeasuredVoltage__uint8_t"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a60b70426a585ebb01776883f28d6ae12"></span><em class="property">virtual</em> float <code class="sig-name descname">getUCDMeasuredVoltage</code><span class="sig-paren">(</span>uint8_t <em>rail</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM21getUCDMeasuredVoltageE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns rail voltage measured by <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a>’s UCD [V].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rail</strong> – UCD rail number </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM10checkStateEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM10checkStateEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM10checkStateEv"></span><span id="arrus::devices::Us4OEM::checkState"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a0037aaf01b39e41f18176cc3f67c3258"></span><em class="property">virtual</em> void <code class="sig-name descname">checkState</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM10checkStateEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Checks if the us4OEM is in the correct state (as seen by host PC).</p>
+<p>Note: currently only the firmware version is checked (to verify if the us4OEM module memory space is still available for the us4OEM module).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Throws</dt>
+<dd class="field-odd"><p><strong>arrus::IllegalStateException</strong> – when the incorrect version was detected. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM18getFirmwareVersionEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM18getFirmwareVersionEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM18getFirmwareVersionEv"></span><span id="arrus::devices::Us4OEM::getFirmwareVersion"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a010362855bfee7a49fbab86a4cb58723"></span><em class="property">virtual</em> uint32 <code class="sig-name descname">getFirmwareVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM18getFirmwareVersionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns firmware version installed on the us4OEM module. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM20getTxFirmwareVersionEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM20getTxFirmwareVersionEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM20getTxFirmwareVersionEv"></span><span id="arrus::devices::Us4OEM::getTxFirmwareVersion"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a7ec422eaa568e779abd3f3401f525273"></span><em class="property">virtual</em> uint32 <code class="sig-name descname">getTxFirmwareVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM20getTxFirmwareVersionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns Tx component firmware version installed on this us4OEM module. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM16getFPGAWallclockEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM16getFPGAWallclockEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM16getFPGAWallclockEv"></span><span id="arrus::devices::Us4OEM::getFPGAWallclock"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a47f56ca966c0dd489f16904ccd6f7023"></span><em class="property">virtual</em> float <code class="sig-name descname">getFPGAWallclock</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM16getFPGAWallclockEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns current FPGA wall clock (time passed since Init function was called).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>FPGA wall clock (seconds) </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5arrus7devices6Us4OEM15getSerialNumberEv">
+<span id="_CPPv3NK5arrus7devices6Us4OEM15getSerialNumberEv"></span><span id="_CPPv2NK5arrus7devices6Us4OEM15getSerialNumberEv"></span><span id="arrus::devices::Us4OEM::getSerialNumberC"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a0aa0c6d365f848abd7f9e44b417f056d"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getSerialNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<a class="headerlink" href="#_CPPv4NK5arrus7devices6Us4OEM15getSerialNumberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns serial number of this us4OEM (a null-terminated string). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5arrus7devices6Us4OEM11getRevisionEv">
+<span id="_CPPv3NK5arrus7devices6Us4OEM11getRevisionEv"></span><span id="_CPPv2NK5arrus7devices6Us4OEM11getRevisionEv"></span><span id="arrus::devices::Us4OEM::getRevisionC"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1aed3c71601f07a8e4dcd9c0de589d1af6"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getRevision</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<a class="headerlink" href="#_CPPv4NK5arrus7devices6Us4OEM11getRevisionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns revision number of this us4OEM (a null-terminated string). </p>
 </dd></dl>
 
 </div>
