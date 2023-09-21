@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>C++ API Reference &mdash; ARRUS (cpp) 0.9.0-dev20230725 documentation</title>
+  <title>C++ API Reference &mdash; ARRUS (cpp) 0.9.0-dev20230921 documentation</title>
   
 
   
@@ -628,7 +628,7 @@
 <h2>Devices<a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h2>
 <dl class="cpp class">
 <dt id="_CPPv4N5arrus7devices4Us4RE">
-<span id="_CPPv3N5arrus7devices4Us4RE"></span><span id="_CPPv2N5arrus7devices4Us4RE"></span><span id="arrus::devices::Us4R"></span><span class="target" id="classarrus_1_1devices_1_1Us4R"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::devices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Us4R</code> : <em class="property">public</em> arrus::devices::DeviceWithComponents<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4RE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5arrus7devices4Us4RE"></span><span id="_CPPv2N5arrus7devices4Us4RE"></span><span id="arrus::devices::Us4R"></span><span class="target" id="classarrus_1_1devices_1_1Us4R"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::devices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Us4R</code> : <em class="property">public</em> arrus::devices::DeviceWithComponents, <em class="property">public</em> arrus::devices::Ultrasound<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4RE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#classarrus_1_1devices_1_1Us4R"><span class="std std-ref">Us4R</span></a> system: a group of <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a> modules and related components.</p>
 <p>By default system starts with IQ demodulator turned off. </p>
 <div class="breathe-sectiondef docutils container">
@@ -914,7 +914,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4NK5arrus7session12UploadResult16getConstMetadataEv">
-<span id="_CPPv3NK5arrus7session12UploadResult16getConstMetadataEv"></span><span id="_CPPv2NK5arrus7session12UploadResult16getConstMetadataEv"></span><span id="arrus::session::UploadResult::getConstMetadataC"></span><span class="target" id="classarrus_1_1session_1_1UploadResult_1a089d92c1507f0e210aaa85d3eb581627"></span><em class="property">inline</em> <em class="property">const</em> std::shared_ptr&lt;<a class="reference internal" href="#_CPPv4N5arrus7session19UploadConstMetadataE" title="arrus::session::UploadConstMetadata">UploadConstMetadata</a>&gt; &amp;<code class="sig-name descname">getConstMetadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5arrus7session12UploadResult16getConstMetadataEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK5arrus7session12UploadResult16getConstMetadataEv"></span><span id="_CPPv2NK5arrus7session12UploadResult16getConstMetadataEv"></span><span id="arrus::session::UploadResult::getConstMetadataC"></span><span class="target" id="classarrus_1_1session_1_1UploadResult_1a16a3cebd5309533a4dfd57721fa938b6"></span><em class="property">inline</em> <em class="property">const</em> std::shared_ptr&lt;<a class="reference internal" href="#_CPPv4N5arrus7session8MetadataE" title="arrus::session::Metadata">Metadata</a>&gt; &amp;<code class="sig-name descname">getConstMetadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5arrus7session12UploadResult16getConstMetadataEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns a pointer to the upload constant metadata (desription of the data produced by the system). </p>
 </dd></dl>
 
@@ -923,15 +923,15 @@
 
 <p>Upload result can include some additional information (metadata) about the acquired data:</p>
 <dl class="cpp class">
-<dt id="_CPPv4N5arrus7session19UploadConstMetadataE">
-<span id="_CPPv3N5arrus7session19UploadConstMetadataE"></span><span id="_CPPv2N5arrus7session19UploadConstMetadataE"></span><span id="arrus::session::UploadConstMetadata"></span><span class="target" id="classarrus_1_1session_1_1UploadConstMetadata"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::session<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">UploadConstMetadata</code><a class="headerlink" href="#_CPPv4N5arrus7session19UploadConstMetadataE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5arrus7session8MetadataE">
+<span id="_CPPv3N5arrus7session8MetadataE"></span><span id="_CPPv2N5arrus7session8MetadataE"></span><span id="arrus::session::Metadata"></span><span class="target" id="classarrus_1_1session_1_1Metadata"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::session<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Metadata</code><a class="headerlink" href="#_CPPv4N5arrus7session8MetadataE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A container for all information related to the acquired data.</p>
 <p>Currently it is assumed, that the values stored in this class won’t change during system run (is constant). </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt id="_CPPv4I0EN5arrus7session19UploadConstMetadata3getENSt10shared_ptrI1TEERKNSt6stringE">
-<span id="_CPPv3I0EN5arrus7session19UploadConstMetadata3getERKNSt6stringE"></span><span id="_CPPv2I0EN5arrus7session19UploadConstMetadata3getERKNSt6stringE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><span class="target" id="classarrus_1_1session_1_1UploadConstMetadata_1af329944bf49badedd63a3aca602cd448"></span><em class="property">inline</em> std::shared_ptr&lt;<a class="reference internal" href="#_CPPv4I0EN5arrus7session19UploadConstMetadata3getENSt10shared_ptrI1TEERKNSt6stringE" title="arrus::session::UploadConstMetadata::get::T">T</a>&gt; <code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5arrus7session19UploadConstMetadata3getENSt10shared_ptrI1TEERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4I0EN5arrus7session8Metadata3getENSt10shared_ptrI1TEERKNSt6stringE">
+<span id="_CPPv3I0EN5arrus7session8Metadata3getERKNSt6stringE"></span><span id="_CPPv2I0EN5arrus7session8Metadata3getERKNSt6stringE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><span class="target" id="classarrus_1_1session_1_1Metadata_1ae8b75b9ee89683bded37eb88d40f027d"></span><em class="property">inline</em> std::shared_ptr&lt;<a class="reference internal" href="#_CPPv4I0EN5arrus7session8Metadata3getENSt10shared_ptrI1TEERKNSt6stringE" title="arrus::session::Metadata::get::T">T</a>&gt; <code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5arrus7session8Metadata3getENSt10shared_ptrI1TEERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns metadata for the given key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
