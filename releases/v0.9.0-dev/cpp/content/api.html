@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>C++ API Reference &mdash; ARRUS (cpp) 0.9.0-dev20231004 documentation</title>
+  <title>C++ API Reference &mdash; ARRUS (cpp) 0.9.0-dev20231025 documentation</title>
   
 
   
@@ -628,7 +628,7 @@
 <h2>Devices<a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h2>
 <dl class="cpp class">
 <dt id="_CPPv4N5arrus7devices4Us4RE">
-<span id="_CPPv3N5arrus7devices4Us4RE"></span><span id="_CPPv2N5arrus7devices4Us4RE"></span><span id="arrus::devices::Us4R"></span><span class="target" id="classarrus_1_1devices_1_1Us4R"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::devices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Us4R</code> : <em class="property">public</em> arrus::devices::DeviceWithComponents, <em class="property">public</em> arrus::devices::Ultrasound<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4RE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5arrus7devices4Us4RE"></span><span id="_CPPv2N5arrus7devices4Us4RE"></span><span id="arrus::devices::Us4R"></span><span class="target" id="classarrus_1_1devices_1_1Us4R"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::devices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Us4R</code> : <em class="property">public</em> arrus::devices::Ultrasound, <em class="property">public</em> arrus::devices::DeviceWithComponents<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4RE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#classarrus_1_1devices_1_1Us4R"><span class="std std-ref">Us4R</span></a> system: a group of <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a> modules and related components.</p>
 <p>By default system starts with IQ demodulator turned off. </p>
 <div class="breathe-sectiondef docutils container">
@@ -762,6 +762,18 @@
 </dl>
 </dd></dl>
 
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices4Us4R24getBackplaneSerialNumberEv">
+<span id="_CPPv3N5arrus7devices4Us4R24getBackplaneSerialNumberEv"></span><span id="_CPPv2N5arrus7devices4Us4R24getBackplaneSerialNumberEv"></span><span id="arrus::devices::Us4R::getBackplaneSerialNumber"></span><span class="target" id="classarrus_1_1devices_1_1Us4R_1aa6d2c991a9d09028cff3090a80be1712"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getBackplaneSerialNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4R24getBackplaneSerialNumberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns serial number of the backplane (if available). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices4Us4R20getBackplaneRevisionEv">
+<span id="_CPPv3N5arrus7devices4Us4R20getBackplaneRevisionEv"></span><span id="_CPPv2N5arrus7devices4Us4R20getBackplaneRevisionEv"></span><span id="arrus::devices::Us4R::getBackplaneRevision"></span><span class="target" id="classarrus_1_1devices_1_1Us4R_1a570b0349308a5616d28480ac798a5270"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getBackplaneRevision</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4R20getBackplaneRevisionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns serial number of the backplane (if available). </p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -882,14 +894,14 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK5arrus7devices6Us4OEM15getSerialNumberEv">
-<span id="_CPPv3NK5arrus7devices6Us4OEM15getSerialNumberEv"></span><span id="_CPPv2NK5arrus7devices6Us4OEM15getSerialNumberEv"></span><span id="arrus::devices::Us4OEM::getSerialNumberC"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a0aa0c6d365f848abd7f9e44b417f056d"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getSerialNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<a class="headerlink" href="#_CPPv4NK5arrus7devices6Us4OEM15getSerialNumberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5arrus7devices6Us4OEM15getSerialNumberEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM15getSerialNumberEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM15getSerialNumberEv"></span><span id="arrus::devices::Us4OEM::getSerialNumber"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a74716b276bf0e5bd319c6b8a7435a69f"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getSerialNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM15getSerialNumberEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns serial number of this us4OEM (a null-terminated string). </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK5arrus7devices6Us4OEM11getRevisionEv">
-<span id="_CPPv3NK5arrus7devices6Us4OEM11getRevisionEv"></span><span id="_CPPv2NK5arrus7devices6Us4OEM11getRevisionEv"></span><span id="arrus::devices::Us4OEM::getRevisionC"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1aed3c71601f07a8e4dcd9c0de589d1af6"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getRevision</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<a class="headerlink" href="#_CPPv4NK5arrus7devices6Us4OEM11getRevisionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5arrus7devices6Us4OEM11getRevisionEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM11getRevisionEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM11getRevisionEv"></span><span id="arrus::devices::Us4OEM::getRevision"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1abb5f879b0fa0db77797d10a77bc761dc"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getRevision</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM11getRevisionEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns revision number of this us4OEM (a null-terminated string). </p>
 </dd></dl>
 
