@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>C++ API Reference &mdash; ARRUS (cpp) 0.9.0-dev20231025 documentation</title>
+  <title>C++ API Reference &mdash; ARRUS (cpp) 0.9.0-dev20231031 documentation</title>
   
 
   
@@ -202,6 +202,37 @@
 <span id="_CPPv3N5arrus7session7SessionE"></span><span id="_CPPv2N5arrus7session7SessionE"></span><span id="arrus::session::Session"></span><span class="target" id="classarrus_1_1session_1_1Session"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::session<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Session</code><a class="headerlink" href="#_CPPv4N5arrus7session7SessionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A communication session with the device. </p>
 <div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp enum-class">
+<dt id="_CPPv4N5arrus7session7Session5StateE">
+<span id="_CPPv3N5arrus7session7Session5StateE"></span><span id="_CPPv2N5arrus7session7Session5StateE"></span><span class="target" id="classarrus_1_1session_1_1Session_1aa26eb505d153010ff890301bcb338d64"></span><em class="property">enum class </em><code class="sig-name descname">State</code><a class="headerlink" href="#_CPPv4N5arrus7session7Session5StateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classarrus_1_1session_1_1Session"><span class="std std-ref">Session</span></a> state.</p>
+<p><ul class="simple">
+<li><p>STOPPED: the session is stopped (no device is running).</p></li>
+<li><p>STARTED: the session is started (at least one of the session devices is running).</p></li>
+<li><p>CLOSED: the session was closed (the connection to all the session devices was closed). </p></li>
+</ul>
+</p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N5arrus7session7Session5State7STOPPEDE">
+<span id="_CPPv3N5arrus7session7Session5State7STOPPEDE"></span><span id="_CPPv2N5arrus7session7Session5State7STOPPEDE"></span><span class="target" id="classarrus_1_1session_1_1Session_1aa26eb505d153010ff890301bcb338d64a09d4d696b4e935115b9313e3c412509a"></span><em class="property">enumerator </em><code class="sig-name descname">STOPPED</code><a class="headerlink" href="#_CPPv4N5arrus7session7Session5State7STOPPEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N5arrus7session7Session5State7STARTEDE">
+<span id="_CPPv3N5arrus7session7Session5State7STARTEDE"></span><span id="_CPPv2N5arrus7session7Session5State7STARTEDE"></span><span class="target" id="classarrus_1_1session_1_1Session_1aa26eb505d153010ff890301bcb338d64a17130e6c806885e23770df1519b18eb7"></span><em class="property">enumerator </em><code class="sig-name descname">STARTED</code><a class="headerlink" href="#_CPPv4N5arrus7session7Session5State7STARTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N5arrus7session7Session5State6CLOSEDE">
+<span id="_CPPv3N5arrus7session7Session5State6CLOSEDE"></span><span id="_CPPv2N5arrus7session7Session5State6CLOSEDE"></span><span class="target" id="classarrus_1_1session_1_1Session_1aa26eb505d153010ff890301bcb338d64a110ccf2f5d2ff4eda1fd1a494293467d"></span><em class="property">enumerator </em><code class="sig-name descname">CLOSED</code><a class="headerlink" href="#_CPPv4N5arrus7session7Session5State6CLOSEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N5arrus7session7Session9getDeviceERKNSt6stringE">
@@ -275,6 +306,12 @@
 <span id="_CPPv3N5arrus7session7Session5closeEv"></span><span id="_CPPv2N5arrus7session7Session5closeEv"></span><span id="arrus::session::Session::close"></span><span class="target" id="classarrus_1_1session_1_1Session_1a18d63f068adf200991cbd0048fa9c1c7"></span><em class="property">virtual</em> void <code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7session7Session5closeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Closes session.</p>
 <p>This method disconnects with all the devices available during this session. Sets the state of the session to closed, any subsequent call to the object methods (e.g. upload, startScheme..) will result in InvalidStateException. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7session7Session15getCurrentStateEv">
+<span id="_CPPv3N5arrus7session7Session15getCurrentStateEv"></span><span id="_CPPv2N5arrus7session7Session15getCurrentStateEv"></span><span id="arrus::session::Session::getCurrentState"></span><span class="target" id="classarrus_1_1session_1_1Session_1a811ffb14d932a94269045e3bc9f0066c"></span><em class="property">virtual</em> <a class="reference internal" href="#_CPPv4N5arrus7session7Session5StateE" title="arrus::session::Session::State">State</a> <code class="sig-name descname">getCurrentState</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7session7Session15getCurrentStateEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the current state of the session. See also <a class="reference internal" href="#classarrus_1_1session_1_1Session_1aa26eb505d153010ff890301bcb338d64"><span class="std std-ref">Session::State</span></a>. </p>
 </dd></dl>
 
 </div>
