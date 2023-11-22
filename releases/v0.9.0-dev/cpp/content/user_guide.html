@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>User Guide &mdash; ARRUS (cpp) 0.9.0-dev20231113 documentation</title>
+  <title>User Guide &mdash; ARRUS (cpp) 0.9.0-dev20231122 documentation</title>
   
 
   
@@ -213,8 +213,13 @@ session configuration file.</p>
 </pre></div>
 </div>
 <p>The us4R device typically includes a high voltage supplier,
-which can be configured by providing the <code class="docutils literal notranslate"><span class="pre">hv</span></code> field. For now, the us4R device
-in the arrus package supports only one type of HV device:</p>
+which can be configured by providing the <code class="docutils literal notranslate"><span class="pre">hv</span></code> field. The following power
+supplies are currently supported:</p>
+<ul class="simple">
+<li><p>us4R-Lite systems: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">hv256</span></code>,</p></li>
+<li><p>us4R systems: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code>,</p></li>
+<li><p>us4OEM+ with internal HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4oemhvps</span></code>.</p></li>
+</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hv</span><span class="p">:</span> <span class="p">{</span>
   <span class="n">model_id</span> <span class="p">{</span>
     <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
@@ -224,6 +229,23 @@ in the arrus package supports only one type of HV device:</p>
 </pre></div>
 </div>
 <p>To turn off the high voltage supplier, skip the <code class="docutils literal notranslate"><span class="pre">hv</span></code> field.</p>
+<p>Based on the HV selected, our software will try to automatically select the type of digital backplane (DBAR) to be used:</p>
+<ul class="simple">
+<li><p>for the systems with <code class="docutils literal notranslate"><span class="pre">hv256</span></code> power supply, <code class="docutils literal notranslate"><span class="pre">dbarlite</span></code> will be used,</p></li>
+<li><p>for the systems with <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code> power supply, <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code> will be used,</p></li>
+<li><p>for the systems <code class="docutils literal notranslate"><span class="pre">us4oemhvps</span></code>, a system with no digital backplane will be assumed.</p></li>
+</ul>
+<p>It is also possible to explicitly specify the backplane model in the configuration file, just provide the field
+<code class="docutils literal notranslate"><span class="pre">digital_backplane</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">digital_backplane</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">model_id</span> <span class="p">{</span>
+    <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;model_name&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">model_name</span></code> can be one of the following: <code class="docutils literal notranslate"><span class="pre">dbarlite</span></code> or <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code>.</p>
 <p>To configure us4r’s signal transmission/data reception, it is essential to
 specify settings of the probe and probe adapter used in the system.</p>
 <div class="section" id="specify-the-settings-of-the-probe-and-probe-adapter">
