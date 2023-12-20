@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; ARRUS (cpp) 0.6.6 documentation</title>
+  <title>Index &mdash; ARRUS (cpp) 0.9.0 documentation</title>
   
 
   
@@ -30,6 +30,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -83,7 +84,7 @@
               <p class="caption"><span class="caption-text">User Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="content/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/definitions.html">Glossary and assumptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/user_guide.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/api.html">C++ API Reference</a></li>
 </ul>
@@ -166,7 +167,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="content/api.html#_CPPv4N5arrus7devices19FrameChannelMappingE">arrus::devices::FrameChannelMapping (C++ class)</a>
 </li>
-      <li><a href="content/api.html#_CPPv4N5arrus7devices19FrameChannelMapping10getLogicalE11FrameNumber10ChannelIdx">arrus::devices::FrameChannelMapping::getLogical (C++ function)</a>
+      <li><a href="content/api.html#_CPPv4NK5arrus7devices19FrameChannelMapping13getFirstFrameEN5arrus5uint8E">arrus::devices::FrameChannelMapping::getFirstFrame (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4NK5arrus7devices19FrameChannelMapping15getFrameOffsetsEv">arrus::devices::FrameChannelMapping::getFrameOffsets (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4NK5arrus7devices19FrameChannelMapping10getLogicalE11FrameNumber10ChannelIdx">arrus::devices::FrameChannelMapping::getLogical (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4NK5arrus7devices19FrameChannelMapping17getNumberOfFramesE5uint8">arrus::devices::FrameChannelMapping::getNumberOfFrames (C++ function)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7devices19FrameChannelMapping20isChannelUnavailableE4int8">arrus::devices::FrameChannelMapping::isChannelUnavailable (C++ function)</a>
 </li>
@@ -174,13 +181,45 @@
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7devices10RxSettings12getTgcMinMaxE6uint166uint16">arrus::devices::RxSettings::getTgcMinMax (C++ function)</a>
 </li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEME">arrus::devices::Us4OEM (C++ class)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM10checkStateEv">arrus::devices::Us4OEM::checkState (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM18getFirmwareVersionEv">arrus::devices::Us4OEM::getFirmwareVersion (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM18getFPGATemperatureEv">arrus::devices::Us4OEM::getFPGATemperature (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM16getFPGAWallclockEv">arrus::devices::Us4OEM::getFPGAWallclock (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM11getRevisionEv">arrus::devices::Us4OEM::getRevision (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM20getSamplingFrequencyEv">arrus::devices::Us4OEM::getSamplingFrequency (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM15getSerialNumberEv">arrus::devices::Us4OEM::getSerialNumber (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM20getTxFirmwareVersionEv">arrus::devices::Us4OEM::getTxFirmwareVersion (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM25getUCDExternalTemperatureEv">arrus::devices::Us4OEM::getUCDExternalTemperature (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM21getUCDMeasuredVoltageE7uint8_t">arrus::devices::Us4OEM::getUCDMeasuredVoltage (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices6Us4OEM17getUCDTemperatureEv">arrus::devices::Us4OEM::getUCDTemperature (C++ function)</a>
+</li>
       <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4RE">arrus::devices::Us4R (C++ class)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R9disableHVEv">arrus::devices::Us4R::disableHV (C++ function)</a>
 </li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R20getBackplaneRevisionEv">arrus::devices::Us4R::getBackplaneRevision (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R24getBackplaneSerialNumberEv">arrus::devices::Us4R::getBackplaneSerialNumber (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R9getUs4OEME7Ordinal">arrus::devices::Us4R::getUs4OEM (C++ function)</a>
+</li>
       <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R20setActiveTerminationENSt8optionalI6uint16EE">arrus::devices::Us4R::setActiveTermination (C++ function)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R18setDtgcAttenuationENSt8optionalI6uint16EE">arrus::devices::Us4R::setDtgcAttenuation (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R21setHpfCornerFrequencyE8uint32_t">arrus::devices::Us4R::setHpfCornerFrequency (C++ function)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R10setLnaGainE6uint16">arrus::devices::Us4R::setLnaGain (C++ function)</a>
 </li>
@@ -190,7 +229,7 @@
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R13setRxSettingsERK10RxSettings">arrus::devices::Us4R::setRxSettings (C++ function)</a>
 </li>
-      <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R11setTgcCurveERKNSt6vectorIfEE">arrus::devices::Us4R::setTgcCurve (C++ function)</a>, <a href="content/api.html#_CPPv4N5arrus7devices4Us4R11setTgcCurveERKNSt6vectorIfEEb">[1]</a>
+      <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R11setTgcCurveERKNSt6vectorIfEE">arrus::devices::Us4R::setTgcCurve (C++ function)</a>, <a href="content/api.html#_CPPv4N5arrus7devices4Us4R11setTgcCurveERKNSt6vectorIfEERKNSt6vectorIfEEb">[1]</a>, <a href="content/api.html#_CPPv4N5arrus7devices4Us4R11setTgcCurveERKNSt6vectorIfEEb">[2]</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7devices4Us4R10setVoltageE7Voltage">arrus::devices::Us4R::setVoltage (C++ function)</a>
 </li>
@@ -226,19 +265,25 @@
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus9framework7NdArray8DataTypeE">arrus::framework::NdArray::DataType (C++ enum)</a>
 </li>
+      <li><a href="content/api.html#_CPPv4N5arrus9framework7NdArray8DataType7FLOAT32E">arrus::framework::NdArray::DataType::FLOAT32 (C++ enumerator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="content/api.html#_CPPv4N5arrus9framework7NdArray8DataType5INT16E">arrus::framework::NdArray::DataType::INT16 (C++ enumerator)</a>
 </li>
-      <li><a href="content/api.html#_CPPv4I0EN5arrus9framework7NdArray3getEP1Tv">arrus::framework::NdArray::get (C++ function)</a>
+      <li><a href="content/api.html#_CPPv4I0EN5arrus9framework7NdArray3getEP1Tv">arrus::framework::NdArray::get (C++ function)</a>, <a href="content/api.html#_CPPv4I0ENK5arrus9framework7NdArray3getEPK1Tv">[1]</a>
 </li>
       <li><a href="content/api.html#_CPPv4NK5arrus9framework7NdArray11getDataTypeEv">arrus::framework::NdArray::getDataType (C++ function)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus9framework7NdArray8getInt16Ev">arrus::framework::NdArray::getInt16 (C++ function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="content/api.html#_CPPv4NK5arrus9framework7NdArray8getShapeEv">arrus::framework::NdArray::getShape (C++ function)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus9framework7NdArray5ShapeE">arrus::framework::NdArray::Shape (C++ type)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r21DigitalDownConversionE">arrus::ops::us4r::DigitalDownConversion (C++ class)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r21DigitalDownConversion21DigitalDownConversionEfNSt6vectorIfEEf">arrus::ops::us4r::DigitalDownConversion::DigitalDownConversion (C++ function)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r5PulseE">arrus::ops::us4r::Pulse (C++ class)</a>
 </li>
@@ -250,13 +295,17 @@
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r6SchemeE">arrus::ops::us4r::Scheme (C++ class)</a>
 </li>
-      <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode">arrus::ops::us4r::Scheme::Scheme (C++ function)</a>
+      <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode">arrus::ops::us4r::Scheme::Scheme (C++ function)</a>, <a href="content/api.html#_CPPv4N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion">[1]</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r6Scheme8WorkModeE">arrus::ops::us4r::Scheme::WorkMode (C++ enum)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r6Scheme8WorkMode5ASYNCE">arrus::ops::us4r::Scheme::WorkMode::ASYNC (C++ enumerator)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r6Scheme8WorkMode4HOSTE">arrus::ops::us4r::Scheme::WorkMode::HOST (C++ enumerator)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r6Scheme8WorkMode6MANUALE">arrus::ops::us4r::Scheme::WorkMode::MANUAL (C++ enumerator)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r6Scheme8WorkMode4SYNCE">arrus::ops::us4r::Scheme::WorkMode::SYNC (C++ enumerator)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r8TGCCurveE">arrus::ops::us4r::TGCCurve (C++ type)</a>
 </li>
@@ -276,23 +325,37 @@
 </li>
       <li><a href="content/api.html#_CPPv4NK5arrus3ops4us4r12TxRxSequence11getTgcCurveEv">arrus::ops::us4r::TxRxSequence::getTgcCurve (C++ function)</a>, <a href="content/api.html#_CPPv4NK5arrus3ops4us4r12TxRxSequence11getTgcCurveEv">[1]</a>
 </li>
-      <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef">arrus::ops::us4r::TxRxSequence::TxRxSequence (C++ function)</a>, <a href="content/api.html#_CPPv4N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef">[1]</a>
+      <li><a href="content/api.html#_CPPv4N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef5int16">arrus::ops::us4r::TxRxSequence::TxRxSequence (C++ function)</a>, <a href="content/api.html#_CPPv4N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef5int16">[1]</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7session13createSessionERKNSt6stringE">arrus::session::createSession (C++ function)</a>
 </li>
+      <li><a href="content/api.html#_CPPv4N5arrus7session8MetadataE">arrus::session::Metadata (C++ class)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4I0EN5arrus7session8Metadata3getENSt10shared_ptrI1TEERKNSt6stringE">arrus::session::Metadata::get (C++ function)</a>
+</li>
       <li><a href="content/api.html#_CPPv4N5arrus7session7SessionE">arrus::session::Session (C++ class)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7session7Session5closeEv">arrus::session::Session::close (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7session7Session15getCurrentStateEv">arrus::session::Session::getCurrentState (C++ function)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7session7Session9getDeviceERKN5arrus7devices8DeviceIdE">arrus::session::Session::getDevice (C++ function)</a>, <a href="content/api.html#_CPPv4N5arrus7session7Session9getDeviceERKNSt6stringE">[1]</a>
 </li>
+      <li><a href="content/api.html#_CPPv4N5arrus7session7Session3runEv">arrus::session::Session::run (C++ function)</a>
+</li>
       <li><a href="content/api.html#_CPPv4N5arrus7session7Session11startSchemeEv">arrus::session::Session::startScheme (C++ function)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7session7Session5StateE">arrus::session::Session::State (C++ enum)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7session7Session5State6CLOSEDE">arrus::session::Session::State::CLOSED (C++ enumerator)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7session7Session5State7STARTEDE">arrus::session::Session::State::STARTED (C++ enumerator)</a>
+</li>
+      <li><a href="content/api.html#_CPPv4N5arrus7session7Session5State7STOPPEDE">arrus::session::Session::State::STOPPED (C++ enumerator)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7session7Session10stopSchemeEv">arrus::session::Session::stopScheme (C++ function)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7session7Session6uploadERKN5arrus3ops4us4r6SchemeE">arrus::session::Session::upload (C++ function)</a>
-</li>
-      <li><a href="content/api.html#_CPPv4N5arrus7session19UploadConstMetadataE">arrus::session::UploadConstMetadata (C++ class)</a>
-</li>
-      <li><a href="content/api.html#_CPPv4I0EN5arrus7session19UploadConstMetadata3getENSt10shared_ptrI1TEERKNSt6stringE">arrus::session::UploadConstMetadata::get (C++ function)</a>
 </li>
       <li><a href="content/api.html#_CPPv4N5arrus7session12UploadResultE">arrus::session::UploadResult (C++ class)</a>
 </li>
@@ -324,7 +387,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2022, us4us Ltd.
+        &copy; Copyright 2023, us4us Ltd.
 
     </p>
   </div>

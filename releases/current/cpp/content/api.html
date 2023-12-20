@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>C++ API Reference &mdash; ARRUS (cpp) 0.6.6 documentation</title>
+  <title>C++ API Reference &mdash; ARRUS (cpp) 0.9.0 documentation</title>
   
 
   
@@ -30,6 +30,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -85,7 +86,7 @@
               <p class="caption"><span class="caption-text">User Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions.html">Glossary and assumptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">C++ API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#notation">Notation</a></li>
@@ -201,6 +202,37 @@
 <span id="_CPPv3N5arrus7session7SessionE"></span><span id="_CPPv2N5arrus7session7SessionE"></span><span id="arrus::session::Session"></span><span class="target" id="classarrus_1_1session_1_1Session"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::session<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Session</code><a class="headerlink" href="#_CPPv4N5arrus7session7SessionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A communication session with the device. </p>
 <div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp enum-class">
+<dt id="_CPPv4N5arrus7session7Session5StateE">
+<span id="_CPPv3N5arrus7session7Session5StateE"></span><span id="_CPPv2N5arrus7session7Session5StateE"></span><span class="target" id="classarrus_1_1session_1_1Session_1aa26eb505d153010ff890301bcb338d64"></span><em class="property">enum class </em><code class="sig-name descname">State</code><a class="headerlink" href="#_CPPv4N5arrus7session7Session5StateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classarrus_1_1session_1_1Session"><span class="std std-ref">Session</span></a> state.</p>
+<p><ul class="simple">
+<li><p>STOPPED: the session is stopped (no device is running).</p></li>
+<li><p>STARTED: the session is started (at least one of the session devices is running).</p></li>
+<li><p>CLOSED: the session was closed (the connection to all the session devices was closed). </p></li>
+</ul>
+</p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt id="_CPPv4N5arrus7session7Session5State7STOPPEDE">
+<span id="_CPPv3N5arrus7session7Session5State7STOPPEDE"></span><span id="_CPPv2N5arrus7session7Session5State7STOPPEDE"></span><span class="target" id="classarrus_1_1session_1_1Session_1aa26eb505d153010ff890301bcb338d64a09d4d696b4e935115b9313e3c412509a"></span><em class="property">enumerator </em><code class="sig-name descname">STOPPED</code><a class="headerlink" href="#_CPPv4N5arrus7session7Session5State7STOPPEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N5arrus7session7Session5State7STARTEDE">
+<span id="_CPPv3N5arrus7session7Session5State7STARTEDE"></span><span id="_CPPv2N5arrus7session7Session5State7STARTEDE"></span><span class="target" id="classarrus_1_1session_1_1Session_1aa26eb505d153010ff890301bcb338d64a17130e6c806885e23770df1519b18eb7"></span><em class="property">enumerator </em><code class="sig-name descname">STARTED</code><a class="headerlink" href="#_CPPv4N5arrus7session7Session5State7STARTEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N5arrus7session7Session5State6CLOSEDE">
+<span id="_CPPv3N5arrus7session7Session5State6CLOSEDE"></span><span id="_CPPv2N5arrus7session7Session5State6CLOSEDE"></span><span class="target" id="classarrus_1_1session_1_1Session_1aa26eb505d153010ff890301bcb338d64a110ccf2f5d2ff4eda1fd1a494293467d"></span><em class="property">enumerator </em><code class="sig-name descname">CLOSED</code><a class="headerlink" href="#_CPPv4N5arrus7session7Session5State6CLOSEDE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N5arrus7session7Session9getDeviceERKNSt6stringE">
@@ -258,6 +290,30 @@
 <dd><p>Stops currently uploaded scheme. </p>
 </dd></dl>
 
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7session7Session3runEv">
+<span id="_CPPv3N5arrus7session7Session3runEv"></span><span id="_CPPv2N5arrus7session7Session3runEv"></span><span id="arrus::session::Session::run"></span><span class="target" id="classarrus_1_1session_1_1Session_1a2cbe6e9e162011bb95c2e718f40d8baf"></span><em class="property">virtual</em> void <code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7session7Session3runEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Runs the uploaded scheme.</p>
+<p>The behaviour of this method depends on the work mode:<ul class="simple">
+<li><p>MANUAL: triggers execution of batch of sequences only ONCE,</p></li>
+<li><p>HOST, ASYNC: triggers execution of batch of sequences IN A LOOP (Host: trigger is on buffer element release). The run function can be called only once (before the scheme is stopped). </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7session7Session5closeEv">
+<span id="_CPPv3N5arrus7session7Session5closeEv"></span><span id="_CPPv2N5arrus7session7Session5closeEv"></span><span id="arrus::session::Session::close"></span><span class="target" id="classarrus_1_1session_1_1Session_1a18d63f068adf200991cbd0048fa9c1c7"></span><em class="property">virtual</em> void <code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7session7Session5closeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Closes session.</p>
+<p>This method disconnects with all the devices available during this session. Sets the state of the session to closed, any subsequent call to the object methods (e.g. upload, startScheme..) will result in InvalidStateException. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7session7Session15getCurrentStateEv">
+<span id="_CPPv3N5arrus7session7Session15getCurrentStateEv"></span><span id="_CPPv2N5arrus7session7Session15getCurrentStateEv"></span><span id="arrus::session::Session::getCurrentState"></span><span class="target" id="classarrus_1_1session_1_1Session_1a811ffb14d932a94269045e3bc9f0066c"></span><em class="property">virtual</em> <a class="reference internal" href="#_CPPv4N5arrus7session7Session5StateE" title="arrus::session::Session::State">State</a> <code class="sig-name descname">getCurrentState</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7session7Session15getCurrentStateEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the current state of the session. See also <a class="reference internal" href="#classarrus_1_1session_1_1Session_1aa26eb505d153010ff890301bcb338d64"><span class="std std-ref">Session::State</span></a>. </p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -272,9 +328,9 @@
 <dd><p>A scheme to be executed within the session. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
-<dl class="cpp enum">
+<dl class="cpp enum-class">
 <dt id="_CPPv4N5arrus3ops4us4r6Scheme8WorkModeE">
-<span id="_CPPv3N5arrus3ops4us4r6Scheme8WorkModeE"></span><span id="_CPPv2N5arrus3ops4us4r6Scheme8WorkModeE"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Scheme_1adcc0cdfe772506d3705979654cadde68"></span><em class="property">enum </em><code class="sig-name descname">WorkMode</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r6Scheme8WorkModeE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5arrus3ops4us4r6Scheme8WorkModeE"></span><span id="_CPPv2N5arrus3ops4us4r6Scheme8WorkModeE"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Scheme_1adcc0cdfe772506d3705979654cadde68"></span><em class="property">enum class </em><code class="sig-name descname">WorkMode</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r6Scheme8WorkModeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>How the scheme should be executed on the us4r-lite device.</p>
 <p>This enum value determines the source of the signal trigger (i.e. whether the signal is triggered by us4oem modules or host PC). </p>
 <p><em>Values:</em></p>
@@ -285,9 +341,21 @@
 </dd></dl>
 
 <dl class="cpp enumerator">
+<dt id="_CPPv4N5arrus3ops4us4r6Scheme8WorkMode4SYNCE">
+<span id="_CPPv3N5arrus3ops4us4r6Scheme8WorkMode4SYNCE"></span><span id="_CPPv2N5arrus3ops4us4r6Scheme8WorkMode4SYNCE"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Scheme_1adcc0cdfe772506d3705979654cadde68a274ccef15a21e829d03293a6fd1974f3"></span><em class="property">enumerator </em><code class="sig-name descname">SYNC</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r6Scheme8WorkMode4SYNCE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Trigger generated by us4r, us4r waits on overflow </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
 <dt id="_CPPv4N5arrus3ops4us4r6Scheme8WorkMode4HOSTE">
 <span id="_CPPv3N5arrus3ops4us4r6Scheme8WorkMode4HOSTE"></span><span id="_CPPv2N5arrus3ops4us4r6Scheme8WorkMode4HOSTE"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Scheme_1adcc0cdfe772506d3705979654cadde68ab9361011891280a44d85b967739cc6a5"></span><em class="property">enumerator </em><code class="sig-name descname">HOST</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r6Scheme8WorkMode4HOSTE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Trigger generated by host, no error on overflow. </p>
+<dd><p>Trigger generated by host, no error on overflow. DEPRECATED: will be replaced in the future by MANUAL mode </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt id="_CPPv4N5arrus3ops4us4r6Scheme8WorkMode6MANUALE">
+<span id="_CPPv3N5arrus3ops4us4r6Scheme8WorkMode6MANUALE"></span><span id="_CPPv2N5arrus3ops4us4r6Scheme8WorkMode6MANUALE"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Scheme_1adcc0cdfe772506d3705979654cadde68aa60a6a471c0681e5a49c4f5d00f6bc5a"></span><em class="property">enumerator </em><code class="sig-name descname">MANUAL</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r6Scheme8WorkMode6MANUALE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>New data acquisition and processing is manually triggered by user. </p>
 </dd></dl>
 
 </dd></dl>
@@ -298,7 +366,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode">
 <span id="_CPPv3N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode"></span><span id="_CPPv2N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode"></span><span id="arrus::ops::us4r::Scheme::Scheme__TxRxSequence.uint16.framework::DataBufferSpecCR.WorkMode"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Scheme_1a0414a48b69a51060be86214f561bce6c"></span><em class="property">inline</em> <code class="sig-name descname">Scheme</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5arrus3ops4us4r12TxRxSequenceE" title="arrus::ops::us4r::TxRxSequence">TxRxSequence</a> <em>txRxSequence</em>, uint16 <em>rxBufferSize</em>, <em class="property">const</em> framework::<a class="reference internal" href="#_CPPv4N5arrus9framework14DataBufferSpecE" title="arrus::framework::DataBufferSpec">DataBufferSpec</a> &amp;<em>outputBuffer</em>, <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r6Scheme8WorkModeE" title="arrus::ops::us4r::Scheme::WorkMode">WorkMode</a> <em>workMode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#classarrus_1_1ops_1_1us4r_1_1Scheme"><span class="std std-ref">Scheme</span></a> constructor.</p>
+<dd><p><a class="reference internal" href="#classarrus_1_1ops_1_1us4r_1_1Scheme"><span class="std std-ref">Scheme</span></a> constructor. This scheme turns off hardware IQ demodulator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -306,6 +374,23 @@
 <li><p><strong>rxBufferSize</strong> – the size of the data acquisition buffer in the memory of the Us4R device (a single element of the buffer is an output of a single tx/rx sequence execution) </p></li>
 <li><p><strong>outputBuffer</strong> – output buffer specification </p></li>
 <li><p><strong>workMode</strong> – scheme work mode </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion">
+<span id="_CPPv3N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion"></span><span id="_CPPv2N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion"></span><span id="arrus::ops::us4r::Scheme::Scheme__TxRxSequence.uint16.framework::DataBufferSpecCR.WorkMode.DigitalDownConversion"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Scheme_1ada665fe110b4368241896929ddd315b6"></span><em class="property">inline</em> <code class="sig-name descname">Scheme</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5arrus3ops4us4r12TxRxSequenceE" title="arrus::ops::us4r::TxRxSequence">TxRxSequence</a> <em>txRxSequence</em>, uint16 <em>rxBufferSize</em>, <em class="property">const</em> framework::<a class="reference internal" href="#_CPPv4N5arrus9framework14DataBufferSpecE" title="arrus::framework::DataBufferSpec">DataBufferSpec</a> &amp;<em>outputBuffer</em>, <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r6Scheme8WorkModeE" title="arrus::ops::us4r::Scheme::WorkMode">WorkMode</a> <em>workMode</em>, <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r21DigitalDownConversionE" title="arrus::ops::us4r::DigitalDownConversion">DigitalDownConversion</a> <em>digitalDownConversion</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r6Scheme6SchemeE12TxRxSequence6uint16RKN9framework14DataBufferSpecE8WorkMode21DigitalDownConversion" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classarrus_1_1ops_1_1us4r_1_1Scheme"><span class="std std-ref">Scheme</span></a> constructor. This scheme turns on hardware IQ demodulator (sees digital down conversion parameter).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>txRxSequence</strong> – tx/rx sequence to perform </p></li>
+<li><p><strong>rxBufferSize</strong> – the size of the data acquisition buffer in the memory of the Us4R device (a single element of the buffer is an output of a single tx/rx sequence execution) </p></li>
+<li><p><strong>outputBuffer</strong> – output buffer specification </p></li>
+<li><p><strong>workMode</strong> – scheme work mode </p></li>
+<li><p><strong>digitalDownConversion</strong> – DDC parameters </p></li>
 </ul>
 </dd>
 </dl>
@@ -320,9 +405,9 @@
 <dd><p>Class describing output data buffer properties. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
-<dl class="cpp enum">
+<dl class="cpp enum-class">
 <dt id="_CPPv4N5arrus9framework14DataBufferSpec4TypeE">
-<span id="_CPPv3N5arrus9framework14DataBufferSpec4TypeE"></span><span id="_CPPv2N5arrus9framework14DataBufferSpec4TypeE"></span><span class="target" id="classarrus_1_1framework_1_1DataBufferSpec_1aebe1e1e1308c7d6853d97e1377ad3f1c"></span><em class="property">enum </em><code class="sig-name descname">Type</code><a class="headerlink" href="#_CPPv4N5arrus9framework14DataBufferSpec4TypeE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5arrus9framework14DataBufferSpec4TypeE"></span><span id="_CPPv2N5arrus9framework14DataBufferSpec4TypeE"></span><span class="target" id="classarrus_1_1framework_1_1DataBufferSpec_1aebe1e1e1308c7d6853d97e1377ad3f1c"></span><em class="property">enum class </em><code class="sig-name descname">Type</code><a class="headerlink" href="#_CPPv4N5arrus9framework14DataBufferSpec4TypeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Buffer type. </p>
 <p><em>Values:</em></p>
 <dl class="cpp enumerator">
@@ -368,8 +453,8 @@
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt id="_CPPv4N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef">
-<span id="_CPPv3N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef"></span><span id="_CPPv2N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef"></span><span id="arrus::ops::us4r::TxRxSequence::TxRxSequence__std::vector:TxRx:.TGCCurve.float"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1TxRxSequence_1a707ecaf55b4a9b7494581273729fc70b"></span><em class="property">inline</em> <code class="sig-name descname">TxRxSequence</code><span class="sig-paren">(</span>std::vector&lt;<a class="reference internal" href="#_CPPv4N5arrus3ops4us4r4TxRxE" title="arrus::ops::us4r::TxRx">TxRx</a>&gt; <em>sequence</em>, <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r8TGCCurveE" title="arrus::ops::us4r::TGCCurve">TGCCurve</a> <em>tgcCurve</em>, float <em>sri</em> = NO_SRI<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef5int16">
+<span id="_CPPv3N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef5int16"></span><span id="_CPPv2N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef5int16"></span><span id="arrus::ops::us4r::TxRxSequence::TxRxSequence__std::vector:TxRx:.TGCCurve.float.int16"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1TxRxSequence_1a3038519a9aa6bd09e14dd06bb7aaf361"></span><em class="property">inline</em> <code class="sig-name descname">TxRxSequence</code><span class="sig-paren">(</span>std::vector&lt;<a class="reference internal" href="#_CPPv4N5arrus3ops4us4r4TxRxE" title="arrus::ops::us4r::TxRx">TxRx</a>&gt; <em>sequence</em>, <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r8TGCCurveE" title="arrus::ops::us4r::TGCCurve">TGCCurve</a> <em>tgcCurve</em>, float <em>sri</em> = NO_SRI, int16 <em>nRepeats</em> = 1<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r12TxRxSequence12TxRxSequenceENSt6vectorI4TxRxEE8TGCCurvef5int16" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Tx/Rx sequence to execute on Us4R device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -377,6 +462,7 @@
 <li><p><strong>sequence</strong> – a list of tx/rxs that compose a given sequence </p></li>
 <li><p><strong>tgcCurve</strong> – tgc curve to apply </p></li>
 <li><p><strong>sri</strong> – sequence repetition interval - the total time that a given sequence should take. </p></li>
+<li><p><strong>nRepeats</strong> – - the number of repetitions of a given sequence. Determines the size of the batch </p></li>
 </ul>
 </dd>
 </dl>
@@ -506,7 +592,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt>
-<span class="target" id="classarrus_1_1ops_1_1us4r_1_1TxRxSequence_1a707ecaf55b4a9b7494581273729fc70b"></span><em class="property">inline</em> <code class="sig-name descname">TxRxSequence</code><span class="sig-paren">(</span>std::vector&lt;<a class="reference internal" href="#_CPPv4N5arrus3ops4us4r4TxRxE" title="arrus::ops::us4r::TxRx">TxRx</a>&gt; <em>sequence</em>, <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r8TGCCurveE" title="arrus::ops::us4r::TGCCurve">TGCCurve</a> <em>tgcCurve</em>, float <em>sri</em> = NO_SRI<span class="sig-paren">)</span><br /></dt>
+<span class="target" id="classarrus_1_1ops_1_1us4r_1_1TxRxSequence_1a3038519a9aa6bd09e14dd06bb7aaf361"></span><em class="property">inline</em> <code class="sig-name descname">TxRxSequence</code><span class="sig-paren">(</span>std::vector&lt;<a class="reference internal" href="#_CPPv4N5arrus3ops4us4r4TxRxE" title="arrus::ops::us4r::TxRx">TxRx</a>&gt; <em>sequence</em>, <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r8TGCCurveE" title="arrus::ops::us4r::TGCCurve">TGCCurve</a> <em>tgcCurve</em>, float <em>sri</em> = NO_SRI, int16 <em>nRepeats</em> = 1<span class="sig-paren">)</span><br /></dt>
 <dd><p>Tx/Rx sequence to execute on Us4R device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -514,6 +600,7 @@
 <li><p><strong>sequence</strong> – a list of tx/rxs that compose a given sequence </p></li>
 <li><p><strong>tgcCurve</strong> – tgc curve to apply </p></li>
 <li><p><strong>sri</strong> – sequence repetition interval - the total time that a given sequence should take. </p></li>
+<li><p><strong>nRepeats</strong> – - the number of repetitions of a given sequence. Determines the size of the batch </p></li>
 </ul>
 </dd>
 </dl>
@@ -540,6 +627,32 @@
 </div>
 </dd></dl>
 
+<dl class="cpp class">
+<dt id="_CPPv4N5arrus3ops4us4r21DigitalDownConversionE">
+<span id="_CPPv3N5arrus3ops4us4r21DigitalDownConversionE"></span><span id="_CPPv2N5arrus3ops4us4r21DigitalDownConversionE"></span><span id="arrus::ops::us4r::DigitalDownConversion"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1DigitalDownConversion"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::ops::us4r<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">DigitalDownConversion</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r21DigitalDownConversionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus3ops4us4r21DigitalDownConversion21DigitalDownConversionEfNSt6vectorIfEEf">
+<span id="_CPPv3N5arrus3ops4us4r21DigitalDownConversion21DigitalDownConversionEfNSt6vectorIfEEf"></span><span id="_CPPv2N5arrus3ops4us4r21DigitalDownConversion21DigitalDownConversionEfNSt6vectorIfEEf"></span><span id="arrus::ops::us4r::DigitalDownConversion::DigitalDownConversion__float.std::vector:float:.float"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1DigitalDownConversion_1a4037c4b7f7872a0517b9a38063a8e402"></span><em class="property">inline</em> <code class="sig-name descname">DigitalDownConversion</code><span class="sig-paren">(</span>float <em>demodulationFrequency</em>, std::vector&lt;float&gt; <em>firCoefficients</em>, float <em>decimationFactor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r21DigitalDownConversion21DigitalDownConversionEfNSt6vectorIfEEf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Us4R Digital Down Conversion block.</p>
+<p>Note: the decimation factor can also have a fractional part: 0.25, 0.5 or 0.75.</p>
+<p>Note: the FIR filter order (i.e. total number of taps)depends on the decimation factor and should be equal: decimationFactor*16 for integer decimation factor; decimationFactor*32 for decimation factor with fractional part 0.5; decimationFactor*64 for decimation facator with fractional part 0.25 or 0.75.</p>
+<p>Note: only a upper half of the FIR filter coefficients should be provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>demodulationFrequency</strong> – demodulation frequency to apply [Hz] </p></li>
+<li><p><strong>firCoefficients</strong> – FIR filter coefficients to apply </p></li>
+<li><p><strong>decimationFactor</strong> – decimation factor to apply, should be in range [2, 63] </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
 <dl class="cpp type">
 <dt id="_CPPv4N5arrus3ops4us4r8TGCCurveE">
 <span id="_CPPv3N5arrus3ops4us4r8TGCCurveE"></span><span id="_CPPv2N5arrus3ops4us4r8TGCCurveE"></span><span class="target" id="tgc_8h_1addb36278331efa0aef7c74e840d7505b"></span><em class="property">using </em><code class="sig-prename descclassname">arrus::ops::us4r<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">TGCCurve</code> = std::vector&lt;TGCSampleValue&gt;<a class="headerlink" href="#_CPPv4N5arrus3ops4us4r8TGCCurveE" title="Permalink to this definition">¶</a><br /></dt>
@@ -552,10 +665,25 @@
 <h2>Devices<a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h2>
 <dl class="cpp class">
 <dt id="_CPPv4N5arrus7devices4Us4RE">
-<span id="_CPPv3N5arrus7devices4Us4RE"></span><span id="_CPPv2N5arrus7devices4Us4RE"></span><span id="arrus::devices::Us4R"></span><span class="target" id="classarrus_1_1devices_1_1Us4R"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::devices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Us4R</code> : <em class="property">public</em> arrus::devices::DeviceWithComponents<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4RE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#classarrus_1_1devices_1_1Us4R"><span class="std std-ref">Us4R</span></a> system: a group of Us4OEM modules and related components. </p>
+<span id="_CPPv3N5arrus7devices4Us4RE"></span><span id="_CPPv2N5arrus7devices4Us4RE"></span><span id="arrus::devices::Us4R"></span><span class="target" id="classarrus_1_1devices_1_1Us4R"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::devices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Us4R</code> : <em class="property">public</em> arrus::devices::Ultrasound, <em class="property">public</em> arrus::devices::DeviceWithComponents<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4RE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classarrus_1_1devices_1_1Us4R"><span class="std std-ref">Us4R</span></a> system: a group of <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a> modules and related components.</p>
+<p>By default system starts with IQ demodulator turned off. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices4Us4R9getUs4OEME7Ordinal">
+<span id="_CPPv3N5arrus7devices4Us4R9getUs4OEME7Ordinal"></span><span id="_CPPv2N5arrus7devices4Us4R9getUs4OEME7Ordinal"></span><span id="arrus::devices::Us4R::getUs4OEM__Ordinal"></span><span class="target" id="classarrus_1_1devices_1_1Us4R_1ad30c23f56bcfe01978a2c5c5f1606771"></span><em class="property">virtual</em> <a class="reference internal" href="#_CPPv4N5arrus7devices6Us4OEME" title="arrus::devices::Us4OEM">Us4OEM</a> *<code class="sig-name descname">getUs4OEM</code><span class="sig-paren">(</span>Ordinal <em>ordinal</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4R9getUs4OEME7Ordinal" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a handle to <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a> identified by given ordinal number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ordinal</strong> – ordinal number of the us4oem to get </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a handle to the us4oem module </p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="cpp function">
 <dt id="_CPPv4N5arrus7devices4Us4R10setVoltageE7Voltage">
 <span id="_CPPv3N5arrus7devices4Us4R10setVoltageE7Voltage"></span><span id="_CPPv2N5arrus7devices4Us4R10setVoltageE7Voltage"></span><span id="arrus::devices::Us4R::setVoltage__Voltage"></span><span class="target" id="classarrus_1_1devices_1_1Us4R_1a7e00a55af9392d426424036c5c85f547"></span><em class="property">virtual</em> void <code class="sig-name descname">setVoltage</code><span class="sig-paren">(</span>Voltage <em>voltage</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4R10setVoltageE7Voltage" title="Permalink to this definition">¶</a><br /></dt>
@@ -589,6 +717,24 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tgcCurvePoints</strong> – tgc curve points to set. </p></li>
+<li><p><strong>applyCharacteristic</strong> – set it to true if you want to compensate response characteristic (pre-computed by us4us). If true, LNA and PGA gains should be set to 24 an 30 dB, respectively, otherwise an arrus::IllegalArgumentException will be thrown. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices4Us4R11setTgcCurveERKNSt6vectorIfEERKNSt6vectorIfEEb">
+<span id="_CPPv3N5arrus7devices4Us4R11setTgcCurveERKNSt6vectorIfEERKNSt6vectorIfEEb"></span><span id="_CPPv2N5arrus7devices4Us4R11setTgcCurveERKNSt6vectorIfEERKNSt6vectorIfEEb"></span><span id="arrus::devices::Us4R::setTgcCurve__std::vector:float:CR.std::vector:float:CR.b"></span><span class="target" id="classarrus_1_1devices_1_1Us4R_1a31961276c057389cb8c25a6895c0f590"></span><em class="property">virtual</em> void <code class="sig-name descname">setTgcCurve</code><span class="sig-paren">(</span><em class="property">const</em> std::vector&lt;float&gt; &amp;<em>t</em>, <em class="property">const</em> std::vector&lt;float&gt; &amp;<em>y</em>, bool <em>applyCharacteristic</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4R11setTgcCurveERKNSt6vectorIfEERKNSt6vectorIfEEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets TGC curve points asynchronously.</p>
+<p>Setting empty vectors t and y turns off analog TGC. Setting non-empty vector turns off DTGC and turns on analog TGC.</p>
+<p>Vectors t and y should have exactly the same size. The input t and y values will be interpolated into target hardware sampling points (according to getCurrentSamplingFrequency and getCurrentTgcPoints). Linear interpolation will be performed, the TGC curve will be extrapolated with the first (left-side of the cure) and the last sample (right side of the curve).</p>
+<p>NOTE: TGC curve can have up to 1022 samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – sampling time, relative to the “sample 0” </p></li>
+<li><p><strong>y</strong> – values to apply at given sampling time </p></li>
 <li><p><strong>applyCharacteristic</strong> – set it to true if you want to compensate response characteristic (pre-computed by us4us). If true, LNA and PGA gains should be set to 24 an 30 dB, respectively, otherwise an arrus::IllegalArgumentException will be thrown. </p></li>
 </ul>
 </dd>
@@ -641,6 +787,30 @@
 </dl>
 </dd></dl>
 
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices4Us4R21setHpfCornerFrequencyE8uint32_t">
+<span id="_CPPv3N5arrus7devices4Us4R21setHpfCornerFrequencyE8uint32_t"></span><span id="_CPPv2N5arrus7devices4Us4R21setHpfCornerFrequencyE8uint32_t"></span><span id="arrus::devices::Us4R::setHpfCornerFrequency__uint32_t"></span><span class="target" id="classarrus_1_1devices_1_1Us4R_1aebe6ea83e47cf05d51e8ec1e9d70e64c"></span><em class="property">virtual</em> void <code class="sig-name descname">setHpfCornerFrequency</code><span class="sig-paren">(</span>uint32_t <em>frequency</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4R21setHpfCornerFrequencyE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enables High-Pass Filter and sets a given corner frequency.</p>
+<p>Available corner frequency values (Hz): 4520’000, 2420’000, 1200’000, 600’000, 300’000, 180’000, 80’000, 40’000, 20’000.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> – corner high-pass filter frequency to set </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices4Us4R24getBackplaneSerialNumberEv">
+<span id="_CPPv3N5arrus7devices4Us4R24getBackplaneSerialNumberEv"></span><span id="_CPPv2N5arrus7devices4Us4R24getBackplaneSerialNumberEv"></span><span id="arrus::devices::Us4R::getBackplaneSerialNumber"></span><span class="target" id="classarrus_1_1devices_1_1Us4R_1aa6d2c991a9d09028cff3090a80be1712"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getBackplaneSerialNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4R24getBackplaneSerialNumberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns serial number of the backplane (if available). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices4Us4R20getBackplaneRevisionEv">
+<span id="_CPPv3N5arrus7devices4Us4R20getBackplaneRevisionEv"></span><span id="_CPPv2N5arrus7devices4Us4R20getBackplaneRevisionEv"></span><span id="arrus::devices::Us4R::getBackplaneRevision"></span><span class="target" id="classarrus_1_1devices_1_1Us4R_1a570b0349308a5616d28480ac798a5270"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getBackplaneRevision</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices4Us4R20getBackplaneRevisionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns serial number of the backplane (if available). </p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -685,6 +855,96 @@
 </div>
 </dd></dl>
 
+<dl class="cpp class">
+<dt id="_CPPv4N5arrus7devices6Us4OEME">
+<span id="_CPPv3N5arrus7devices6Us4OEME"></span><span id="_CPPv2N5arrus7devices6Us4OEME"></span><span id="arrus::devices::Us4OEM"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::devices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Us4OEM</code> : <em class="property">public</em> arrus::devices::Device, <em class="property">public</em> arrus::devices::TriggerGenerator<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEME" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM20getSamplingFrequencyEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM20getSamplingFrequencyEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM20getSamplingFrequencyEv"></span><span id="arrus::devices::Us4OEM::getSamplingFrequency"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1aaf48bd83ddcca34b103b36192e2efe58"></span><em class="property">virtual</em> float <code class="sig-name descname">getSamplingFrequency</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM20getSamplingFrequencyEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns nominal sampling frequency on the us4OEM device. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM18getFPGATemperatureEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM18getFPGATemperatureEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM18getFPGATemperatureEv"></span><span id="arrus::devices::Us4OEM::getFPGATemperature"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a2b409ccde271e5bcc02d85889cca3cfc"></span><em class="property">virtual</em> float <code class="sig-name descname">getFPGATemperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM18getFPGATemperatureEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns temperature measured by <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a>’s FPGA [Celsius]. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM17getUCDTemperatureEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM17getUCDTemperatureEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM17getUCDTemperatureEv"></span><span id="arrus::devices::Us4OEM::getUCDTemperature"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1afb702fb805f85a3519ba49b37700e0b1"></span><em class="property">virtual</em> float <code class="sig-name descname">getUCDTemperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM17getUCDTemperatureEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns temperature measured by <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a>’s UCD [Celsius] </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM25getUCDExternalTemperatureEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM25getUCDExternalTemperatureEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM25getUCDExternalTemperatureEv"></span><span id="arrus::devices::Us4OEM::getUCDExternalTemperature"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a8989ba2db27056876e8064a79c785c98"></span><em class="property">virtual</em> float <code class="sig-name descname">getUCDExternalTemperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM25getUCDExternalTemperatureEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns external temperature measured by <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a>’s UCD [Celsius] </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM21getUCDMeasuredVoltageE7uint8_t">
+<span id="_CPPv3N5arrus7devices6Us4OEM21getUCDMeasuredVoltageE7uint8_t"></span><span id="_CPPv2N5arrus7devices6Us4OEM21getUCDMeasuredVoltageE7uint8_t"></span><span id="arrus::devices::Us4OEM::getUCDMeasuredVoltage__uint8_t"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a60b70426a585ebb01776883f28d6ae12"></span><em class="property">virtual</em> float <code class="sig-name descname">getUCDMeasuredVoltage</code><span class="sig-paren">(</span>uint8_t <em>rail</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM21getUCDMeasuredVoltageE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns rail voltage measured by <a class="reference internal" href="#classarrus_1_1devices_1_1Us4OEM"><span class="std std-ref">Us4OEM</span></a>’s UCD [V].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rail</strong> – UCD rail number </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM10checkStateEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM10checkStateEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM10checkStateEv"></span><span id="arrus::devices::Us4OEM::checkState"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a0037aaf01b39e41f18176cc3f67c3258"></span><em class="property">virtual</em> void <code class="sig-name descname">checkState</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM10checkStateEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Checks if the us4OEM is in the correct state (as seen by host PC).</p>
+<p>Note: currently only the firmware version is checked (to verify if the us4OEM module memory space is still available for the us4OEM module).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Throws</dt>
+<dd class="field-odd"><p><strong>arrus::IllegalStateException</strong> – when the incorrect version was detected. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM18getFirmwareVersionEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM18getFirmwareVersionEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM18getFirmwareVersionEv"></span><span id="arrus::devices::Us4OEM::getFirmwareVersion"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a010362855bfee7a49fbab86a4cb58723"></span><em class="property">virtual</em> uint32 <code class="sig-name descname">getFirmwareVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM18getFirmwareVersionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns firmware version installed on the us4OEM module. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM20getTxFirmwareVersionEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM20getTxFirmwareVersionEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM20getTxFirmwareVersionEv"></span><span id="arrus::devices::Us4OEM::getTxFirmwareVersion"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a7ec422eaa568e779abd3f3401f525273"></span><em class="property">virtual</em> uint32 <code class="sig-name descname">getTxFirmwareVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM20getTxFirmwareVersionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns Tx component firmware version installed on this us4OEM module. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM16getFPGAWallclockEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM16getFPGAWallclockEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM16getFPGAWallclockEv"></span><span id="arrus::devices::Us4OEM::getFPGAWallclock"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a47f56ca966c0dd489f16904ccd6f7023"></span><em class="property">virtual</em> float <code class="sig-name descname">getFPGAWallclock</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM16getFPGAWallclockEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns current FPGA wall clock (time passed since Init function was called).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>FPGA wall clock (seconds) </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM15getSerialNumberEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM15getSerialNumberEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM15getSerialNumberEv"></span><span id="arrus::devices::Us4OEM::getSerialNumber"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1a74716b276bf0e5bd319c6b8a7435a69f"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getSerialNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM15getSerialNumberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns serial number of this us4OEM (a null-terminated string). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N5arrus7devices6Us4OEM11getRevisionEv">
+<span id="_CPPv3N5arrus7devices6Us4OEM11getRevisionEv"></span><span id="_CPPv2N5arrus7devices6Us4OEM11getRevisionEv"></span><span id="arrus::devices::Us4OEM::getRevision"></span><span class="target" id="classarrus_1_1devices_1_1Us4OEM_1abb5f879b0fa0db77797d10a77bc761dc"></span><em class="property">virtual</em> <em class="property">const</em> char *<code class="sig-name descname">getRevision</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices6Us4OEM11getRevisionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns revision number of this us4OEM (a null-terminated string). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
 </div>
 <div class="section" id="output-data">
 <h2>Output data<a class="headerlink" href="#output-data" title="Permalink to this headline">¶</a></h2>
@@ -703,7 +963,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4NK5arrus7session12UploadResult16getConstMetadataEv">
-<span id="_CPPv3NK5arrus7session12UploadResult16getConstMetadataEv"></span><span id="_CPPv2NK5arrus7session12UploadResult16getConstMetadataEv"></span><span id="arrus::session::UploadResult::getConstMetadataC"></span><span class="target" id="classarrus_1_1session_1_1UploadResult_1a089d92c1507f0e210aaa85d3eb581627"></span><em class="property">inline</em> <em class="property">const</em> std::shared_ptr&lt;<a class="reference internal" href="#_CPPv4N5arrus7session19UploadConstMetadataE" title="arrus::session::UploadConstMetadata">UploadConstMetadata</a>&gt; &amp;<code class="sig-name descname">getConstMetadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5arrus7session12UploadResult16getConstMetadataEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK5arrus7session12UploadResult16getConstMetadataEv"></span><span id="_CPPv2NK5arrus7session12UploadResult16getConstMetadataEv"></span><span id="arrus::session::UploadResult::getConstMetadataC"></span><span class="target" id="classarrus_1_1session_1_1UploadResult_1a16a3cebd5309533a4dfd57721fa938b6"></span><em class="property">inline</em> <em class="property">const</em> std::shared_ptr&lt;<a class="reference internal" href="#_CPPv4N5arrus7session8MetadataE" title="arrus::session::Metadata">Metadata</a>&gt; &amp;<code class="sig-name descname">getConstMetadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5arrus7session12UploadResult16getConstMetadataEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns a pointer to the upload constant metadata (desription of the data produced by the system). </p>
 </dd></dl>
 
@@ -712,15 +972,15 @@
 
 <p>Upload result can include some additional information (metadata) about the acquired data:</p>
 <dl class="cpp class">
-<dt id="_CPPv4N5arrus7session19UploadConstMetadataE">
-<span id="_CPPv3N5arrus7session19UploadConstMetadataE"></span><span id="_CPPv2N5arrus7session19UploadConstMetadataE"></span><span id="arrus::session::UploadConstMetadata"></span><span class="target" id="classarrus_1_1session_1_1UploadConstMetadata"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::session<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">UploadConstMetadata</code><a class="headerlink" href="#_CPPv4N5arrus7session19UploadConstMetadataE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N5arrus7session8MetadataE">
+<span id="_CPPv3N5arrus7session8MetadataE"></span><span id="_CPPv2N5arrus7session8MetadataE"></span><span id="arrus::session::Metadata"></span><span class="target" id="classarrus_1_1session_1_1Metadata"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::session<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Metadata</code><a class="headerlink" href="#_CPPv4N5arrus7session8MetadataE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A container for all information related to the acquired data.</p>
 <p>Currently it is assumed, that the values stored in this class won’t change during system run (is constant). </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt id="_CPPv4I0EN5arrus7session19UploadConstMetadata3getENSt10shared_ptrI1TEERKNSt6stringE">
-<span id="_CPPv3I0EN5arrus7session19UploadConstMetadata3getERKNSt6stringE"></span><span id="_CPPv2I0EN5arrus7session19UploadConstMetadata3getERKNSt6stringE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><span class="target" id="classarrus_1_1session_1_1UploadConstMetadata_1af329944bf49badedd63a3aca602cd448"></span><em class="property">inline</em> std::shared_ptr&lt;<a class="reference internal" href="#_CPPv4I0EN5arrus7session19UploadConstMetadata3getENSt10shared_ptrI1TEERKNSt6stringE" title="arrus::session::UploadConstMetadata::get::T">T</a>&gt; <code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5arrus7session19UploadConstMetadata3getENSt10shared_ptrI1TEERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4I0EN5arrus7session8Metadata3getENSt10shared_ptrI1TEERKNSt6stringE">
+<span id="_CPPv3I0EN5arrus7session8Metadata3getERKNSt6stringE"></span><span id="_CPPv2I0EN5arrus7session8Metadata3getERKNSt6stringE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><span class="target" id="classarrus_1_1session_1_1Metadata_1ae8b75b9ee89683bded37eb88d40f027d"></span><em class="property">inline</em> std::shared_ptr&lt;<a class="reference internal" href="#_CPPv4I0EN5arrus7session8Metadata3getENSt10shared_ptrI1TEERKNSt6stringE" title="arrus::session::Metadata::get::T">T</a>&gt; <code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5arrus7session8Metadata3getENSt10shared_ptrI1TEERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns metadata for the given key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
@@ -747,9 +1007,9 @@ key <code class="docutils literal notranslate"><span class="pre">frameChannelMap
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt id="_CPPv4N5arrus7devices19FrameChannelMapping10getLogicalE11FrameNumber10ChannelIdx">
-<span id="_CPPv3N5arrus7devices19FrameChannelMapping10getLogicalE11FrameNumber10ChannelIdx"></span><span id="_CPPv2N5arrus7devices19FrameChannelMapping10getLogicalE11FrameNumber10ChannelIdx"></span><span id="arrus::devices::FrameChannelMapping::getLogical__FrameNumber.ChannelIdx"></span><span class="target" id="classarrus_1_1devices_1_1FrameChannelMapping_1a32a28c80f40e0520802246a748d31ae7"></span><em class="property">virtual</em> std::pair&lt;unsigned short, arrus::int8&gt; <code class="sig-name descname">getLogical</code><span class="sig-paren">(</span>FrameNumber <em>frame</em>, ChannelIdx <em>channel</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv4N5arrus7devices19FrameChannelMapping10getLogicalE11FrameNumber10ChannelIdx" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns physical frame number and channel number for a given, logical, frame number and a <strong>rx aperture</strong> channel.</p>
+<dt id="_CPPv4NK5arrus7devices19FrameChannelMapping10getLogicalE11FrameNumber10ChannelIdx">
+<span id="_CPPv3NK5arrus7devices19FrameChannelMapping10getLogicalE11FrameNumber10ChannelIdx"></span><span id="_CPPv2NK5arrus7devices19FrameChannelMapping10getLogicalE11FrameNumber10ChannelIdx"></span><span id="arrus::devices::FrameChannelMapping::getLogical__FrameNumber.ChannelIdxC"></span><span class="target" id="classarrus_1_1devices_1_1FrameChannelMapping_1af90039d5b6b1fa98613d2e38c18e7ca9"></span><em class="property">virtual</em> FrameChannelMappingAddress <code class="sig-name descname">getLogical</code><span class="sig-paren">(</span>FrameNumber <em>frame</em>, ChannelIdx <em>channel</em><span class="sig-paren">)</span> <em class="property">const</em> = 0<a class="headerlink" href="#_CPPv4NK5arrus7devices19FrameChannelMapping10getLogicalE11FrameNumber10ChannelIdx" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns us4oem module number, physical frame number and channel number for a given, logical, frame number and an <strong>rx aperture</strong> channel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -758,7 +1018,38 @@ key <code class="docutils literal notranslate"><span class="pre">frameChannelMap
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>actual frame number and channel number </p>
+<dd class="field-even"><p>a tuple: us4oem module number, frame number (within a single sequence), channel number </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5arrus7devices19FrameChannelMapping13getFirstFrameEN5arrus5uint8E">
+<span id="_CPPv3NK5arrus7devices19FrameChannelMapping13getFirstFrameEN5arrus5uint8E"></span><span id="_CPPv2NK5arrus7devices19FrameChannelMapping13getFirstFrameEN5arrus5uint8E"></span><span id="arrus::devices::FrameChannelMapping::getFirstFrame__arrus::uint8C"></span><span class="target" id="classarrus_1_1devices_1_1FrameChannelMapping_1a1c00174b345ea1bd79d25860ea064926"></span><em class="property">virtual</em> arrus::uint32 <code class="sig-name descname">getFirstFrame</code><span class="sig-paren">(</span>arrus::uint8 <em>us4oem</em><span class="sig-paren">)</span> <em class="property">const</em> = 0<a class="headerlink" href="#_CPPv4NK5arrus7devices19FrameChannelMapping13getFirstFrameEN5arrus5uint8E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the number of frame where the given us4OEM data starts. The frame number is computed taking into account the batch size and the number of frames in the sequence of data produced by preceding us4OEM modules. That is, assuming the same number of samples is acquired in each RF frame, you can get the address where us4oem data starts using the following formula: the frame number * number of samples * 32 (number of us4OEM RX channels).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>us4oem</strong> – us4oem ordinal number (0, 1, …) </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the number of frame, which starts portion of data acquired by the given us4OEM. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5arrus7devices19FrameChannelMapping15getFrameOffsetsEv">
+<span id="_CPPv3NK5arrus7devices19FrameChannelMapping15getFrameOffsetsEv"></span><span id="_CPPv2NK5arrus7devices19FrameChannelMapping15getFrameOffsetsEv"></span><span id="arrus::devices::FrameChannelMapping::getFrameOffsetsC"></span><span class="target" id="classarrus_1_1devices_1_1FrameChannelMapping_1a38465d09dfa44e494f2a3db938b42f73"></span><em class="property">virtual</em> <em class="property">const</em> std::vector&lt;uint32&gt; &amp;<code class="sig-name descname">getFrameOffsets</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> = 0<a class="headerlink" href="#_CPPv4NK5arrus7devices19FrameChannelMapping15getFrameOffsetsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the list of frame offsets (‘position of first us4oem frame’). See <code class="docutils literal notranslate"><span class="pre">getFirstFrame</span></code> for more information. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK5arrus7devices19FrameChannelMapping17getNumberOfFramesE5uint8">
+<span id="_CPPv3NK5arrus7devices19FrameChannelMapping17getNumberOfFramesE5uint8"></span><span id="_CPPv2NK5arrus7devices19FrameChannelMapping17getNumberOfFramesE5uint8"></span><span id="arrus::devices::FrameChannelMapping::getNumberOfFrames__uint8C"></span><span class="target" id="classarrus_1_1devices_1_1FrameChannelMapping_1a13fa7b18c919ec7a5692447fdf318819"></span><em class="property">virtual</em> uint32 <code class="sig-name descname">getNumberOfFrames</code><span class="sig-paren">(</span>uint8 <em>us4oem</em><span class="sig-paren">)</span> <em class="property">const</em> = 0<a class="headerlink" href="#_CPPv4NK5arrus7devices19FrameChannelMapping17getNumberOfFramesE5uint8" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the number of frames that this us4OEM will transfer to the host device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>us4oem</strong> – us4OEM ordinal number. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -861,9 +1152,9 @@ key <code class="docutils literal notranslate"><span class="pre">frameChannelMap
 <p>The address returned by <code class="docutils literal notranslate"><span class="pre">getData</span></code> function is located on a device determined by placement property. CPU:0 placement means that the data is located in host computer’s RAM. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
-<dl class="cpp enum">
+<dl class="cpp enum-class">
 <dt id="_CPPv4N5arrus9framework7NdArray8DataTypeE">
-<span id="_CPPv3N5arrus9framework7NdArray8DataTypeE"></span><span id="_CPPv2N5arrus9framework7NdArray8DataTypeE"></span><span class="target" id="classarrus_1_1framework_1_1NdArray_1a86bcd05d9c80d9fc683b06e992ab1e54"></span><em class="property">enum </em><code class="sig-name descname">DataType</code><a class="headerlink" href="#_CPPv4N5arrus9framework7NdArray8DataTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5arrus9framework7NdArray8DataTypeE"></span><span id="_CPPv2N5arrus9framework7NdArray8DataTypeE"></span><span class="target" id="classarrus_1_1framework_1_1NdArray_1a86bcd05d9c80d9fc683b06e992ab1e54"></span><em class="property">enum class </em><code class="sig-name descname">DataType</code><a class="headerlink" href="#_CPPv4N5arrus9framework7NdArray8DataTypeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A list of currently supported data types of the output buffer. </p>
 <p><em>Values:</em></p>
 <dl class="cpp enumerator">
@@ -871,11 +1162,16 @@ key <code class="docutils literal notranslate"><span class="pre">frameChannelMap
 <span id="_CPPv3N5arrus9framework7NdArray8DataType5INT16E"></span><span id="_CPPv2N5arrus9framework7NdArray8DataType5INT16E"></span><span class="target" id="classarrus_1_1framework_1_1NdArray_1a86bcd05d9c80d9fc683b06e992ab1e54a5f90af42814c0a419d715d43ae54fd7a"></span><em class="property">enumerator </em><code class="sig-name descname">INT16</code><a class="headerlink" href="#_CPPv4N5arrus9framework7NdArray8DataType5INT16E" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
+<dl class="cpp enumerator">
+<dt id="_CPPv4N5arrus9framework7NdArray8DataType7FLOAT32E">
+<span id="_CPPv3N5arrus9framework7NdArray8DataType7FLOAT32E"></span><span id="_CPPv2N5arrus9framework7NdArray8DataType7FLOAT32E"></span><span class="target" id="classarrus_1_1framework_1_1NdArray_1a86bcd05d9c80d9fc683b06e992ab1e54a967d280b5c16d95f2947647dd2ca6cc2"></span><em class="property">enumerator </em><code class="sig-name descname">FLOAT32</code><a class="headerlink" href="#_CPPv4N5arrus9framework7NdArray8DataType7FLOAT32E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="cpp type">
 <dt id="_CPPv4N5arrus9framework7NdArray5ShapeE">
-<span id="_CPPv3N5arrus9framework7NdArray5ShapeE"></span><span id="_CPPv2N5arrus9framework7NdArray5ShapeE"></span><span id="arrus::framework::NdArray::Shape"></span><span class="target" id="classarrus_1_1framework_1_1NdArray_1a95b77380dda8b79f5a4237e64f458fef"></span><em class="property">typedef </em><a class="reference internal" href="#_CPPv4I0EN5arrus5TupleE" title="arrus::Tuple">Tuple</a>&lt;unsigned int&gt; <code class="sig-name descname">Shape</code><a class="headerlink" href="#_CPPv4N5arrus9framework7NdArray5ShapeE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5arrus9framework7NdArray5ShapeE"></span><span id="_CPPv2N5arrus9framework7NdArray5ShapeE"></span><span id="arrus::framework::NdArray::Shape"></span><span class="target" id="classarrus_1_1framework_1_1NdArray_1a854b56a9c212b8842a4e2c7c8cc5cd5d"></span><em class="property">typedef </em><a class="reference internal" href="#_CPPv4I0EN5arrus5TupleE" title="arrus::Tuple">Tuple</a>&lt;size_t&gt; <code class="sig-name descname">Shape</code><a class="headerlink" href="#_CPPv4N5arrus9framework7NdArray5ShapeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Array shape. </p>
 </dd></dl>
 
@@ -885,6 +1181,20 @@ key <code class="docutils literal notranslate"><span class="pre">frameChannelMap
 <dl class="cpp function">
 <dt id="_CPPv4I0EN5arrus9framework7NdArray3getEP1Tv">
 <span id="_CPPv3I0EN5arrus9framework7NdArray3getEv"></span><span id="_CPPv2I0EN5arrus9framework7NdArray3getEv"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><span class="target" id="classarrus_1_1framework_1_1NdArray_1a51e96657578096523c069c7f4a350257"></span><em class="property">inline</em> <a class="reference internal" href="#_CPPv4I0EN5arrus9framework7NdArray3getEP1Tv" title="arrus::framework::NdArray::get::T">T</a> *<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5arrus9framework7NdArray3getEP1Tv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a pointer to data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>T</strong> – data type </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a pointer to data </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0ENK5arrus9framework7NdArray3getEPK1Tv">
+<span id="_CPPv3I0ENK5arrus9framework7NdArray3getEv"></span><span id="_CPPv2I0ENK5arrus9framework7NdArray3getEv"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><span class="target" id="classarrus_1_1framework_1_1NdArray_1ad3ab827a212e855f4599ce614ccc73c6"></span><em class="property">inline</em> <em class="property">const</em> <a class="reference internal" href="#_CPPv4I0ENK5arrus9framework7NdArray3getEPK1Tv" title="arrus::framework::NdArray::get::T">T</a> *<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4I0ENK5arrus9framework7NdArray3getEPK1Tv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns a pointer to data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Template Parameters</dt>
@@ -925,7 +1235,8 @@ key <code class="docutils literal notranslate"><span class="pre">frameChannelMap
 <dl class="cpp class">
 <dt id="_CPPv4I0EN5arrus5TupleE">
 <span id="_CPPv3I0EN5arrus5TupleE"></span><span id="_CPPv2I0EN5arrus5TupleE"></span>template&lt;typename <code class="sig-name descname">T</code>&gt;<br /><span class="target" id="classarrus_1_1Tuple"></span><em class="property">class </em><code class="sig-prename descclassname">arrus<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Tuple</code><a class="headerlink" href="#_CPPv4I0EN5arrus5TupleE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A tuple of values. </p>
+<dd><p>A tuple of values.</p>
+<p>Note: this class is immutable. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -944,11 +1255,6 @@ key <code class="docutils literal notranslate"><span class="pre">frameChannelMap
 <dt id="_CPPv4NK5arrus5Tuple4sizeEv">
 <span id="_CPPv3NK5arrus5Tuple4sizeEv"></span><span id="_CPPv2NK5arrus5Tuple4sizeEv"></span><span id="arrus::Tuple::sizeC"></span><span class="target" id="classarrus_1_1Tuple_1a73d4951b255cefa2d6a91b8ff79cac74"></span><em class="property">inline</em> size_t <code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK5arrus5Tuple4sizeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the tuple size (number of values it consists of). </p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-</dl>
 </dd></dl>
 
 </div>
@@ -978,7 +1284,7 @@ key <code class="docutils literal notranslate"><span class="pre">frameChannelMap
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2022, us4us Ltd.
+        &copy; Copyright 2023, us4us Ltd.
 
     </p>
   </div>
