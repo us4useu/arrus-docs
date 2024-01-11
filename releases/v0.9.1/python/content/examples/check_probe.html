@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Check probe &mdash; ARRUS (python) 0.9.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> ARRUS (python)
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions.html">Glossary and assumptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/release_notes.html">Release notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ARRUS (python)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Check probe</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="check-probe">
+<h1>Check probe<a class="headerlink" href="#check-probe" title="Permalink to this headline">¶</a></h1>
+<p>Sometimes some of the transducers in the probe can be damaged, e.g. mechanically.
+Such a damaged transducer can be potentially dangerous to the system,
+e.g. it can cause mismatched current flow in some subsystem and damage it.
+This example consists of a python script (arrus/api/python/examples/check_probe.py)
+evaluating transducers in ultrasound probe.
+The evaluation is made on the basis of values of features
+estimated from signals acquired by each transducer.
+The transmit-receive scheme includes transmitting by single transducer
+and receiving by transducers in aperture centered on the transmitter.
+It is assumed that there are lens on transducers,
+and the probe is <em>in the air</em>, thus the analysed signal
+comes from reflection at the lens-air interface.
+Each transducer is excited by a short (single period) and low voltage (10V).</p>
+<div class="section" id="current-features">
+<h2>Current features<a class="headerlink" href="#current-features" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>amplitude</p></li>
+<li><p>pulse duration</p></li>
+<li><p>energy of normalised signal</p></li>
+<li><dl class="simple">
+<dt>pearson correlation coefficient (PCC) with <em>footprint</em> signal</dt><dd><p>PCC require a footprint (i.e. object containing reference rf signal array).
+The footprint should be acquired earlier using the same setup.
+This feature measure how much the signals changed comparing to footprint.
+When transducer is broken, the acquired signal should be different comparing
+to signal acquired before damage.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="methods-of-evaluation">
+<h2>Methods of evaluation<a class="headerlink" href="#methods-of-evaluation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt><strong>Threshold</strong></dt><dd><p>It bases on the values of features estimated
+from signals acquired from examined transducer.
+If the value is outside predefined range, the corresponding transducer is
+treated as <em>suspected</em>.
+These ranges can be set in FeatureDescriptor() calls
+in the main() function of the script (below “# define features list”).
+This ranges can differs between probes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Neighborhood</strong></dt><dd><p>It bases on the values of features estimated
+from signals acquired from examined transducer and transducers
+in close neighborhood.
+If the value from the examined transducer differs
+from the values from other transducers by more then arbitrary percentage,
+the transducer is treated as <em>suspected</em>.
+Note, that PCC should be validated using threshold method
+(i.e. usign ByThresholdValidator()).</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="how-to-use-the-script">
+<h2>How to use the script<a class="headerlink" href="#how-to-use-the-script" title="Permalink to this headline">¶</a></h2>
+<p>The script is called from command line with some options.
+At the end of its run, the scripts (optionally) display figures with values of
+the features, and initial segments of signals from all transducer, for visual
+evaluation.</p>
+<p>Following options are accepted:</p>
+<p><strong>required</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">cfg_path</span><span class="p">:</span> <span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">system</span><span class="s1">&#39;s configuration file,</span>
+</pre></div>
+</div>
+<p><strong>optional</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">help</span><span class="p">:</span> <span class="n">displays</span> <span class="n">help</span><span class="p">,</span>
+<span class="o">--</span><span class="n">method</span><span class="p">:</span> <span class="n">determines</span> <span class="n">which</span> <span class="n">method</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span> <span class="o">-</span> <span class="s1">&#39;threshold&#39;</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;neighborhood&#39;</span><span class="p">,</span>
+<span class="o">--</span><span class="n">rf_file</span><span class="p">:</span> <span class="n">determines</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">optional</span> <span class="n">output</span> <span class="n">file</span> <span class="k">with</span> <span class="n">rf</span> <span class="n">data</span><span class="p">,</span>
+<span class="o">--</span><span class="n">display_frame</span><span class="p">:</span> <span class="n">determines</span> <span class="k">if</span> <span class="n">script</span> <span class="n">will</span> <span class="n">display</span> <span class="n">figures</span> <span class="k">for</span> <span class="n">visual</span> <span class="n">evaluation</span><span class="p">,</span>
+<span class="o">--</span><span class="n">n</span><span class="p">:</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">full</span> <span class="n">Tx</span> <span class="n">cycles</span> <span class="n">to</span> <span class="n">run</span> <span class="p">(</span><span class="n">default</span> <span class="mi">8</span><span class="p">),</span>
+<span class="o">--</span><span class="n">tx_frequency</span><span class="p">:</span> <span class="n">determines</span> <span class="n">transmit</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Hz</span><span class="p">]</span> <span class="p">(</span><span class="n">default</span> <span class="mf">8e6</span><span class="p">),</span>
+<span class="o">--</span><span class="n">nrx</span><span class="p">:</span> <span class="n">determines</span> <span class="n">the</span> <span class="n">size</span> <span class="n">of</span> <span class="n">receiving</span> <span class="n">aperture</span> <span class="p">(</span><span class="n">default</span> <span class="mi">32</span><span class="p">),</span>
+<span class="o">--</span><span class="n">create_footprint</span><span class="p">:</span> <span class="n">creates</span> <span class="n">footprint</span> <span class="ow">and</span> <span class="n">store</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">given</span> <span class="n">pickle</span> <span class="n">file</span><span class="p">,</span>
+<span class="o">--</span><span class="n">use_footprint</span><span class="p">:</span> <span class="n">determines</span> <span class="n">which</span> <span class="n">footprint</span> <span class="n">file</span> <span class="n">to</span> <span class="n">use</span><span class="p">,</span>
+<span class="o">--</span><span class="n">display_summary</span><span class="p">:</span> <span class="n">displays</span> <span class="n">features</span> <span class="n">values</span> <span class="n">on</span> <span class="n">figure</span><span class="p">,</span>
+<span class="o">--</span><span class="n">show_pulse_comparison</span><span class="p">:</span> <span class="n">displays</span> <span class="n">acquired</span> <span class="n">pulse</span> <span class="ow">and</span> <span class="n">corresponding</span> <span class="n">footprint</span> <span class="n">signal</span>
+<span class="o">--</span><span class="n">features</span><span class="p">:</span> <span class="n">features</span> <span class="n">to</span> <span class="n">evaluation</span> <span class="p">(</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">pcc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Examples</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">check_probe</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
+<span class="n">python</span> <span class="n">check_probe</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">cfg_path</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">us4r</span><span class="o">.</span><span class="n">prototxt</span>
+<span class="n">python</span> <span class="n">check_probe</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">cfg_path</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">us4r</span><span class="o">.</span><span class="n">prototxt</span> <span class="o">--</span><span class="n">rf_file</span> <span class="n">rf</span><span class="o">.</span><span class="n">pkl</span>
+<span class="n">python</span> <span class="n">check_probe</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">cfg_path</span> <span class="o">~/</span><span class="n">us4r</span><span class="o">.</span><span class="n">prototxt</span> <span class="o">--</span><span class="n">create_footprint</span> <span class="n">footprint</span><span class="o">.</span><span class="n">pkl</span> <span class="o">--</span><span class="n">n</span><span class="o">=</span><span class="mi">16</span>
+<span class="n">python</span> <span class="n">check_probe</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">cfg_path</span> <span class="o">~/</span><span class="n">us4r</span><span class="o">.</span><span class="n">prototxt</span> <span class="o">--</span><span class="n">use_footprint</span> <span class="n">footprint</span><span class="o">.</span><span class="n">pkl</span>
+<span class="n">python</span> <span class="n">check_probe</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">cfg_path</span> <span class="o">~/</span><span class="n">us4r</span><span class="o">.</span><span class="n">prototxt</span> <span class="o">--</span><span class="n">use_footprint</span> <span class="n">footprint</span><span class="o">.</span><span class="n">pkl</span> <span class="o">--</span><span class="n">features</span> <span class="n">amplitude</span> <span class="n">pcc</span>
+</pre></div>
+</div>
+<p><strong>Additional notes:</strong></p>
+<p>1. This script tries to identify channels it considers suspicious.
+In the case of a suspicious channel, the user should verify it manually
+(i.e. to look on the signal from the channel and decide, if it is good or not),
+because the features used are only indicative.</p>
+<p>2. Some features (like pulse duration) are more <em>sensitive</em> than the others,
+i.e. are more likely to give false positives.
+If there are a lot of false positives one can remove the feature from the list
+of features to verify.</p>
+<p>3. Using of threshold method assume that one know the range of values
+of verified features.
+These ranges often are different for different probes.
+If one do not know the feature range of values, the neighborhood method can be used.</p>
+<p>4. The use of probe footprint seems to be the most convenient, however it require
+to create a footprint (using –create_footprint option).
+It assume, that all channels are ok during footprint creation, and later it
+just indentify channels where signals not match with the footprint.
+Thus, when some channel is damaged during footprint creation, it may be undetected
+on later tests.</p>
+<p>5. Remember to set proper <em>tx_frequency</em> (using –tx_frequency) when create a footprint
+or making tests without it
+(when footprint is used, tx/rx scheme parameters will be taken from it).</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2024, us4us Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
