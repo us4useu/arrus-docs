@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Reference &mdash; ARRUS (python) 0.11.0-dev20240308 documentation</title>
+  <title>API Reference &mdash; ARRUS (python) 0.11.0-dev20240321 documentation</title>
   
 
   
@@ -1204,18 +1204,18 @@ performed</p></li>
 
 <dl class="py class">
 <dt id="arrus.utils.probe_check.MaxAmplitudeExtractor">
-<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.probe_check.</code><code class="sig-name descname">MaxAmplitudeExtractor</code><a class="headerlink" href="#arrus.utils.probe_check.MaxAmplitudeExtractor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.probe_check.</code><code class="sig-name descname">MaxAmplitudeExtractor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.probe_check.MaxAmplitudeExtractor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">arrus.utils.probe_check.ProbeElementFeatureExtractor</span></code></p>
 <p>Feature extractor class for extracting maximal amplitudes from array of
 rf signals.
 Returns vector of lenght equal to number of transmissions (ntx), where
-each element is a median over the frames of maximum amplitudes
+each element is a median over the frames of maximum amplitudes (absolute values)
 occurred in each of the tramissions.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt id="arrus.utils.probe_check.EnergyExtractor">
-<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.probe_check.</code><code class="sig-name descname">EnergyExtractor</code><a class="headerlink" href="#arrus.utils.probe_check.EnergyExtractor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.probe_check.</code><code class="sig-name descname">EnergyExtractor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.probe_check.EnergyExtractor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">arrus.utils.probe_check.ProbeElementFeatureExtractor</span></code></p>
 <p>Feature extractor class for extracting normalised signal energies
 from array of rf signals.
@@ -1243,7 +1243,7 @@ number of rx channels)</p>
 
 <dl class="py class">
 <dt id="arrus.utils.probe_check.SignalDurationTimeExtractor">
-<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.probe_check.</code><code class="sig-name descname">SignalDurationTimeExtractor</code><a class="headerlink" href="#arrus.utils.probe_check.SignalDurationTimeExtractor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">arrus.utils.probe_check.</code><code class="sig-name descname">SignalDurationTimeExtractor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.utils.probe_check.SignalDurationTimeExtractor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">arrus.utils.probe_check.ProbeElementFeatureExtractor</span></code></p>
 <p>Feature extractor class for extracting signal duration times
 from array of rf signals.
