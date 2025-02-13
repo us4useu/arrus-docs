@@ -492,7 +492,7 @@ processing pipeline). In the arrus package that description is called <code clas
 <li><p><cite>optional</cite>: data processing pipeline to run when new data arrives,</p></li>
 <li><p><cite>optional</cite>: description of the output buffer on host computer, to which the
 data should be written,</p></li>
-<li><p><cite>optional</cite>: ultrasound device work mode: “HOST” or “ASYNC” mode.</p></li>
+<li><p><cite>optional</cite>: ultrasound device work mode: “HOST”, “SYNC”, or “ASYNC” mode.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scheme</span> <span class="o">=</span> <span class="n">Scheme</span><span class="p">(</span>
     <span class="n">tx_rx_sequence</span><span class="o">=</span><span class="n">sequence</span><span class="p">,</span>
@@ -636,6 +636,16 @@ basically t(1) as the processes (2) and (3) have to keep pace with (1).</p>
 </ul>
 <p>If (2) and (3) takes too long/cannot keep strict processing time regime,
 its necessary to increase PRI, or set SRI or use HOST work mode.</p>
+</div>
+<div class="section" id="work-mode-sync">
+<h5>Work mode SYNC<a class="headerlink" href="#work-mode-sync" title="Permalink to this headline">¶</a></h5>
+<p>The SYNC mode works the same way as ASYNC, except that the ultrasound system
+halts signal acquisition if it encounters a situation where buffer memory has
+not been released quickly enough. In this mode, you can treat the buffers between
+the us4R-lite system and the host PC as blocking queues.</p>
+<p>This mode is generally preferred over ASYNC because it always ensures data consistency,
+at the cost of potentially uneven PRF—but only in cases where data transfer or
+processing is not fast enough.</p>
 </div>
 </div>
 </div>
