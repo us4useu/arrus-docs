@@ -1,0 +1,1127 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Guide &mdash; ARRUS (python) 0.11.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Glossary and assumptions" href="definitions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ARRUS (python)
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions.html">Glossary and assumptions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-session">Configuring session</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#session-configuration-file">Session configuration file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#us4r">us4R</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dictionary">Dictionary</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#default-dictionary">Default dictionary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#running-example-scripts">Running example scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-scheme">Creating Scheme</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tx-rx-sequence">TX/RX Sequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing">Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#work-mode">Work mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-scheme">Running the Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-custom-callback-functions">Running custom callback functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-custom-arrus-utils-imaging-operations">Implementing custom <code class="docutils literal notranslate"><span class="pre">arrus.utils.imaging</span></code> operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc/acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/release_notes.html">Release notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ARRUS (python)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-guide">
+<span id="arrus-user-guide"></span><h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p>This section describes how users can acquire data using ultrasound hardware.
+Users can communicate with the device via a communication <cite>session</cite> object.
+During the session it is possible to upload and run <cite>operations</cite>.</p>
+<div class="section" id="configuring-session">
+<h2>Configuring session<a class="headerlink" href="#configuring-session" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The below sections contains details on how to configure the
+provided hardware. You can skip to the section how to run examples
+if you already have a session configuration file prepared by e.g.
+us4us developers, and you don’t need to change any device-related
+parameters.</p>
+</div>
+<div class="section" id="session-configuration-file">
+<h3>Session configuration file<a class="headerlink" href="#session-configuration-file" title="Permalink to this headline">¶</a></h3>
+<p>A session configuration file consists of device settings valid for a given
+session.
+Currently, the configuration file can be written in .prototxt file
+(a protobuf I/O format readable for humans).
+Sample configuration files are available <a class="reference external" href="https://github.com/us4useu/arrus/tree/develop/arrus/core/io/test-data">here</a>.</p>
+<p>Currently only us4R device can be configured using session configuration file.</p>
+<div class="section" id="us4r">
+<h4>us4R<a class="headerlink" href="#us4r" title="Permalink to this headline">¶</a></h4>
+<p>To use the us4R system in a particular session, create a field <code class="docutils literal notranslate"><span class="pre">us4r</span></code> in the
+session configuration file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">us4r</span><span class="p">:</span> <span class="p">{</span>
+  <span class="c1"># here goes us4r configuration spec.</span>
+  <span class="n">hv</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1"># ...</span>
+  <span class="p">}</span>
+  <span class="n">probe</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1"># ...</span>
+  <span class="p">}</span>
+  <span class="n">adapter</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1"># ...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The us4R device typically includes a high voltage supplier,
+which can be configured by providing the <code class="docutils literal notranslate"><span class="pre">hv</span></code> field. The following power
+supplies are currently supported:</p>
+<ul class="simple">
+<li><p>the legacy us4R-Lite systems or us4R-lite+ with the external HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">hv256</span></code>,</p></li>
+<li><p>us4R-lite+ systems without the external HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4oemhvps</span></code>,</p></li>
+<li><p>the legacy us4R systems or us4R system with the external HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code>,</p></li>
+<li><p>us4R+ systems without the external HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4oemhvps</span></code>,</p></li>
+<li><p>us4OEM+ with internal HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4oemhvps</span></code>.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hv</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">model_id</span> <span class="p">{</span>
+    <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;hv256&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To turn off the high voltage supplier, skip the <code class="docutils literal notranslate"><span class="pre">hv</span></code> field.</p>
+<p>Based on the HV selected, our software will try to automatically select the type of digital backplane (DBAR) to be used:</p>
+<ul class="simple">
+<li><p>for the systems with <code class="docutils literal notranslate"><span class="pre">hv256</span></code> power supply, <code class="docutils literal notranslate"><span class="pre">dbarlite</span></code> will be used,</p></li>
+<li><p>for the systems with <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code> power supply, <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code> will be used,</p></li>
+<li><p>for the systems <code class="docutils literal notranslate"><span class="pre">us4oemhvps</span></code>, a system with no digital backplane will be assumed.</p></li>
+</ul>
+<p>It is also possible to explicitly specify the backplane model in the configuration file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">digital_backplane</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">model_id</span> <span class="p">{</span>
+    <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;model_name&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">model_name</span></code> can be one of the following: <code class="docutils literal notranslate"><span class="pre">dbarlite</span></code> or <code class="docutils literal notranslate"><span class="pre">us4rdbar</span></code>.</p>
+<p>To configure us4r’s signal transmission/data reception, it is essential to
+specify the settings of the probe and probe adapter used in the system.</p>
+<div class="section" id="specify-the-settings-of-the-probe-and-probe-adapter">
+<h5>Specify the settings of the probe and probe adapter<a class="headerlink" href="#specify-the-settings-of-the-probe-and-probe-adapter" title="Permalink to this headline">¶</a></h5>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/us4useu/arrus/blob/develop/arrus/core/io/test-data/us4r.prototxt">use predefined probe and adapter</a></p></li>
+<li><p><a class="reference external" href="https://github.com/us4useu/arrus/blob/develop/arrus/core/io/test-data/custom_us4r.prototxt">create custom probe and adapter</a></p></li>
+</ul>
+<div class="section" id="probe-model">
+<h6>Probe Model<a class="headerlink" href="#probe-model" title="Permalink to this headline">¶</a></h6>
+<p>The user can specify which probe model they are currently using in one of the
+following ways:</p>
+<ol class="arabic simple">
+<li><p>describe probe model by providing the <code class="docutils literal notranslate"><span class="pre">probe</span></code> field, e.g.:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probe</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nb">id</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;acme&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;my_custom_probe&quot;</span>
+  <span class="p">}</span>
+  <span class="n">n_elements</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+  <span class="n">curvature_radius</span><span class="p">:</span> <span class="mf">50e-3</span><span class="p">,</span>
+  <span class="n">pitch</span><span class="p">:</span> <span class="mf">0.21e-3</span><span class="p">,</span>
+  <span class="n">tx_frequency_range</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">begin</span><span class="p">:</span> <span class="mf">1e6</span><span class="p">,</span>
+    <span class="n">end</span><span class="p">:</span> <span class="mf">40e6</span>
+  <span class="p">},</span>
+  <span class="n">voltage_range</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">begin</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">end</span><span class="p">:</span> <span class="mi">100</span>
+  <span class="p">}</span>
+  <span class="n">lens</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">thickness</span><span class="p">:</span> <span class="mf">1e-3</span><span class="p">,</span>
+    <span class="n">speed_of_sound</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="n">focus</span><span class="p">:</span> <span class="mf">20e-3</span>
+  <span class="p">}</span>
+  <span class="n">matching_layer</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">thickness</span><span class="p">:</span> <span class="mf">0.1e-3</span><span class="p">,</span>
+    <span class="n">speed_of_sound</span><span class="p">:</span> <span class="mi">2100</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following <code class="docutils literal notranslate"><span class="pre">probe</span></code> attributes can be specified:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: a unique probe model id — a pair: <code class="docutils literal notranslate"><span class="pre">(manufacturer,</span> <span class="pre">name)</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_elements</span></code>: number of probe elements,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pitch</span></code>: distance between two adjacent probe elements [m],</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curvature_radius</span></code>: radius of probe’s curvature; when omitted and n_elements is a scalar, a linear probe type is assumed [m],</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tx_frequency_range</span></code>: acceptable range of center frequencies for this probe [min, max] (a closed interval) [Hz],</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">voltage_range</span></code>: range of acceptable voltage values, 0.5*Vpp.</p></li>
+</ul>
+<p>Optionally, you can also provide the following attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lens</span></code>: probe’s lens parameters,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matching_layer</span></code> probe’s matching layer parameters.</p></li>
+</ul>
+<p>The following <code class="docutils literal notranslate"><span class="pre">lens</span></code> attributes can be specified:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">thickness</span></code>: lens thickness measured at center of the elevation [m],</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">speed_of_sound</span></code>: the speed of sound in the lens material [m/s],</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">focus</span></code>: OPTIONAL, geometric elevation focus in water [m].</p></li>
+</ul>
+<p>The following <code class="docutils literal notranslate"><span class="pre">matching_layer</span></code> attributes can be specified:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">thickness</span></code>: matching layer thickness [m],</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">speed_of_sound</span></code>: matching layer speed of sound [m/s].</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>specify probe model by providing <code class="docutils literal notranslate"><span class="pre">probe_id</span></code>:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probe_id</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;esaote&quot;</span><span class="p">,</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;sl1543&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the latter method is used, the probe model description will be searched
+in the dictionary file.</p>
+<p>When no dictionary file is provided, the <a class="reference internal" href="#arrus-default-dictionary"><span class="std std-ref">Default dictionary</span></a> will be assumed.</p>
+</div>
+<div class="section" id="probe-to-adapter-connection">
+<h6>Probe-to-adapter connection<a class="headerlink" href="#probe-to-adapter-connection" title="Permalink to this headline">¶</a></h6>
+<p>The <code class="docutils literal notranslate"><span class="pre">probe_to_adapter_connection</span></code> field specifies how the <code class="docutils literal notranslate"><span class="pre">probe</span></code> elements
+map to the <code class="docutils literal notranslate"><span class="pre">adapter</span></code> channels.</p>
+<p>There are several ways to specify this mapping:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">channel_mapping</span></code> - a list of adapter channels to which the subsequent probe channels should be assigned, i.e. <code class="docutils literal notranslate"><span class="pre">channel_mapping[i]</span></code> is the adapter’s channel to be assigned to probe channel <code class="docutils literal notranslate"><span class="pre">i</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">channel_mapping_ranges</span></code> - a list of adapter channel regions to which the subsequent probe channels should be assigned.</p></li>
+</ul>
+<p>See <a class="reference external" href="https://github.com/us4useu/arrus/blob/develop/arrus/core/io/test-data/custom_us4r.prototxt">here</a>
+for an example usage of <code class="docutils literal notranslate"><span class="pre">probe_to_adapter_connection</span></code> field.</p>
+<p>Note:
+This field is required only when a custom probe and adapter are specified in
+the session configuration file (i.e. <code class="docutils literal notranslate"><span class="pre">probe</span></code> and <code class="docutils literal notranslate"><span class="pre">adapter</span></code> fields).
+When the <code class="docutils literal notranslate"><span class="pre">probe_id</span></code> or <code class="docutils literal notranslate"><span class="pre">adapter_id</span></code> are provided and the connection between
+them is already defined, this field can be omitted — the arrus package will
+try to determine the probe-adapter mapping based on the dictionary file.
+When <code class="docutils literal notranslate"><span class="pre">probe_to_adapter_connection</span></code> is still given, it will overwrite
+the settings from the dictionary file.</p>
+</div>
+<div class="section" id="multi-probe-systems">
+<h6>Multi-probe systems<a class="headerlink" href="#multi-probe-systems" title="Permalink to this headline">¶</a></h6>
+<p>It is also possible to specify multiple probes in situations where the system actually has multiple transducers connected.
+To do this, provide a list of probe definitions, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probe</span><span class="p">:</span> <span class="p">[</span>
+   <span class="p">{</span>
+       <span class="nb">id</span><span class="p">:</span> <span class="p">{</span>
+           <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+           <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;first_probe&quot;</span>
+       <span class="p">}</span>
+       <span class="n">n_elements</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+       <span class="n">pitch</span><span class="p">:</span> <span class="mf">0.2e-3</span><span class="p">,</span>
+       <span class="n">tx_frequency_range</span><span class="p">:</span> <span class="p">{</span>
+           <span class="n">begin</span><span class="p">:</span> <span class="mf">1e6</span><span class="p">,</span>
+           <span class="n">end</span><span class="p">:</span> <span class="mf">15e6</span>
+       <span class="p">},</span>
+       <span class="n">voltage_range</span> <span class="p">{</span>
+           <span class="n">begin</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="n">end</span><span class="p">:</span> <span class="mi">30</span>
+       <span class="p">}</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+       <span class="nb">id</span><span class="p">:</span> <span class="p">{</span>
+           <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+           <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;second_probe&quot;</span>
+       <span class="p">}</span>
+       <span class="n">n_elements</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
+       <span class="n">pitch</span><span class="p">:</span> <span class="mf">0.1e-3</span><span class="p">,</span>
+       <span class="n">tx_frequency_range</span><span class="p">:</span> <span class="p">{</span>
+           <span class="n">begin</span><span class="p">:</span> <span class="mf">1e6</span><span class="p">,</span>
+           <span class="n">end</span><span class="p">:</span> <span class="mf">15e6</span>
+       <span class="p">},</span>
+       <span class="n">voltage_range</span> <span class="p">{</span>
+           <span class="n">begin</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="n">end</span><span class="p">:</span> <span class="mi">30</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>and indicate the probe elements to the system channels mapping, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probe_to_adapter_connection</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="n">probe_model_id</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;first_probe&quot;</span>
+        <span class="p">}</span>
+        <span class="n">probe_adapter_model_id</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;adapter&quot;</span>
+        <span class="p">},</span>
+        <span class="n">channel_mapping_ranges</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="n">begin</span><span class="p">:</span> <span class="mi">0</span>
+            <span class="n">end</span><span class="p">:</span> <span class="mi">63</span>
+        <span class="p">}],</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="n">probe_model_id</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;second_probe&quot;</span>
+        <span class="p">}</span>
+        <span class="n">probe_adapter_model_id</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;adapter&quot;</span>
+        <span class="p">},</span>
+        <span class="n">channel_mapping_ranges</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="n">begin</span><span class="p">:</span> <span class="mi">64</span>
+            <span class="n">end</span><span class="p">:</span> <span class="mi">255</span>
+        <span class="p">}</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The order of the probes listed in the <code class="docutils literal notranslate"><span class="pre">probe</span></code> field affects their identifiers at runtime:
+the first probe will have the ID <code class="docutils literal notranslate"><span class="pre">Probe:0</span></code>, the second <code class="docutils literal notranslate"><span class="pre">Probe:1</span></code>, and so on.</p>
+</div>
+<div class="section" id="io-bitstreams-and-probe-external-muxing">
+<h6>IO bitstreams and probe external MUXing<a class="headerlink" href="#io-bitstreams-and-probe-external-muxing" title="Permalink to this headline">¶</a></h6>
+<p>It is possible to define IO bitstreams for the purpose of interfacing with
+external devices e.g.:  external MUX to switch probe or probe elements connectivity.
+In particular, it is possible to define a collection of IO bitstreams to be later
+used during runtime.</p>
+<p>A single bitstream is defined by specifying its states and the duration of each
+individual state it consists of using Run-Length Encoding (RLE),
+for example in the <code class="docutils literal notranslate"><span class="pre">.prototxt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bitstreams</span><span class="p">:</span> <span class="p">[</span>
+<span class="c1"># bitstream 1</span>
+<span class="p">{</span>
+  <span class="n">levels</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+  <span class="n">periods</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="p">},</span>
+<span class="c1"># bitstream 2</span>
+<span class="p">{</span>
+  <span class="n">levels</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+  <span class="n">periods</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">levels</span></code> field specifies the sequence of “IO levels” to be generated by the device.
+IO level is a 4-bit number, where the i-th bit indicates the level of the i-th IO.</p>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">periods[i]</span></code> indicates that the state <code class="docutils literal notranslate"><span class="pre">levels[i]</span></code> should last for <code class="docutils literal notranslate"><span class="pre">periods[i]</span> <span class="pre">+</span> <span class="pre">1</span></code> clock cycles (clock 5 MHz).</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bitstreams</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="n">levels</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">periods</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The above:</p>
+<ol class="arabic simple">
+<li><p>sets level 1 on IO 3, level 0 on the remaining IOs, for 0.2 us,</p></li>
+<li><p>then, sets level 0 on all IOs, for 0.4 us,</p></li>
+<li><p>then, sets level 1 on IOs 0 and 2, 0 on IOs 1 and 3, for 1 us,</p></li>
+<li><p>then, sets level 0 on all IOs, for 0.2 us.</p></li>
+</ol>
+<p>Now, it is also possible to specify an IO bitstream that should be triggered before starting TX/RX
+for the probe indicated in the TX/RX <code class="docutils literal notranslate"><span class="pre">placement</span></code> parameter, using the <code class="docutils literal notranslate"><span class="pre">bitstream_id</span></code> parameter, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probe_to_adapter_connection</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="n">probe_model_id</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;acme&quot;</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;probe1&quot;</span>
+    <span class="p">}</span>
+    <span class="n">probe_adapter_model_id</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;adapter&quot;</span>
+    <span class="p">},</span>
+    <span class="n">channel_mapping_ranges</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="n">begin</span><span class="p">:</span> <span class="mi">192</span>
+      <span class="n">end</span><span class="p">:</span> <span class="mi">255</span>
+    <span class="p">}],</span>
+    <span class="n">bitstream_id</span><span class="p">:</span> <span class="p">{</span><span class="n">ordinal</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">probe_model_id</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;acme&quot;</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;probe2&quot;</span>
+    <span class="p">}</span>
+    <span class="n">probe_adapter_model_id</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;adapter&quot;</span>
+    <span class="p">},</span>
+    <span class="n">channel_mapping_ranges</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="n">begin</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">end</span><span class="p">:</span> <span class="mi">191</span>
+    <span class="p">}],</span>
+    <span class="n">bitstream_id</span><span class="p">:</span> <span class="p">{</span><span class="n">ordinal</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Bitstream numbering (assigning bitstream IDs) starts from 1 (bitstream 0 is reserved for internal purposes).</p>
+<p>Using the functionality of configurable IO bitstreams is optional.</p>
+</div>
+<div class="section" id="rx-settings">
+<h6>Rx Settings<a class="headerlink" href="#rx-settings" title="Permalink to this headline">¶</a></h6>
+<p>The user can specify the default data reception settings to be set on all
+system modules. To do this, add an <cite>rx_settings</cite> with the following attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dtgc_attenuation</span></code>: digital time gain compensation to apply (given as attenuation value to apply). Available values: 0, 6, 12, 18, 24, 30, 36, 42 [dB]. Optional, no value means turn off DTGC.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pga_gain</span></code>: a gain to apply on a programmable gain amplifier. Available values: 24, 30 [dB]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lna_gain</span></code>: a gain to apply on a low-noise amplifier. Available values:  12, 18, 24 [dB]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tgc_samples</span></code>: a list of tgc curve samples to apply [dB]. Optional, no value/empty list means turn off TGC</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lpf_cutoff</span></code>: low-pass filter cut-off frequency, available values: 10000000, 15000000, 20000000, 30000000, 35000000, 50000000 [Hz]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">active_termination</span></code> active termination to apply, available values: 50, 100, 200, 400. Optional, no value means turn off active termination.</p></li>
+</ul>
+</div>
+<div class="section" id="channel-masks">
+<h6>Channel masks<a class="headerlink" href="#channel-masks" title="Permalink to this headline">¶</a></h6>
+<p>To turn off specific channels of the us4R system (i.e. the probe elements),
+add the following field to the <code class="docutils literal notranslate"><span class="pre">us4r</span></code> settings:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">channels_mask</span></code>: a list of system channels that should always be disabled.</p></li>
+</ul>
+</div>
+<div class="section" id="tx-rx-limits">
+<h6>TX/RX limits<a class="headerlink" href="#tx-rx-limits" title="Permalink to this headline">¶</a></h6>
+<p>The <code class="docutils literal notranslate"><span class="pre">.prototxt</span></code> provides you also the possibility to set constraints (“limits”)
+on the TX parameters to be used in run-time.</p>
+<p>The default constraints for the transmit pulse length include, among others,
+a maximum of 32 cycles of the TX pulse. It is possible to increase the TX pulse length
+(for example, to enable imaging methods utilizing long transmit bursts, like SWE)
+by setting <code class="docutils literal notranslate"><span class="pre">tx_rx_limits</span></code> in the <code class="docutils literal notranslate"><span class="pre">.prototxt</span></code> file.
+At the same time, you can restrict some other TX parameters,
+such as voltage or PRF (PRI), so as to avoid transmitting a pulse that could be
+harmful to the probe, the system, or the target medium.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tx_rx_limits</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">voltage</span><span class="p">:</span> <span class="p">{</span><span class="n">begin</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="o">...</span><span class="p">},</span> <span class="c1"># [V]</span>
+  <span class="n">pulse_length</span><span class="p">:</span> <span class="p">{</span><span class="n">begin</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="o">...</span><span class="p">},</span> <span class="c1"># [seconds],</span>
+  <span class="n">pri</span><span class="p">:</span> <span class="p">{</span><span class="n">begin</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="o">...</span><span class="p">}</span> <span class="c1"># [seconds]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The interval <code class="docutils literal notranslate"><span class="pre">{begin:</span> <span class="pre">…,</span> <span class="pre">end:</span> <span class="pre">…}</span></code> defines minimum and the maximum allowable value.</p>
+<p>If this TX/RX limits are not provided, default constraints apply.</p>
+</div>
+<div class="section" id="watchdog">
+<h6>Watchdog<a class="headerlink" href="#watchdog" title="Permalink to this headline">¶</a></h6>
+<p>The us4OEM+ firmware and software implements a host - ultrasound watchdog mechanism.</p>
+<p>The purpose of the watchdog is to prevent situations where the OEM board maintains
+a high HV voltage or continues executing a TX/RX sequence without control from the
+host PC. The firmware-based OEM watchdog disables HV and trigger when a loss of
+connection with the host PC is detected. The host PC also detects the lack of
+response from the device, appropriately notifies the user, and shuts down the
+entire system.</p>
+<p>In some rare cases, some additional watchdog configuration may be needed
+in order to run the us4R-lite system seamlessly. For example, if the performance
+of the host PC does not allow for a sufficiently fast response to the OEMs.</p>
+<p>You can change the following <code class="docutils literal notranslate"><span class="pre">watchdog</span></code> parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">watchdog</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">enabled</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">oem_threshold0</span><span class="p">:</span> <span class="mf">1.0</span>  <span class="c1"># [seconds]</span>
+    <span class="n">oem_threshold1</span><span class="p">:</span> <span class="mf">2.0</span>  <span class="c1"># [seconds]</span>
+    <span class="n">host_threshold</span><span class="p">:</span> <span class="mf">3.0</span>  <span class="c1"># [seconds]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code>: (bool): whether watchdog should be turned on (true) or off (false), default: true,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oem_threshold0</span></code>: the time after which a “warning” interrupt will be sent to the host PC if the host PC fails to report that it is still alive, default: 1.0,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oem_threshold1</span></code>: the time after which OEM+ will be shut down (stop triggering + turn off HVPS) if the host PC fails to report that it is still alive, default: 1.1,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host_threshold</span></code>: the time after which the host PC will assume that OEM+ is not functioning, if it fails to report that it is still alive, default: 1.0.</p></li>
+</ul>
+<p>You can also turn off the watchdog mechanism by setting the <code class="docutils literal notranslate"><span class="pre">enabled</span></code> field to false, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">watchdog</span><span class="p">:</span> <span class="p">{</span><span class="n">enabled</span><span class="p">:</span> <span class="n">false</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="trigger-source-trig-in-out">
+<h6>Trigger source (TRIG IN/OUT)<a class="headerlink" href="#trigger-source-trig-in-out" title="Permalink to this headline">¶</a></h6>
+<p>By default, us4us systems use an internal trigger source, which runs according
+to the PRI and SRI settings from the TX/RX sequence. To enable an external trigger source,
+the following parameter must be set in the configuration file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">external_trigger</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>The trigger output is always enabled by default.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dictionary">
+<h3>Dictionary<a class="headerlink" href="#dictionary" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to specify a dictionary of probe models and adapters that are
+supported by the us4R system. To do this, add the <code class="docutils literal notranslate"><span class="pre">dictionary_file</span></code> field
+to the configuration file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dictionary_file</span><span class="p">:</span> <span class="s2">&quot;dictionary.prototxt&quot;</span>
+</pre></div>
+</div>
+<p>Currently, the <code class="docutils literal notranslate"><span class="pre">dictionary.prototxt</span></code> file will be searched in the same
+directory where session settings file is located.</p>
+<p>When no dictionary file is provided, the <a class="reference internal" href="#arrus-default-dictionary"><span class="std std-ref">Default dictionary</span></a>
+is assumed.</p>
+<p>An example dictionary is available here:
+<a class="reference external" href="https://github.com/us4useu/arrus/blob/develop/arrus/core/io/test-data/dictionary.prototxt">https://github.com/us4useu/arrus/blob/develop/arrus/core/io/test-data/dictionary.prototxt</a></p>
+<p>The dictionary file contains a description of ultrasound probes and adapters
+that are supported by the us4R device. The file consists of the  following fields:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probe_adapter_models</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="c1"># probe adapter description, the same as described for us4r.adapter field</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="c1"># probe adapter description...</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">probe_models</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="c1"># probe model description, the same as described for us4r.probe field</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="c1"># probe model description...</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">probe_to_adapter_connections</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="c1"># probe to adapter connection, the same as described for us4r.probe_to_adapter_connection field</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="c1"># probe to adapter connection...</span>
+  <span class="p">}</span>
+
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="default-dictionary">
+<span id="arrus-default-dictionary"></span><h4>Default dictionary<a class="headerlink" href="#default-dictionary" title="Permalink to this headline">¶</a></h4>
+<p>Arrus package already contains a dictionary files of probes and adapters that
+were tested on us4r devices.
+To use the default dictionary, omit providing <code class="docutils literal notranslate"><span class="pre">dictionary_file</span></code> field in your
+session configuration file.</p>
+<p>Currently, the default dictionary contains definitions of the following probes:</p>
+<ul class="simple">
+<li><p>esaote:</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">sl1543</span></code>, <code class="docutils literal notranslate"><span class="pre">al2442</span></code>, <code class="docutils literal notranslate"><span class="pre">sp2430</span></code>, <code class="docutils literal notranslate"><span class="pre">ac2541</span></code>,</p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">esaote2</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote3</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote2-us4r6</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote3-us4r6</span></code></p></li>
+</ul>
+</li>
+<li><p>als:</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">l14-6a</span></code></p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">esaote2</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote3</span></code></p></li>
+</ul>
+</li>
+<li><p>apex:</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">tl094</span></code></p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">esaote2</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote3</span></code></p></li>
+</ul>
+</li>
+<li><p>ultrasonix:</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">l14-5/38</span></code>, <code class="docutils literal notranslate"><span class="pre">l9-4/38</span></code></p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">ultrasonix</span></code>, <code class="docutils literal notranslate"><span class="pre">pau_rev1.0</span></code></p></li>
+</ul>
+</li>
+<li><p>olympus:</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">5L128</span></code>, <code class="docutils literal notranslate"><span class="pre">10l128</span></code>, <code class="docutils literal notranslate"><span class="pre">5l64</span></code>, <code class="docutils literal notranslate"><span class="pre">10l32</span></code>, <code class="docutils literal notranslate"><span class="pre">5l32</span></code>, <code class="docutils literal notranslate"><span class="pre">225l32</span></code></p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">esaote3</span></code></p></li>
+</ul>
+</li>
+<li><p>ATL/Philips:</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">l7-4</span></code>, <code class="docutils literal notranslate"><span class="pre">c4-2</span></code>,</p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">atl/philips</span></code></p></li>
+</ul>
+</li>
+<li><p>custom Vermon linear array:</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">la/20/128</span></code></p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">atl/philips</span></code></p></li>
+</ul>
+</li>
+<li><p>custom Vermon matrix array (32x32):</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">mat-3d</span></code></p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">3d</span></code></p></li>
+</ul>
+</li>
+<li><p>Vermon RCA arrays:</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">RCA/6/256</span></code>, <code class="docutils literal notranslate"><span class="pre">RCA/3/64+64</span></code></p></li>
+<li><p>adapter: <code class="docutils literal notranslate"><span class="pre">dlp408r</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="running-example-scripts">
+<span id="arrus-running-example"></span><h2>Running example scripts<a class="headerlink" href="#running-example-scripts" title="Permalink to this headline">¶</a></h2>
+<p>The general overview of data acquisition and processing is as follows:</p>
+<ol class="arabic simple">
+<li><p>prepare scheme to be executed on the devices,</p></li>
+<li><p>start new session,</p></li>
+<li><p>upload created scheme,</p></li>
+<li><p>run the uploaded scheme,</p></li>
+<li><p>get data from the output buffer.</p></li>
+</ol>
+<p>Let’s delve into the details of each stage; we will describe the whole process
+on the example of a <code class="docutils literal notranslate"><span class="pre">plane_wave_imaging.py</span></code> script.</p>
+<div class="section" id="creating-scheme">
+<span id="arrus-creating-scheme"></span><h3>Creating Scheme<a class="headerlink" href="#creating-scheme" title="Permalink to this headline">¶</a></h3>
+<p>First we need to describe data acquisition process (and possibly data
+processing pipeline). In the arrus package that description is called <code class="docutils literal notranslate"><span class="pre">Scheme</span></code>.</p>
+<div class="figure align-default" id="id2">
+<span id="fig-scheme"></span><img alt="../_images/scheme.png" src="../_images/scheme.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">An example of scheme.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Scheme</span></code> describes:</p>
+<ul class="simple">
+<li><p>tx/rx sequence to perform on the ultrasound device (in loop),</p></li>
+<li><p><cite>optional</cite>: data processing pipeline to run when new data arrives,</p></li>
+<li><p><cite>optional</cite>: description of the output buffer on host computer, to which the
+data should be written,</p></li>
+<li><p><cite>optional</cite>: ultrasound device work mode: “HOST”, “SYNC”, or “ASYNC” mode.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scheme</span> <span class="o">=</span> <span class="n">Scheme</span><span class="p">(</span>
+    <span class="n">tx_rx_sequence</span><span class="o">=</span><span class="n">sequence</span><span class="p">,</span>
+    <span class="n">processing</span><span class="o">=</span><span class="n">processing_pipeline</span><span class="p">,</span>
+    <span class="n">rx_buffer_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">output_buffer</span><span class="o">=</span><span class="n">DataBufferSpec</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;FIFO&quot;</span><span class="p">,</span> <span class="n">n_elements</span><span class="o">=</span><span class="mi">12</span><span class="p">),</span>
+    <span class="n">work_mode</span><span class="o">=</span><span class="s2">&quot;HOST&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="tx-rx-sequence">
+<h4>TX/RX Sequence<a class="headerlink" href="#tx-rx-sequence" title="Permalink to this headline">¶</a></h4>
+<p>The tx/rx sequence can be described using one of the common sequences
+or by preparing a custom sequence of TxRx objects (see <cite>custom_tx_rx_sequence.py</cite>
+example). For example, to transmit plane waves at three different angles,
+create the <code class="docutils literal notranslate"><span class="pre">arrus.ops.imaging.PwiSequence</span></code> object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sequence</span> <span class="o">=</span> <span class="n">arrus</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">imaging</span><span class="o">.</span><span class="n">PwiSequence</span><span class="p">(</span>
+    <span class="n">angles</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span>
+    <span class="n">pulse</span><span class="o">=</span><span class="n">Pulse</span><span class="p">(</span><span class="n">center_frequency</span><span class="o">=</span><span class="mf">8e6</span><span class="p">,</span> <span class="n">n_periods</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">rx_sample_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">),</span>
+    <span class="n">downsampling_factor</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">speed_of_sound</span><span class="o">=</span><span class="mi">1490</span><span class="p">,</span>
+    <span class="n">pri</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">,</span>
+    <span class="n">sri</span><span class="o">=</span><span class="mf">20e-3</span><span class="p">,</span>
+    <span class="n">tgc_start</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+    <span class="n">tgc_slope</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is also possible to configure <strong>a list of TX/RX sequences</strong> to be executed
+one after the another within a single <code class="docutils literal notranslate"><span class="pre">Scheme</span></code>.</p>
+<p>This requirement arises from the fact that it is often necessary to execute
+multiple logically distinct sequences in a specific order — for example, to run
+different sequences on different probes connected to the same ultrasound system,
+or to run TX/RX sequences for different imaging modalities.</p>
+<p>For instance, in B-mode – Color Doppler Duplex imaging, it should be possible to define a sequences such as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scheme</span> <span class="o">=</span> <span class="n">arrus</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">us4r</span><span class="o">.</span><span class="n">Scheme</span><span class="p">(</span>
+  <span class="n">tx_rx_sequence</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">arrus</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">us4r</span><span class="o">.</span><span class="n">TxRxSequence</span><span class="p">(</span>
+        <span class="n">ops</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">TxRx</span><span class="p">(</span>
+                <span class="n">tx</span><span class="o">=</span><span class="n">Tx</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;Probe:0&quot;</span><span class="p">),</span>
+                <span class="n">rx</span><span class="o">=</span><span class="n">Rx</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;Probe:0&quot;</span><span class="p">),</span>
+                <span class="o">...</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Bmode&quot;</span>
+      <span class="p">),</span>
+      <span class="n">arrus</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">us4r</span><span class="o">.</span><span class="n">TxRxSequence</span><span class="p">(</span>
+        <span class="n">ops</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">TxRx</span><span class="p">(</span>
+                <span class="n">tx</span><span class="o">=</span><span class="n">Tx</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;Probe:0&quot;</span><span class="p">),</span>
+                <span class="n">rx</span><span class="o">=</span><span class="n">Rx</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;Probe:0&quot;</span><span class="p">),</span>
+                <span class="o">...</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ColorDoppler&quot;</span>
+      <span class="p">),</span>
+  <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>For the <code class="docutils literal notranslate"><span class="pre">Scheme</span></code> as defined above, the system will cyclically perform <code class="docutils literal notranslate"><span class="pre">Bmode</span></code> followed by <code class="docutils literal notranslate"><span class="pre">ColorDoppler</span></code>.</p>
+<p>Current limitations:</p>
+<ul class="simple">
+<li><p>Within a single sequence, all TX/RX operations must have the same TX and RX placement.</p></li>
+<li><p>Each sequence should produce an n-dimensional array with well-defined dimensions. This means that within a given sequence, all TX/RX operations must have, among other things, the same number of receive channels and the same number of samples.</p></li>
+</ul>
+</div>
+<div class="section" id="processing">
+<h4>Processing<a class="headerlink" href="#processing" title="Permalink to this headline">¶</a></h4>
+<p>Optionally, it is also possible to provide a data processing that should be run
+when new data arrives. For example, b-mode reconstruction for plane wave imaging
+can be implemented using the following pipeline:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span>
+<span class="n">z_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span>
+
+<span class="n">processing</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+        <span class="n">steps</span><span class="o">=</span><span class="p">(</span>
+            <span class="n">RemapToLogicalOrder</span><span class="p">(),</span>
+            <span class="n">Transpose</span><span class="p">(</span><span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+            <span class="n">BandpassFilter</span><span class="p">(),</span>
+            <span class="n">QuadratureDemodulation</span><span class="p">(),</span>
+            <span class="n">Decimation</span><span class="p">(</span><span class="n">decimation_factor</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cic_order</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+            <span class="n">ReconstructLri</span><span class="p">(</span><span class="n">x_grid</span><span class="o">=</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">z_grid</span><span class="o">=</span><span class="n">z_grid</span><span class="p">),</span>
+            <span class="n">Mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+            <span class="n">EnvelopeDetection</span><span class="p">(),</span>
+            <span class="n">Transpose</span><span class="p">(),</span>
+            <span class="n">LogCompression</span><span class="p">(),</span>
+        <span class="p">),</span>
+        <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;/GPU:0&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>The above code creates a pipeline, which will put the reconstructed b-mode
+images into the output buffer. A handle to the output buffer will be returned
+on the scheme upload.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently python API allows for data processing implemented using
+<code class="docutils literal notranslate"><span class="pre">arrus.utils.imaging</span></code> package only, which uses cupy/numpy packages.
+An optimized imaging pipeline for real-time b-mode reconstruction
+will be available soon.</p>
+</div>
+</div>
+<div class="section" id="work-mode">
+<h4>Work mode<a class="headerlink" href="#work-mode" title="Permalink to this headline">¶</a></h4>
+<p>Here we will describe the whole structure of processing done by the host PC
+and us4R-Lite/us4oem systems.</p>
+<p>Generally, the following processes run after starting scheme:</p>
+<ol class="arabic simple">
+<li><p>Us4R executes TX/RX sequence (cyclically) and saves the acquired channel RF data to Us4R RX buffer,</p></li>
+<li><p>PCI DMA transfers the acquired data to Host PC buffer element, pointing to some host’s memory area,</p></li>
+<li><p>Host PC processes the data, and marks the buffer element as released, that is the memory area for that element can be filled with new data.</p></li>
+</ol>
+<p>In other words:</p>
+<ul class="simple">
+<li><p>Us4R produces channel data to Us4R RX buffer, which is consumed by DMA,</p></li>
+<li><p>DMA produces channels data to Host PC buffer, which is consumed by some data processor.</p></li>
+<li><p>“Us4R RX buffer” is an n-element circular buffer in “Us4R DDR” memory,</p></li>
+<li><p>“Host PC buffer” is an n-element circular buffer stored in the host PC RAM.</p></li>
+</ul>
+<p>In ARRUS package currently we have a couple of <strong>work modes</strong>, the choice of which
+affects how processes (1), (2) and (3) works with each other.</p>
+<div class="section" id="work-mode-host">
+<h5>Work mode HOST<a class="headerlink" href="#work-mode-host" title="Permalink to this headline">¶</a></h5>
+<p>Us4R executes a single TX/RX sequence (1), then DMA copies the data (2),
+then Host PC processes the data (3), then Us4R executes a single
+TX/RX sequence (1), DMA copies data, … and so on.</p>
+<p>Processes (1), (2), and (3) are executed sequentially, one after another, so
+the total time between consecutive TX/RX sequence executions is equal to
+<code class="docutils literal notranslate"><span class="pre">t(1)</span> <span class="pre">+</span> <span class="pre">t(2)</span> <span class="pre">+</span> <span class="pre">t(3)</span></code>, where t(i) is the time needed to execute i-th process.</p>
+<p>When using HOST work mode, PRI is guaranteed within a single TX/RX sequence,
+but is not guaranteed between executions of the TX/RX sequences,
+because (1) waits until (2) and (3) are finished, and the execution
+time of (3) can generally be arbitrary (if we assume that (3) does not meet
+the hard real-time constraints).</p>
+<p>This mode is useful when:</p>
+<ul class="simple">
+<li><p>(3) cannot meet the hard real-time constraints determined by the selected PRI
+or (2) cannot satisfy given frame rate,</p></li>
+<li><p>a strict PRI guarantee between sequences (or batches of sequences) is not
+needed,</p></li>
+<li><p>the size of data collected by one sequence (or batches of sequences) does not
+exceed the size of the available DDR memory on us4OEM modules (4 GiB per module),</p></li>
+<li><p>the length of a single TX/RX sequence does not exceed 1024
+(the number of raw TX/RXs in a single batch of sequences does not excceed 16384).</p></li>
+</ul>
+<p>Work mode “HOST” is the easiest one to use and should be preferred in the first experiments.</p>
+</div>
+<div class="section" id="work-mode-async">
+<h5>Work mode ASYNC<a class="headerlink" href="#work-mode-async" title="Permalink to this headline">¶</a></h5>
+<p>Processes (1), (2) and (3) run in parallel and communicates through Us4R RX
+buffer and Host PC buffer.</p>
+<ul class="simple">
+<li><p>process (1) runs cyclically, with guaranteed PRI, stops only after stop_scheme
+is called or error is detected,</p></li>
+<li><p>process (2) waits for new data in the Us4R RX buffer and then copies it to
+Host PC buffer when it’s ready,</p></li>
+<li><p>process (3) waits for new data, processes data and releases buffer element.</p></li>
+</ul>
+<p>As the buffers are of a finite size, and (1), (2) and (3) may have different
+execution times:</p>
+<ul class="simple">
+<li><p>when the process (1) detects that it is trying to overwrite data that has not
+yet been transferred, it will report the “RX Buffer overflow” error,</p></li>
+<li><p>when the process (2) detects that it is trying to overwrite data that has not
+yet been processed (i.e. buffer element’s release function is called),
+it will report the “Host buffer overflow” error.</p></li>
+</ul>
+<p>The first error is usually reported, when data transfer rate is to slow compared
+to the acquisition rate, the second error is usually reported when data
+processing is to slow compared to the transfer and acquisition rate.</p>
+<p>The effective frame rate in this case is <code class="docutils literal notranslate"><span class="pre">max{t(1),</span> <span class="pre">t(2),</span> <span class="pre">t(3)}</span></code>, which is
+basically t(1) as the processes (2) and (3) have to keep pace with (1).</p>
+<p>This mode of operations is useful when:</p>
+<ul class="simple">
+<li><p>a strict PRI guarantee between all sequences (batches of sequences) is required,</p></li>
+<li><p>PCIE transfer (2) is enough to transfer data with the appropriate frame rate,
+(3) keeps strict processing time regime.</p></li>
+</ul>
+<p>If (2) and (3) takes too long/cannot keep strict processing time regime,
+its necessary to increase PRI, or set SRI or use HOST work mode.</p>
+</div>
+<div class="section" id="work-mode-sync">
+<h5>Work mode SYNC<a class="headerlink" href="#work-mode-sync" title="Permalink to this headline">¶</a></h5>
+<p>The SYNC mode works the same way as ASYNC, except that the ultrasound system
+halts signal acquisition if it encounters a situation where buffer memory has
+not been released quickly enough. In this mode, you can treat the buffers between
+the us4R-lite system and the host PC as blocking queues.</p>
+<p>This mode is generally preferred over ASYNC because it always ensures data consistency,
+at the cost of potentially uneven PRF—but only in cases where data transfer or
+processing is not fast enough.</p>
+</div>
+</div>
+</div>
+<div class="section" id="running-the-scheme">
+<span id="arrus-running-scheme"></span><h3>Running the Scheme<a class="headerlink" href="#running-the-scheme" title="Permalink to this headline">¶</a></h3>
+<p>To run the scheme:</p>
+<ol class="arabic simple">
+<li><p>start new session,</p></li>
+<li><p>set device parameters if necessary,</p></li>
+<li><p>upload scheme,</p></li>
+<li><p>start scheme.</p></li>
+</ol>
+<p>If you want to display reconstructed b-mode images,
+you can use <code class="docutils literal notranslate"><span class="pre">arrus.utils.gui.Display2D</span></code> class as show below, by providing
+buffer returned on scheme upload. The <code class="docutils literal notranslate"><span class="pre">arrus.utils.gui.Display2D</span></code>
+class requires <cite>matplotlib</cite> package installed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">arrus</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\Public\us4r.prototxt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">us4r</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_device</span><span class="p">(</span><span class="s2">&quot;/Us4R:0&quot;</span><span class="p">)</span>
+    <span class="n">us4r</span><span class="o">.</span><span class="n">set_hv_voltage</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+    <span class="c1"># Upload sequence on the us4r-lite device.</span>
+    <span class="n">buffer</span><span class="p">,</span> <span class="n">const_metadata</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">scheme</span><span class="p">)</span>
+    <span class="n">display</span> <span class="o">=</span> <span class="n">Display2D</span><span class="p">(</span><span class="n">const_metadata</span><span class="o">=</span><span class="n">const_metadata</span><span class="p">,</span> <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+    <span class="n">sess</span><span class="o">.</span><span class="n">start_scheme</span><span class="p">()</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The Session object can be treated as Python context manager.</p>
+<p>You can provide in it’s constructor a path to the session configuration file, or
+use the default search path which is stored in <code class="docutils literal notranslate"><span class="pre">ARRUS_PATH</span></code> environment variable.
+By default <code class="docutils literal notranslate"><span class="pre">us4r.prototxt</span></code> will be searched in <code class="docutils literal notranslate"><span class="pre">ARRUS_PATH</span></code> if you don’t
+provide a path in Session’s constructor.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">display.start</span></code> starts displaying reconstructed images and blocks
+the current thread until the window is closed. When the program leaves the
+<code class="docutils literal notranslate"><span class="pre">arrus.Session</span></code> context manager scope, the scheme is stopped and
+the connection to all the running devices is closed.</p>
+</div>
+<div class="section" id="running-custom-callback-functions">
+<h3>Running custom callback functions<a class="headerlink" href="#running-custom-callback-functions" title="Permalink to this headline">¶</a></h3>
+<p>You can provide your own custom callback functions that should be run when
+raw RF channel data arrives in the ultrasound device output buffer.
+In order to do that, use <code class="docutils literal notranslate"><span class="pre">buffer.append_on_new_data_callback(callback)</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">arrus</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\Public\us4r.prototxt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">us4r</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">get_device</span><span class="p">(</span><span class="s2">&quot;/Us4R:0&quot;</span><span class="p">)</span>
+    <span class="n">us4r</span><span class="o">.</span><span class="n">set_hv_voltage</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+    <span class="c1"># Upload sequence on the us4r-lite device.</span>
+    <span class="n">buffer</span><span class="p">,</span> <span class="n">const_metadata</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">scheme</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Got new data!&quot;</span><span class="p">)</span>
+    <span class="n">buffer</span><span class="o">.</span><span class="n">append_on_new_data_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+    <span class="n">sess</span><span class="o">.</span><span class="n">start_scheme</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementing-custom-arrus-utils-imaging-operations">
+<h3>Implementing custom <code class="docutils literal notranslate"><span class="pre">arrus.utils.imaging</span></code> operations<a class="headerlink" href="#implementing-custom-arrus-utils-imaging-operations" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The interface presented below is experimental and can be changed in the future.</p>
+</div>
+<p>It is possible to provide custom processing steps for the
+<code class="docutils literal notranslate"><span class="pre">arrus.utils.imaging</span></code> package. In order to do that, you have to implement
+the following interface:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyCustomOperation</span><span class="p">(</span><span class="n">arrus</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">imaging</span><span class="o">.</span><span class="n">Operation</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">const_metadata</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        OPTIONAL.</span>
+<span class="sd">        Function that will called when the processing pipeline is prepared.</span>
+
+<span class="sd">        :param const_metadata: const metadata describing output from the \</span>
+<span class="sd">          previous Operation.</span>
+<span class="sd">        :return: const metadata describing output of this Operation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function that will be called when new data arrives.</span>
+
+<span class="sd">        :param data: input data</span>
+<span class="sd">        :return: output data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">process</span></code> function will be called when new data arrives, at the appropriate stage of the pipeline.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">prepare</span></code> function will be called on Pipeline initialization. You should implement this function if
+you want to do some initialization based on Metadata object, which contains the complete trace
+of data acquisition and processing done made before the current step.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your implementation of <code class="docutils literal notranslate"><span class="pre">process</span></code> function returns an array, that
+have a different shape or data other than the input array,
+you have to override the <code class="docutils literal notranslate"><span class="pre">prepare</span></code> function, You can signal appropriate
+changes using <code class="docutils literal notranslate"><span class="pre">const_metadata.copy()</span></code> function, for example
+<code class="docutils literal notranslate"><span class="pre">const_metadata.copy(dtype=&quot;complex64&quot;,</span> <span class="pre">input_shape=(128,</span> <span class="pre">1024))</span></code>.
+This requirement may be changed in the future versions of arrus package.</p>
+</div>
+<p>You can put your custom operation into the pipeline:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">processing</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+        <span class="n">steps</span><span class="o">=</span><span class="p">(</span>
+            <span class="n">RemapToLogicalOrder</span><span class="p">(),</span>
+            <span class="n">Transpose</span><span class="p">(</span><span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+            <span class="n">BandpassFilter</span><span class="p">(),</span>
+            <span class="n">QuadratureDemodulation</span><span class="p">(),</span>
+            <span class="n">Decimation</span><span class="p">(</span><span class="n">decimation_factor</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cic_order</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+            <span class="n">ReconstructLri</span><span class="p">(</span><span class="n">x_grid</span><span class="o">=</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">z_grid</span><span class="o">=</span><span class="n">z_grid</span><span class="p">),</span>
+            <span class="n">MyCustomOperation</span><span class="p">(),</span>
+            <span class="n">EnvelopeDetection</span><span class="p">(),</span>
+            <span class="n">Transpose</span><span class="p">(),</span>
+            <span class="n">LogCompression</span><span class="p">(),</span>
+        <span class="p">),</span>
+        <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;/GPU:0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="definitions.html" class="btn btn-neutral float-left" title="Glossary and assumptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, us4us Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
