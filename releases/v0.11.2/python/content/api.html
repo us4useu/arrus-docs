@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Reference &mdash; ARRUS (python) 0.11.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Acknowledgments" href="misc/acknowledgments.html" />
+    <link rel="prev" title="Examples" href="examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ARRUS (python)
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions.html">Glossary and assumptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#session">Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operations">Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scheme">Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-tx-rx-sequences">Common Tx/Rx sequences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-tx-rx-sequences">Custom Tx/Rx sequences</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#devices">Devices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#probe">Probe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ultrasound">Ultrasound</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#processing-devices">Processing devices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#output-data">Output data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#metadata">Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utility-functions">Utility functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#b-mode-imaging-pipeline-using-cupy-numpy">B-mode imaging pipeline using cupy/numpy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probe-check-functionality">Probe check functionality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc/acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/release_notes.html">Release notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ARRUS (python)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-reference">
+<span id="arrus-api"></span><h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="session">
+<h2>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="operations">
+<h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="scheme">
+<h3>Scheme<a class="headerlink" href="#scheme" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="common-tx-rx-sequences">
+<h3>Common Tx/Rx sequences<a class="headerlink" href="#common-tx-rx-sequences" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="custom-tx-rx-sequences">
+<h3>Custom Tx/Rx sequences<a class="headerlink" href="#custom-tx-rx-sequences" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="devices">
+<h2>Devices<a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="probe">
+<h3>Probe<a class="headerlink" href="#probe" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="ultrasound">
+<h3>Ultrasound<a class="headerlink" href="#ultrasound" title="Permalink to this headline">¶</a></h3>
+<p><strong>Do not create instances of the below classes directly</strong>. Use
+<code class="docutils literal notranslate"><span class="pre">session.get_device</span></code> to acquire the appropriate device, for example:
+<code class="docutils literal notranslate"><span class="pre">session.get_device('/Us4R:0')</span></code>.</p>
+<p>The table below shows which TX/RX parameters can be changed in the system run-time (i.e. after starting
+the system with <cite>start_scheme()</cite> method), and which currently require performing the <cite>session.upload</cite> method.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 22%" />
+<col style="width: 25%" />
+<col style="width: 21%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Name</strong></p></td>
+<td colspan="2"><p><strong>Possible to change in run-time?</strong>   | <strong>Interface</strong></p></td>
+<td><p><strong>Possible to set per TX/RX?</strong></p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>RX</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Aperture</p></td>
+<td><p>No</p></td>
+<td><p>session.upload(),
+arrus.ops.us4r.Rx()</p></td>
+<td><p>Yes (local)</p></td>
+</tr>
+<tr class="row-even"><td><p>Sample Range</p></td>
+<td><p>No</p></td>
+<td><p>session.upload(),
+arrus.ops.us4r.Rx()</p></td>
+<td><p>Yes (local), however all Rxs
+must acquire the same number of
+samples</p></td>
+</tr>
+<tr class="row-odd"><td><p>Downsampling factor</p></td>
+<td><p>No</p></td>
+<td><p>session.upload(),
+arrus.ops.us4r.Rx()</p></td>
+<td><p>No (global per sequence)</p></td>
+</tr>
+<tr class="row-even"><td><p>PGA gain</p></td>
+<td><p>Yes</p></td>
+<td><p>set_pga_gain()</p></td>
+<td><p>No (global)</p></td>
+</tr>
+<tr class="row-odd"><td><p>LNA gain</p></td>
+<td><p>Yes</p></td>
+<td><p>set_lna_gain()</p></td>
+<td><p>No (global)</p></td>
+</tr>
+<tr class="row-even"><td><p>Analog TGC curve</p></td>
+<td><p>Yes</p></td>
+<td><p>set_tgc()</p></td>
+<td><p>No (global)</p></td>
+</tr>
+<tr class="row-odd"><td><p>DTGC attenuation</p></td>
+<td><p>Yes</p></td>
+<td><p>set_dtgc_attenuation()</p></td>
+<td><p>No (global)</p></td>
+</tr>
+<tr class="row-even"><td><p>Digital high-pass filter (HPF) corner frequency</p></td>
+<td><p>Yes</p></td>
+<td><p>set_hpf_frequency(), disable_hpf()</p></td>
+<td><p>No (global)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Digital Down Conversion (demodulation frequencies,
+filter coefficients)</p></td>
+<td><p>No</p></td>
+<td><p>session.upload(),
+arrus.ops.us4r.DigitalDownConersion</p></td>
+<td><p>No (global)</p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>TX</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Aperture</p></td>
+<td><p>No</p></td>
+<td><p>session.upload(),
+arrus.ops.us4r.Tx()</p></td>
+<td><p>Yes (local)</p></td>
+</tr>
+<tr class="row-even"><td><p>Excitation</p></td>
+<td><p>No</p></td>
+<td><p>session.upload(),
+arrus.ops.us4r.Tx(),
+arrus.ops.us4r.Pulse()</p></td>
+<td><p>Yes (local)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delays/TX focus, angle, speed of sound</p></td>
+<td><p>Partially yes: possible to create
+a set of pre-defined TX focuses.</p></td>
+<td><p>session.upload(),
+arrus.ops.us4r.Tx()</p></td>
+<td><p>Yes (local)</p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>TX/RX</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>PRI</p></td>
+<td><p>No</p></td>
+<td><p>session.upload(), arrus.ops.us4r.TxRx()</p></td>
+<td><p>Yes (local)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="processing-devices">
+<h3>Processing devices<a class="headerlink" href="#processing-devices" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="output-data">
+<h2>Output data<a class="headerlink" href="#output-data" title="Permalink to this headline">¶</a></h2>
+<p>An instance of the following class is returned by the <code class="docutils literal notranslate"><span class="pre">sesion.upload</span></code> function:</p>
+<p>Data buffers consists of multiple buffer elements.</p>
+<div class="section" id="metadata">
+<h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="utility-functions">
+<h2>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="b-mode-imaging-pipeline-using-cupy-numpy">
+<h3>B-mode imaging pipeline using cupy/numpy<a class="headerlink" href="#b-mode-imaging-pipeline-using-cupy-numpy" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h3>
+<p>The following log severity levels are available:
+<code class="docutils literal notranslate"><span class="pre">arrus.logging.TRACE</span></code>,
+<code class="docutils literal notranslate"><span class="pre">arrus.logging.DEBUG</span></code>,
+<code class="docutils literal notranslate"><span class="pre">arrus.logging.INFO</span></code>,
+<code class="docutils literal notranslate"><span class="pre">arrus.logging.WARNING</span></code>,
+<code class="docutils literal notranslate"><span class="pre">arrus.logging.ERROR</span></code>,
+<code class="docutils literal notranslate"><span class="pre">arrus.logging.FATAL</span></code></p>
+</div>
+<div class="section" id="probe-check-functionality">
+<h3>Probe check functionality<a class="headerlink" href="#probe-check-functionality" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="misc/acknowledgments.html" class="btn btn-neutral float-right" title="Acknowledgments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, us4us Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
