@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Examples &mdash; ARRUS (matlab) 0.12.0 documentation</title>
+  <title>Examples &mdash; ARRUS (matlab) 0.12.0-dev20250828 documentation</title>
   
 
   
@@ -371,7 +371,7 @@ with a display-dedicated object. We prepared two classes of display objects: <sp
 Reconstruction, and BModeDisplay objects defined as above.</p>
 <div class="figure align-default" id="id2">
 <img alt="../_images/bmode_pwi_phantom_wires.png" src="../_images/bmode_pwi_phantom_wires.png" />
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Image of the ATS549 phantom (wires part) obtained with use of the Plane Wave Imaging.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Image of the ATS549 phantom (wires part) obtained with use of the Plane Wave Imaging.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>See the <a class="reference internal" href="api.html#arrus-us4r"><span class="std std-ref">High-level MATLAB scripts</span></a> docs for more information.</p>
 </div>
@@ -422,22 +422,22 @@ insight into the shape, orientation, and position of the TX beams.</p>
 For various ‘txFocus’ values we can get focused wave (finite positive values), plane wave (infinity), or diverging wave (finite negative values):</p>
 <div class="figure align-default" id="id3">
 <img alt="../_images/txFoc.png" src="../_images/txFoc.png" />
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">‘txFocus’ set to 20e-3 (left), inf (middle), and -10e-3 (right).</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">‘txFocus’ set to 20e-3 (left), inf (middle), and -10e-3 (right).</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>When changing the ‘txAngle’ the TX beam axis is angled clockwise (negative values) or counter-clockwise (positive values):</p>
 <div class="figure align-default" id="id4">
 <img alt="../_images/txAng.png" src="../_images/txAng.png" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">‘txAngle’ set to -15*pi/180 (left), 0*pi/180 (middle), and 15*pi/180 (right).</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">‘txAngle’ set to -15*pi/180 (left), 0*pi/180 (middle), and 15*pi/180 (right).</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>Changing the ‘txApertureCenter’ and ‘txCenterElement’ move the aperture center along the probe surface.</p>
 <div class="figure align-default" id="id5">
 <img alt="../_images/txCent.png" src="../_images/txCent.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">‘txApertureCenter’ set to -15e-3 (left), 0e-3 (middle), and 15e-3 (right).</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">‘txApertureCenter’ set to -15e-3 (left), 0e-3 (middle), and 15e-3 (right).</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>The ‘txApertureSize’ determines how many elements are included in the TX aperture.</p>
 <div class="figure align-default" id="id6">
 <img alt="../_images/txSize.png" src="../_images/txSize.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">‘txApertureSize’ set to 48 (left), 24 (middle), and 12 (right).</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">‘txApertureSize’ set to 48 (left), 24 (middle), and 12 (right).</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>In case of a combination of aperture position and size resulting in TX aperture extending beyond the probe, the TX aperture is clipped.</p>
 </div>
@@ -498,7 +498,7 @@ However, nothing stops us from designing a TX sequence in which all the discusse
 </div>
 <div class="figure align-default" id="id7">
 <img alt="../_images/txScan.png" src="../_images/txScan.png" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Example of linear scan (left), angular/phased scan (middle), and custom scan (right).</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Example of linear scan (left), angular/phased scan (middle), and custom scan (right).</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -524,7 +524,7 @@ To program the TX/RX sequence for a convex probe correctly, one has to remember 
 <p>then we obtain the following behaviour depending on the geometry of the probe:</p>
 <div class="figure align-default" id="id8">
 <img alt="../_images/txGeom.png" src="../_images/txGeom.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Example of the probe geometry influence on the programmed TX beams: linear probe (left) and convex probe (right).</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Example of the probe geometry influence on the programmed TX beams: linear probe (left) and convex probe (right).</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="color-doppler">
@@ -573,7 +573,7 @@ with all the probe elements as well (TX/RX aperture centered at the probe center
 </div>
 <div class="figure align-default" id="id9">
 <img alt="../_images/color.png" src="../_images/color.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Color Doppler image of the carotid artery</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Color Doppler image of the carotid artery</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="id1">

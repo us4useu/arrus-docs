@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Reference &mdash; ARRUS (python) 0.12.0 documentation</title>
+  <title>API Reference &mdash; ARRUS (python) 0.12.0-dev20250828 documentation</title>
   
 
   
@@ -99,6 +99,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#devices">Devices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#probe">Probe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ultrasound">Ultrasound</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#processing-devices">Processing devices</a></li>
 </ul>
@@ -266,7 +267,7 @@ TODO: note: this method currently is not thread-safe</p>
 
 <dl class="py method">
 <dt id="arrus.Session.set_subsequence">
-<code class="sig-name descname">set_subsequence</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">end</span></em>, <em class="sig-param"><span class="n">processing</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sri</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Session.set_subsequence" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_subsequence</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">end</span></em>, <em class="sig-param"><span class="n">array_id</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">processing</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sri</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Session.set_subsequence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the current TX/RX sequence to the [start, end] subsequence (both inclusive).</p>
 <p>This method requires that:</p>
 <ul class="simple">
@@ -487,7 +488,7 @@ a ValueError will be raised.</p>
 
 <dl class="py class">
 <dt id="arrus.ops.us4r.Pulse">
-<em class="property">class </em><code class="sig-prename descclassname">arrus.ops.us4r.</code><code class="sig-name descname">Pulse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">center_frequency</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">n_periods</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">inverse</span><span class="p">:</span> <span class="n">bool</span></em>, <em class="sig-param"><span class="n">amplitude</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.ops.us4r.Pulse" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">arrus.ops.us4r.</code><code class="sig-name descname">Pulse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">center_frequency</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">n_periods</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">inverse</span><span class="p">:</span> <span class="n">bool</span></em>, <em class="sig-param"><span class="n">amplitude_level</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.ops.us4r.Pulse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A definition of the pulse that can be triggered by the us4r device.</p>
 <p>NOTE: this object is assumed to be hashable.</p>
@@ -497,7 +498,7 @@ a ValueError will be raised.</p>
 <li><p><strong>center_frequency</strong> – pulse center frequency [Hz]</p></li>
 <li><p><strong>n_periods</strong> – number of periods of the generated pulse, possible values: 0.5, 1, 1.5, …</p></li>
 <li><p><strong>inverse</strong> – true if the signal amplitude should be reversed, false otherwise</p></li>
-<li><p><strong>amplitude</strong> – TX voltage amplitude level to set, available values: 1 (HV1), 2 (HV0)</p></li>
+<li><p><strong>amplitude_level</strong> – TX voltage amplitude level to set</p></li>
 </ul>
 </dd>
 </dl>
@@ -554,7 +555,7 @@ above the probe (i.e. diverging beam transmission).</p>
 
 <dl class="py class">
 <dt id="arrus.ops.us4r.Rx">
-<em class="property">class </em><code class="sig-prename descclassname">arrus.ops.us4r.</code><code class="sig-name descname">Rx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">aperture</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>numpy.ndarray<span class="p">, </span>arrus.ops.us4r.Aperture<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">sample_range</span><span class="p">:</span> <span class="n">tuple</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">downsampling_factor</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">padding</span><span class="p">:</span> <span class="n">tuple</span> <span class="o">=</span> <span class="default_value">(0, 0)</span></em>, <em class="sig-param"><span class="n">init_delay</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'tx_start'</span></em>, <em class="sig-param"><span class="n">placement</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Probe:0'</span></em>, <em class="sig-param"><span class="n">depth_range</span><span class="p">:</span> <span class="n">tuple</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.ops.us4r.Rx" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">arrus.ops.us4r.</code><code class="sig-name descname">Rx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">aperture</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>numpy.ndarray<span class="p">, </span>arrus.ops.us4r.Aperture<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">sample_range</span><span class="p">:</span> <span class="n">tuple</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">downsampling_factor</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">padding</span><span class="p">:</span> <span class="n">tuple</span> <span class="o">=</span> <span class="default_value">(0, 0)</span></em>, <em class="sig-param"><span class="n">init_delay</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'tx_start'</span></em>, <em class="sig-param"><span class="n">placement</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Probe:0'</span></em>, <em class="sig-param"><span class="n">depth_range</span><span class="p">:</span> <span class="n">tuple</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">time_range</span><span class="p">:</span> <span class="n">tuple</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.ops.us4r.Rx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">arrus.ops.operation.Operation</span></code></p>
 <p>Single atomic operation of echo data reception.</p>
 <dl class="field-list simple">
@@ -580,6 +581,62 @@ beamforming).</p></li>
 </div>
 <div class="section" id="devices">
 <h2>Devices<a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="probe">
+<h3>Probe<a class="headerlink" href="#probe" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="arrus.devices.probe.ProbeModel">
+<em class="property">class </em><code class="sig-prename descclassname">arrus.devices.probe.</code><code class="sig-name descname">ProbeModel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model_id</span><span class="p">:</span> <span class="n">arrus.devices.probe.ProbeModelId</span></em>, <em class="sig-param"><span class="n">n_elements</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">pitch</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">curvature_radius</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">tx_frequency_range</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">lens</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference internal" href="#arrus.devices.probe.Lens" title="arrus.devices.probe.Lens">arrus.devices.probe.Lens</a><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">matching_layer</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference internal" href="#arrus.devices.probe.MatchingLayer" title="arrus.devices.probe.MatchingLayer">arrus.devices.probe.MatchingLayer</a><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">voltage_range</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.probe.ProbeModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Probe model.</p>
+<dl class="py method">
+<dt id="arrus.devices.probe.ProbeModel.x_max">
+<em class="property">property </em><code class="sig-name descname">x_max</code><a class="headerlink" href="#arrus.devices.probe.ProbeModel.x_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>A short to get the position of the “right-most” element.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.probe.ProbeModel.x_min">
+<em class="property">property </em><code class="sig-name descname">x_min</code><a class="headerlink" href="#arrus.devices.probe.ProbeModel.x_min" title="Permalink to this definition">¶</a></dt>
+<dd><p>A short to get the position of the “left-most” element.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="arrus.devices.probe.Lens">
+<em class="property">class </em><code class="sig-prename descclassname">arrus.devices.probe.</code><code class="sig-name descname">Lens</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thickness</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">speed_of_sound</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">focus</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.probe.Lens" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The lens applied on the surface of the probe.</p>
+<p>Currently, the model of the lens is quite basic and accustomed mostly to
+the linear array probes, e.g. we assume that the lens is dedicated to be
+focusing in the elevation direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thickness</strong> – lens thickness measured at center of the elevation [m]</p></li>
+<li><p><strong>speed_of_sound</strong> – the speed of sound in the lens material [m/s]</p></li>
+<li><p><strong>focus</strong> – geometric elevation focus in water [m]</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="arrus.devices.probe.MatchingLayer">
+<em class="property">class </em><code class="sig-prename descclassname">arrus.devices.probe.</code><code class="sig-name descname">MatchingLayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thickness</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">speed_of_sound</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.probe.MatchingLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The matching layer applied directly on the probe elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thickness</strong> – matching layer thickness [m]</p></li>
+<li><p><strong>speed_of_sound</strong> – matching layer speed of sound [m/s]</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="ultrasound">
 <h3>Ultrasound<a class="headerlink" href="#ultrasound" title="Permalink to this headline">¶</a></h3>
 <p><strong>Do not create instances of the below classes directly</strong>. Use
@@ -672,6 +729,28 @@ session-related code to the ARRUS core.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.get_lna_gain">
+<code class="sig-name descname">get_lna_gain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.get_lna_gain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current LNA gain value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>LNA gain value [dB]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.get_pga_gain">
+<code class="sig-name descname">get_pga_gain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.get_pga_gain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current PGA gain value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>PGA gain value [dB]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="arrus.devices.us4r.Us4R.get_us4oem">
 <code class="sig-name descname">get_us4oem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ordinal</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.get_us4oem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a handle to us4OEM with the given number.</p>
@@ -686,6 +765,18 @@ session-related code to the ARRUS core.</p>
 <dt id="arrus.devices.us4r.Us4R.sampling_frequency">
 <em class="property">property </em><code class="sig-name descname">sampling_frequency</code><a class="headerlink" href="#arrus.devices.us4r.Us4R.sampling_frequency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Device NOMINAL sampling frequency [Hz].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.set_active_termination">
+<code class="sig-name descname">set_active_termination</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">impedance</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.set_active_termination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the impedance value for active termination</p>
+<p>Available: 50, 100, 200, 400 [Ohm] or None;
+None turns off active termination.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>impedance (int): the impedance value to set</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -738,13 +829,18 @@ Available corner frequency values (Hz): 4520’000, 2420’000,
 <dd><p>Enables HV and sets a given voltage(s).</p>
 <p>This method expects a list of integers or a list of pairs of integers
 as input.
-A single integer v means that the voltage should be set t +v and -v.
-A pair (vm, vp) means that the -voltage should be set to vm,
--voltage to vp.</p>
-<p>Voltage is always expected to be positive number (even for HVM).</p>
+A single integer v means that the voltage should be set t +v and -v.</p>
+<p>Voltage is always expected to be positive number (even for V-).</p>
 <dl class="simple">
 <dt>Examples:</dt><dd><p>set_hv_voltage(10) – sets -10 +10 on TX amplitude 2.
 set_hv_voltage((5, 6), (10, 11)) – sets -5 V for TX state -1, +6 V for TX state +1, -10 V for TX state -2, +11 V for TX state +2</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>voltage</strong> – a single value (for amplitude level 0)
+or a list of tuples, where voltage[0] are (minus, plus) V level 1,
+voltage[1] are (minus, plus) V level 2.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -757,6 +853,18 @@ set_hv_voltage((5, 6), (10, 11)) – sets -5 V for TX state -1, +6 V for TX stat
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>gain</strong> – gain value to set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.set_lpf_cutoff">
+<code class="sig-name descname">set_lpf_cutoff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frequency</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.set_lpf_cutoff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets low pass filter cutoff frequency.</p>
+<p>Available: 10e6, 15e6, 20e6, 30e6, 35e6, 50e6 [Hz].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> – frequency value to set</p>
 </dd>
 </dl>
 </dd></dl>
@@ -800,11 +908,20 @@ This property is set by default to true.</p>
 
 <dl class="py method">
 <dt id="arrus.devices.us4r.Us4R.set_tgc">
-<code class="sig-name descname">set_tgc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tgc_curve</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.set_tgc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_tgc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tgc_curve</span></em>, <em class="sig-param"><span class="n">apply_characteristic</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">clip</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.set_tgc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets TGC samples for given TGC description.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>samples</strong> – a given TGC to set.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tgc_curve</strong> – tgc curve to set; None value turns off analog TGC.</p></li>
+<li><p><strong>apply_characteristic</strong> – set it to true if you want to compensate response characteristic (pre-computed
+by us4us). If true, LNA and PGA gains should be set to 24 an 30 dB, respectively, otherwise the
+ValueError will be thrown.</p></li>
+<li><p><strong>clip</strong> – set it true if you would like to get TGC clipped to the min/max possible gain value; otherwise,
+a ValueError will be raised with message that the maximum possible gain value
+(resulting from amplifier settings such as LNA and PGA) is exceeded.
+This parameter is ignored when tgc_curve.clip is True, or tgc_curve is None.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -819,6 +936,20 @@ the device, on the stage of sequence upload.</p>
 in the low-level software (ARRUS C++), simply the current TxRxSequences.
 Setting TGC should also have a parameter “tgc_profile” which should
 be variable that can be modified in real-time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="arrus.devices.us4r.Us4R.set_vcat">
+<code class="sig-name descname">set_vcat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">samples</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Us4R.set_vcat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets VCAT attenuation curve.</p>
+<p>This method is complementary to the set_tgc method: here you can
+set specify the TGC by providing attenuator values (e.g. in range 0, 40 dB
+for us4OEM modules).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>samples</strong> – a given curve to set, attenuation [dB]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -989,6 +1120,12 @@ arrus.ops.us4r.Tx()</p></td>
 <em class="property">class </em><code class="sig-prename descclassname">arrus.devices.us4r.</code><code class="sig-name descname">Backplane</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">us4r</span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.devices.us4r.Backplane" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Digital backplane of the us4R device.</p>
+<dl class="py method">
+<dt id="arrus.devices.us4r.Backplane.get_firmware_version">
+<code class="sig-name descname">get_firmware_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#arrus.devices.us4r.Backplane.get_firmware_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns firmware version of the digital backplane.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt id="arrus.devices.us4r.Backplane.get_revision">
 <code class="sig-name descname">get_revision</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#arrus.devices.us4r.Backplane.get_revision" title="Permalink to this definition">¶</a></dt>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Reference &mdash; ARRUS (matlab) 0.12.0 documentation</title>
+  <title>API Reference &mdash; ARRUS (matlab) 0.12.0-dev20250828 documentation</title>
   
 
   
@@ -306,19 +306,18 @@ and <code class="xref py py-class docutils literal notranslate"><span class="pre
 <li><p><strong>txApertureCenter</strong> – vector of tx aperture center positions [m]</p></li>
 <li><p><strong>txApertureSize</strong> – vector of tx aperture sizes [element]</p></li>
 <li><p><strong>rxCenterElement</strong> – vector of rx aperture center elements [element]</p></li>
-<li><p><strong>rxApertureCenter</strong> – vector of rx aperture center positions [m].</p></li>
+<li><p><strong>rxApertureCenter</strong> – vector of rx aperture center positions [m]</p></li>
 <li><p><strong>rxApertureSize</strong> – size of the rx aperture [element]</p></li>
 <li><p><strong>txFocus</strong> – vector of tx focal lengths [m]</p></li>
 <li><p><strong>txAngle</strong> – vector of tx angles [rad]</p></li>
 <li><p><strong>speedOfSound</strong> – speed of sound for [m/s]</p></li>
-<li><p><strong>txVoltage</strong> – tx voltage amplitude (Vpp/2) [V]</p></li>
+<li><p><strong>txVoltage</strong> – tx voltage level [V]. Can be: scalar (pulse voltage range is [-txVoltage +txVoltage] for the whole sequence), or 2x2 array (defines two sets of negative and positive tx voltage amplitudes: [v1neg, v1pos; v2neg, v2pos]; the voltage range can be selected individually for each tx using txVoltageId). txVoltage must always be nonnegative and v1 must be higher than v2. “Legacy” systems only support scalar txVoltage</p></li>
+<li><p><strong>txVoltageId</strong> – vector of tx voltage level identifiers (can be 1 for [-v1neg +v1pos] range or 2 for [-v2neg +v2pos] range)</p></li>
 <li><p><strong>txFrequency</strong> – vector of tx frequencies [Hz]</p></li>
 <li><p><strong>txNPeriods</strong> – vector of numbers of sine periods in the tx burst (can be 0.5, 1, 1.5, etc.)</p></li>
-<li><p><strong>rxDepthRange</strong> – defines the end (if scalar) or
-the begining and the end (if two-element vector) 
+<li><p><strong>rxDepthRange</strong> – defines the end (if scalar) or the begining and the end (if two-element vector) 
 of the acquisition expressed by depth range [m]</p></li>
-<li><p><strong>rxNSamples</strong> – number of samples (if scalar) or 
-starting and ending sample numbers (if 2-element vector) 
+<li><p><strong>rxNSamples</strong> – number of samples (if scalar) or starting and ending sample numbers (if 2-element vector) 
 of recorded signal [sample]</p></li>
 <li><p><strong>hwDdcEnable</strong> – enables complex iq output</p></li>
 <li><p><strong>decimation</strong> – decimation factor, for real output (hwDdcEnable==false) it must be positive integer, for complex output (hwDdcEnable==true) it must be multiple of 0.25 and be &gt;=2</p></li>
@@ -327,10 +326,9 @@ of recorded signal [sample]</p></li>
 <li><p><strong>tgcStart</strong> – TGC starting gain [dB]</p></li>
 <li><p><strong>tgcSlope</strong> – TGC gain slope [dB/m]</p></li>
 <li><p><strong>txInvert</strong> – tx pulse polarity marker</p></li>
-<li><p><strong>workMode</strong> – system mode of operation, can be “MANUAL”,”HOST”,”SYNC”, or “ASYNC”.</p></li>
+<li><p><strong>workMode</strong> – system mode of operation, can be “MANUAL”,”HOST”,”SYNC”, or “ASYNC”</p></li>
 <li><p><strong>sri</strong> – sequence repeting interval [s]</p></li>
-<li><p><strong>bufferSize</strong> – number of buffer elements (each element contains 
-data for a single sequence execution)</p></li>
+<li><p><strong>bufferSize</strong> – number of buffer elements (each element contains data for a single sequence execution)</p></li>
 <li><p><strong>txWaveform</strong> – TX waveform to use, an instance of arrus.ops.us4r.Waveform</p></li>
 </ul>
 </dd>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>User Guide &mdash; ARRUS (python) 0.12.0 documentation</title>
+  <title>User Guide &mdash; ARRUS (python) 0.12.0-dev20250828 documentation</title>
   
 
   
@@ -230,8 +230,10 @@ session configuration file.</p>
 which can be configured by providing the <code class="docutils literal notranslate"><span class="pre">hv</span></code> field. The following power
 supplies are currently supported:</p>
 <ul class="simple">
-<li><p>us4R-Lite systems: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">hv256</span></code>,</p></li>
-<li><p>us4R systems: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code>,</p></li>
+<li><p>the legacy us4R-Lite systems or us4R-lite+ with the external HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">hv256</span></code>,</p></li>
+<li><p>us4R-lite+ systems without the external HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4oemhvps</span></code>,</p></li>
+<li><p>the legacy us4R systems or us4R system with the external HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code>,</p></li>
+<li><p>us4R+ systems without the external HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4oemhvps</span></code>,</p></li>
 <li><p>us4OEM+ with internal HV: manufacturer: <code class="docutils literal notranslate"><span class="pre">us4us</span></code>, name: <code class="docutils literal notranslate"><span class="pre">us4oemhvps</span></code>.</p></li>
 </ul>
 <p>Example:</p>
@@ -250,8 +252,7 @@ supplies are currently supported:</p>
 <li><p>for the systems with <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code> power supply, <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code> will be used,</p></li>
 <li><p>for the systems <code class="docutils literal notranslate"><span class="pre">us4oemhvps</span></code>, a system with no digital backplane will be assumed.</p></li>
 </ul>
-<p>It is also possible to explicitly specify the backplane model in the configuration file, just provide the field
-<code class="docutils literal notranslate"><span class="pre">digital_backplane</span></code>:</p>
+<p>It is also possible to explicitly specify the backplane model in the configuration file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">digital_backplane</span><span class="p">:</span> <span class="p">{</span>
   <span class="n">model_id</span> <span class="p">{</span>
     <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
@@ -260,7 +261,7 @@ supplies are currently supported:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Where <code class="docutils literal notranslate"><span class="pre">model_name</span></code> can be one of the following: <code class="docutils literal notranslate"><span class="pre">dbarlite</span></code> or <code class="docutils literal notranslate"><span class="pre">us4rpsc</span></code>.</p>
+<p>Where <code class="docutils literal notranslate"><span class="pre">model_name</span></code> can be one of the following: <code class="docutils literal notranslate"><span class="pre">dbarlite</span></code> or <code class="docutils literal notranslate"><span class="pre">us4rdbar</span></code>.</p>
 <p>To configure us4r’s signal transmission/data reception, it is essential to
 specify the settings of the probe and probe adapter used in the system.</p>
 <div class="section" id="specify-the-settings-of-the-probe-and-probe-adapter">
@@ -293,6 +294,15 @@ following ways:</p>
     <span class="n">begin</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">end</span><span class="p">:</span> <span class="mi">100</span>
   <span class="p">}</span>
+  <span class="n">lens</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">thickness</span><span class="p">:</span> <span class="mf">1e-3</span><span class="p">,</span>
+    <span class="n">speed_of_sound</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="n">focus</span><span class="p">:</span> <span class="mf">20e-3</span>
+  <span class="p">}</span>
+  <span class="n">matching_layer</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">thickness</span><span class="p">:</span> <span class="mf">0.1e-3</span><span class="p">,</span>
+    <span class="n">speed_of_sound</span><span class="p">:</span> <span class="mi">2100</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -304,6 +314,22 @@ following ways:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">curvature_radius</span></code>: radius of probe’s curvature; when omitted and n_elements is a scalar, a linear probe type is assumed [m],</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tx_frequency_range</span></code>: acceptable range of center frequencies for this probe [min, max] (a closed interval) [Hz],</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">voltage_range</span></code>: range of acceptable voltage values, 0.5*Vpp.</p></li>
+</ul>
+<p>Optionally, you can also provide the following attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lens</span></code>: probe’s lens parameters,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matching_layer</span></code> probe’s matching layer parameters.</p></li>
+</ul>
+<p>The following <code class="docutils literal notranslate"><span class="pre">lens</span></code> attributes can be specified:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">thickness</span></code>: lens thickness measured at center of the elevation [m],</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">speed_of_sound</span></code>: the speed of sound in the lens material [m/s],</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">focus</span></code>: OPTIONAL, geometric elevation focus in water [m].</p></li>
+</ul>
+<p>The following <code class="docutils literal notranslate"><span class="pre">matching_layer</span></code> attributes can be specified:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">thickness</span></code>: matching layer thickness [m],</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">speed_of_sound</span></code>: matching layer speed of sound [m/s].</p></li>
 </ul>
 <ol class="arabic simple" start="2">
 <li><p>specify probe model by providing <code class="docutils literal notranslate"><span class="pre">probe_id</span></code>:</p></li>
@@ -338,6 +364,168 @@ try to determine the probe-adapter mapping based on the dictionary file.
 When <code class="docutils literal notranslate"><span class="pre">probe_to_adapter_connection</span></code> is still given, it will overwrite
 the settings from the dictionary file.</p>
 </div>
+<div class="section" id="multi-probe-systems">
+<h6>Multi-probe systems<a class="headerlink" href="#multi-probe-systems" title="Permalink to this headline">¶</a></h6>
+<p>It is also possible to specify multiple probes in situations where the system actually has multiple transducers connected.
+To do this, provide a list of probe definitions, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probe</span><span class="p">:</span> <span class="p">[</span>
+   <span class="p">{</span>
+       <span class="nb">id</span><span class="p">:</span> <span class="p">{</span>
+           <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+           <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;first_probe&quot;</span>
+       <span class="p">}</span>
+       <span class="n">n_elements</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+       <span class="n">pitch</span><span class="p">:</span> <span class="mf">0.2e-3</span><span class="p">,</span>
+       <span class="n">tx_frequency_range</span><span class="p">:</span> <span class="p">{</span>
+           <span class="n">begin</span><span class="p">:</span> <span class="mf">1e6</span><span class="p">,</span>
+           <span class="n">end</span><span class="p">:</span> <span class="mf">15e6</span>
+       <span class="p">},</span>
+       <span class="n">voltage_range</span> <span class="p">{</span>
+           <span class="n">begin</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="n">end</span><span class="p">:</span> <span class="mi">30</span>
+       <span class="p">}</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+       <span class="nb">id</span><span class="p">:</span> <span class="p">{</span>
+           <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+           <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;second_probe&quot;</span>
+       <span class="p">}</span>
+       <span class="n">n_elements</span><span class="p">:</span> <span class="mi">192</span><span class="p">,</span>
+       <span class="n">pitch</span><span class="p">:</span> <span class="mf">0.1e-3</span><span class="p">,</span>
+       <span class="n">tx_frequency_range</span><span class="p">:</span> <span class="p">{</span>
+           <span class="n">begin</span><span class="p">:</span> <span class="mf">1e6</span><span class="p">,</span>
+           <span class="n">end</span><span class="p">:</span> <span class="mf">15e6</span>
+       <span class="p">},</span>
+       <span class="n">voltage_range</span> <span class="p">{</span>
+           <span class="n">begin</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="n">end</span><span class="p">:</span> <span class="mi">30</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>and indicate the probe elements to the system channels mapping, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probe_to_adapter_connection</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="n">probe_model_id</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;first_probe&quot;</span>
+        <span class="p">}</span>
+        <span class="n">probe_adapter_model_id</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;adapter&quot;</span>
+        <span class="p">},</span>
+        <span class="n">channel_mapping_ranges</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="n">begin</span><span class="p">:</span> <span class="mi">0</span>
+            <span class="n">end</span><span class="p">:</span> <span class="mi">63</span>
+        <span class="p">}],</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="n">probe_model_id</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;second_probe&quot;</span>
+        <span class="p">}</span>
+        <span class="n">probe_adapter_model_id</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;adapter&quot;</span>
+        <span class="p">},</span>
+        <span class="n">channel_mapping_ranges</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="n">begin</span><span class="p">:</span> <span class="mi">64</span>
+            <span class="n">end</span><span class="p">:</span> <span class="mi">255</span>
+        <span class="p">}</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The order of the probes listed in the <code class="docutils literal notranslate"><span class="pre">probe</span></code> field affects their identifiers at runtime:
+the first probe will have the ID <code class="docutils literal notranslate"><span class="pre">Probe:0</span></code>, the second <code class="docutils literal notranslate"><span class="pre">Probe:1</span></code>, and so on.</p>
+</div>
+<div class="section" id="io-bitstreams-and-probe-external-muxing">
+<h6>IO bitstreams and probe external MUXing<a class="headerlink" href="#io-bitstreams-and-probe-external-muxing" title="Permalink to this headline">¶</a></h6>
+<p>It is possible to define IO bitstreams for the purpose of interfacing with
+external devices e.g.:  external MUX to switch probe or probe elements connectivity.
+In particular, it is possible to define a collection of IO bitstreams to be later
+used during runtime.</p>
+<p>A single bitstream is defined by specifying its states and the duration of each
+individual state it consists of using Run-Length Encoding (RLE),
+for example in the <code class="docutils literal notranslate"><span class="pre">.prototxt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bitstreams</span><span class="p">:</span> <span class="p">[</span>
+<span class="c1"># bitstream 1</span>
+<span class="p">{</span>
+  <span class="n">levels</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+  <span class="n">periods</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="p">},</span>
+<span class="c1"># bitstream 2</span>
+<span class="p">{</span>
+  <span class="n">levels</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+  <span class="n">periods</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">levels</span></code> field specifies the sequence of “IO levels” to be generated by the device.
+IO level is a 4-bit number, where the i-th bit indicates the level of the i-th IO.</p>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">periods[i]</span></code> indicates that the state <code class="docutils literal notranslate"><span class="pre">levels[i]</span></code> should last for <code class="docutils literal notranslate"><span class="pre">periods[i]</span> <span class="pre">+</span> <span class="pre">1</span></code> clock cycles (clock 5 MHz).</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bitstreams</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="n">levels</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">periods</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The above:</p>
+<ol class="arabic simple">
+<li><p>sets level 1 on IO 3, level 0 on the remaining IOs, for 0.2 us,</p></li>
+<li><p>then, sets level 0 on all IOs, for 0.4 us,</p></li>
+<li><p>then, sets level 1 on IOs 0 and 2, 0 on IOs 1 and 3, for 1 us,</p></li>
+<li><p>then, sets level 0 on all IOs, for 0.2 us.</p></li>
+</ol>
+<p>Now, it is also possible to specify an IO bitstream that should be triggered before starting TX/RX
+for the probe indicated in the TX/RX <code class="docutils literal notranslate"><span class="pre">placement</span></code> parameter, using the <code class="docutils literal notranslate"><span class="pre">bitstream_id</span></code> parameter, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probe_to_adapter_connection</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="n">probe_model_id</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;acme&quot;</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;probe1&quot;</span>
+    <span class="p">}</span>
+    <span class="n">probe_adapter_model_id</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;adapter&quot;</span>
+    <span class="p">},</span>
+    <span class="n">channel_mapping_ranges</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="n">begin</span><span class="p">:</span> <span class="mi">192</span>
+      <span class="n">end</span><span class="p">:</span> <span class="mi">255</span>
+    <span class="p">}],</span>
+    <span class="n">bitstream_id</span><span class="p">:</span> <span class="p">{</span><span class="n">ordinal</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">probe_model_id</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;acme&quot;</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;probe2&quot;</span>
+    <span class="p">}</span>
+    <span class="n">probe_adapter_model_id</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">manufacturer</span><span class="p">:</span> <span class="s2">&quot;us4us&quot;</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;adapter&quot;</span>
+    <span class="p">},</span>
+    <span class="n">channel_mapping_ranges</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="n">begin</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">end</span><span class="p">:</span> <span class="mi">191</span>
+    <span class="p">}],</span>
+    <span class="n">bitstream_id</span><span class="p">:</span> <span class="p">{</span><span class="n">ordinal</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Bitstream numbering (assigning bitstream IDs) starts from 1 (bitstream 0 is reserved for internal purposes).</p>
+<p>Using the functionality of configurable IO bitstreams is optional.</p>
+</div>
 <div class="section" id="rx-settings">
 <h6>Rx Settings<a class="headerlink" href="#rx-settings" title="Permalink to this headline">¶</a></h6>
 <p>The user can specify the default data reception settings to be set on all
@@ -354,17 +542,75 @@ system modules. To do this, add an <cite>rx_settings</cite> with the following a
 <div class="section" id="channel-masks">
 <h6>Channel masks<a class="headerlink" href="#channel-masks" title="Permalink to this headline">¶</a></h6>
 <p>To turn off specific channels of the us4R system (i.e. the probe elements),
-add both of the following fields to the <cite>us4r</cite> settings:</p>
+add the following field to the <code class="docutils literal notranslate"><span class="pre">us4r</span></code> settings:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">channels_mask</span></code>: a list of system channels that should always be disabled</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">us4oem_channels_mask</span></code>: a list of channel masks to apply on each us4OEM module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">channels_mask</span></code>: a list of system channels that should always be disabled.</p></li>
 </ul>
-<p>In order to minimize the risk of including channels that should be turned off,
-for example by changing adapter model by mistake
-(e.g. using esaote2 adapter mapping when actually esaote3 is installed),
-it is necessary to specify the fields:
-<cite>channels_mask</cite> and <code class="docutils literal notranslate"><span class="pre">us4oem_channels_mask</span></code>. If these two mappings do not
-match, an error will be reported at the device configuration stage.</p>
+</div>
+<div class="section" id="tx-rx-limits">
+<h6>TX/RX limits<a class="headerlink" href="#tx-rx-limits" title="Permalink to this headline">¶</a></h6>
+<p>The <code class="docutils literal notranslate"><span class="pre">.prototxt</span></code> provides you also the possibility to set constraints (“limits”)
+on the TX parameters to be used in run-time.</p>
+<p>The default constraints for the transmit pulse length include, among others,
+a maximum of 32 cycles of the TX pulse. It is possible to increase the TX pulse length
+(for example, to enable imaging methods utilizing long transmit bursts, like SWE)
+by setting <code class="docutils literal notranslate"><span class="pre">tx_rx_limits</span></code> in the <code class="docutils literal notranslate"><span class="pre">.prototxt</span></code> file.
+At the same time, you can restrict some other TX parameters,
+such as voltage or PRF (PRI), so as to avoid transmitting a pulse that could be
+harmful to the probe, the system, or the target medium.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tx_rx_limits</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">voltage</span><span class="p">:</span> <span class="p">{</span><span class="n">begin</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="o">...</span><span class="p">},</span> <span class="c1"># [V]</span>
+  <span class="n">pulse_length</span><span class="p">:</span> <span class="p">{</span><span class="n">begin</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="o">...</span><span class="p">},</span> <span class="c1"># [seconds],</span>
+  <span class="n">pri</span><span class="p">:</span> <span class="p">{</span><span class="n">begin</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="o">...</span><span class="p">}</span> <span class="c1"># [seconds]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The interval <code class="docutils literal notranslate"><span class="pre">{begin:</span> <span class="pre">…,</span> <span class="pre">end:</span> <span class="pre">…}</span></code> defines minimum and the maximum allowable value.</p>
+<p>If this TX/RX limits are not provided, default constraints apply.</p>
+</div>
+<div class="section" id="watchdog">
+<h6>Watchdog<a class="headerlink" href="#watchdog" title="Permalink to this headline">¶</a></h6>
+<p>The us4OEM+ firmware and software implements a host - ultrasound watchdog mechanism.</p>
+<p>The purpose of the watchdog is to prevent situations where the OEM board maintains
+a high HV voltage or continues executing a TX/RX sequence without control from the
+host PC. The firmware-based OEM watchdog disables HV and trigger when a loss of
+connection with the host PC is detected. The host PC also detects the lack of
+response from the device, appropriately notifies the user, and shuts down the
+entire system.</p>
+<p>In some rare cases, some additional watchdog configuration may be needed
+in order to run the us4R-lite system seamlessly. For example, if the performance
+of the host PC does not allow for a sufficiently fast response to the OEMs.</p>
+<p>You can change the following <code class="docutils literal notranslate"><span class="pre">watchdog</span></code> parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">watchdog</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">enabled</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">oem_threshold0</span><span class="p">:</span> <span class="mf">1.0</span>  <span class="c1"># [seconds]</span>
+    <span class="n">oem_threshold1</span><span class="p">:</span> <span class="mf">2.0</span>  <span class="c1"># [seconds]</span>
+    <span class="n">host_threshold</span><span class="p">:</span> <span class="mf">3.0</span>  <span class="c1"># [seconds]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code>: (bool): whether watchdog should be turned on (true) or off (false), default: true,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oem_threshold0</span></code>: the time after which a “warning” interrupt will be sent to the host PC if the host PC fails to report that it is still alive, default: 1.0,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oem_threshold1</span></code>: the time after which OEM+ will be shut down (stop triggering + turn off HVPS) if the host PC fails to report that it is still alive, default: 1.1,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host_threshold</span></code>: the time after which the host PC will assume that OEM+ is not functioning, if it fails to report that it is still alive, default: 1.0.</p></li>
+</ul>
+<p>You can also turn off the watchdog mechanism by setting the <code class="docutils literal notranslate"><span class="pre">enabled</span></code> field to false, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">watchdog</span><span class="p">:</span> <span class="p">{</span><span class="n">enabled</span><span class="p">:</span> <span class="n">false</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="trigger-source-trig-in-out">
+<h6>Trigger source (TRIG IN/OUT)<a class="headerlink" href="#trigger-source-trig-in-out" title="Permalink to this headline">¶</a></h6>
+<p>By default, us4us systems use an internal trigger source, which runs according
+to the PRI and SRI settings from the TX/RX sequence. To enable an external trigger source,
+the following parameter must be set in the configuration file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">external_trigger</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>The trigger output is always enabled by default.</p>
 </div>
 </div>
 </div>
@@ -424,8 +670,8 @@ session configuration file.</p>
 <ul class="simple">
 <li><p>esaote:</p>
 <ul>
-<li><p>probes: <code class="docutils literal notranslate"><span class="pre">sl1543</span></code>, <code class="docutils literal notranslate"><span class="pre">al2442</span></code>, <code class="docutils literal notranslate"><span class="pre">sp2430</span></code></p></li>
-<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">esoate</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote2</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote3</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote2-us4r6</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote3-us4r6</span></code></p></li>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">sl1543</span></code>, <code class="docutils literal notranslate"><span class="pre">al2442</span></code>, <code class="docutils literal notranslate"><span class="pre">sp2430</span></code>, <code class="docutils literal notranslate"><span class="pre">ac2541</span></code>,</p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">esaote2</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote3</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote2-us4r6</span></code>, <code class="docutils literal notranslate"><span class="pre">esaote3-us4r6</span></code></p></li>
 </ul>
 </li>
 <li><p>als:</p>
@@ -442,26 +688,38 @@ session configuration file.</p>
 </li>
 <li><p>ultrasonix:</p>
 <ul>
-<li><p>probes: <code class="docutils literal notranslate"><span class="pre">l14-5/38</span></code></p></li>
-<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">ultrasonix</span></code></p></li>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">l14-5/38</span></code>, <code class="docutils literal notranslate"><span class="pre">l9-4/38</span></code></p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">ultrasonix</span></code>, <code class="docutils literal notranslate"><span class="pre">pau_rev1.0</span></code></p></li>
 </ul>
 </li>
 <li><p>olympus:</p>
 <ul>
-<li><p>probes: <code class="docutils literal notranslate"><span class="pre">5L128</span></code></p></li>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">5L128</span></code>, <code class="docutils literal notranslate"><span class="pre">10l128</span></code>, <code class="docutils literal notranslate"><span class="pre">5l64</span></code>, <code class="docutils literal notranslate"><span class="pre">10l32</span></code>, <code class="docutils literal notranslate"><span class="pre">5l32</span></code>, <code class="docutils literal notranslate"><span class="pre">225l32</span></code></p></li>
 <li><p>adapters: <code class="docutils literal notranslate"><span class="pre">esaote3</span></code></p></li>
 </ul>
 </li>
 <li><p>ATL/Philips:</p>
 <ul>
-<li><p>probes: <code class="docutils literal notranslate"><span class="pre">l7-4</span></code></p></li>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">l7-4</span></code>, <code class="docutils literal notranslate"><span class="pre">c4-2</span></code>,</p></li>
 <li><p>adapters: <code class="docutils literal notranslate"><span class="pre">atl/philips</span></code></p></li>
 </ul>
 </li>
-<li><p>custom Vermon:</p>
+<li><p>custom Vermon linear array:</p>
 <ul>
 <li><p>probes: <code class="docutils literal notranslate"><span class="pre">la/20/128</span></code></p></li>
 <li><p>adapters: <code class="docutils literal notranslate"><span class="pre">atl/philips</span></code></p></li>
+</ul>
+</li>
+<li><p>custom Vermon matrix array (32x32):</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">mat-3d</span></code></p></li>
+<li><p>adapters: <code class="docutils literal notranslate"><span class="pre">3d</span></code></p></li>
+</ul>
+</li>
+<li><p>Vermon RCA arrays:</p>
+<ul>
+<li><p>probes: <code class="docutils literal notranslate"><span class="pre">RCA/6/256</span></code>, <code class="docutils literal notranslate"><span class="pre">RCA/3/64+64</span></code></p></li>
+<li><p>adapter: <code class="docutils literal notranslate"><span class="pre">dlp408r</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -479,7 +737,7 @@ session configuration file.</p>
 <li><p>get data from the output buffer.</p></li>
 </ol>
 <p>Let’s delve into the details of each stage; we will describe the whole process
-on the example of a <code class="docutils literal notranslate"><span class="pre">pwi_sequence_example.py</span></code> script.</p>
+on the example of a <code class="docutils literal notranslate"><span class="pre">plane_wave_imaging.py</span></code> script.</p>
 <div class="section" id="creating-scheme">
 <span id="arrus-creating-scheme"></span><h3>Creating Scheme<a class="headerlink" href="#creating-scheme" title="Permalink to this headline">¶</a></h3>
 <p>First we need to describe data acquisition process (and possibly data
@@ -523,6 +781,45 @@ create the <code class="docutils literal notranslate"><span class="pre">arrus.op
     <span class="n">tgc_slope</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>It is also possible to configure <strong>a list of TX/RX sequences</strong> to be executed
+one after the another within a single <code class="docutils literal notranslate"><span class="pre">Scheme</span></code>.</p>
+<p>This requirement arises from the fact that it is often necessary to execute
+multiple logically distinct sequences in a specific order — for example, to run
+different sequences on different probes connected to the same ultrasound system,
+or to run TX/RX sequences for different imaging modalities.</p>
+<p>For instance, in B-mode – Color Doppler Duplex imaging, it should be possible to define a sequences such as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scheme</span> <span class="o">=</span> <span class="n">arrus</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">us4r</span><span class="o">.</span><span class="n">Scheme</span><span class="p">(</span>
+  <span class="n">tx_rx_sequence</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">arrus</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">us4r</span><span class="o">.</span><span class="n">TxRxSequence</span><span class="p">(</span>
+        <span class="n">ops</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">TxRx</span><span class="p">(</span>
+                <span class="n">tx</span><span class="o">=</span><span class="n">Tx</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;Probe:0&quot;</span><span class="p">),</span>
+                <span class="n">rx</span><span class="o">=</span><span class="n">Rx</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;Probe:0&quot;</span><span class="p">),</span>
+                <span class="o">...</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Bmode&quot;</span>
+      <span class="p">),</span>
+      <span class="n">arrus</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">us4r</span><span class="o">.</span><span class="n">TxRxSequence</span><span class="p">(</span>
+        <span class="n">ops</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">TxRx</span><span class="p">(</span>
+                <span class="n">tx</span><span class="o">=</span><span class="n">Tx</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;Probe:0&quot;</span><span class="p">),</span>
+                <span class="n">rx</span><span class="o">=</span><span class="n">Rx</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">placement</span><span class="o">=</span><span class="s2">&quot;Probe:0&quot;</span><span class="p">),</span>
+                <span class="o">...</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ColorDoppler&quot;</span>
+      <span class="p">),</span>
+  <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>For the <code class="docutils literal notranslate"><span class="pre">Scheme</span></code> as defined above, the system will cyclically perform <code class="docutils literal notranslate"><span class="pre">Bmode</span></code> followed by <code class="docutils literal notranslate"><span class="pre">ColorDoppler</span></code>.</p>
+<p>Current limitations:</p>
+<ul class="simple">
+<li><p>Within a single sequence, all TX/RX operations must have the same TX and RX placement.</p></li>
+<li><p>Each sequence should produce an n-dimensional array with well-defined dimensions. This means that within a given sequence, all TX/RX operations must have, among other things, the same number of receive channels and the same number of samples.</p></li>
+</ul>
 </div>
 <div class="section" id="custom-tx-waveforms">
 <h4>Custom TX waveforms<a class="headerlink" href="#custom-tx-waveforms" title="Permalink to this headline">¶</a></h4>

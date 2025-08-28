@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Release notes &mdash; ARRUS (matlab) 0.12.0 documentation</title>
+  <title>Release notes &mdash; ARRUS (matlab) 0.12.0-dev20250828 documentation</title>
   
 
   
@@ -202,10 +202,10 @@
 <h2>0.12.x<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h2>
 <p>0.12.0</p>
 <ul>
-<li><p>core (C++):</p>
+<li><p>core (driver):</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Changed us4R TX voltage amplitudes order: the Pulser(amplitude = 0) NOW BECOMES CLAMP, NOT THE HVP0/HVM0. HVP0/HVM0 becomes amplitude == 2, HVP1/HVM1 becomes amplitude == 1.</p></li>
+<li><p>Exposed DDC digital gain (after the decimation filter) #M_OEM-153.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -213,29 +213,113 @@
 </div>
 <div class="section" id="id1">
 <h2>0.11.x<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>0.11.2</p>
+<ul>
+<li><p>core (driver):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed start/stop/start scheme call sequence for the legacy OEM devices, #US4R-726.</p></li>
+<li><p>Fixed an issue where a firmware-software mismatch could cause the computer to restart on some setups with PCIe connections, #M_OEM-178.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.11.1</p>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Fixed 1.5 cycle TX waveform setting bug</strong>, #M_OEM-176.</p></li>
+<li><p>Fixed US4RPSC voltage check skip with us4OEM+, #M_US4R-12.</p></li>
+<li><p>Fixed voltage limits verification for the legacy us4OEM, #M_US4R-25.</p></li>
+<li><p>Set timeout on OEM watchdog disable, #M_OEM-157.</p></li>
+<li><p>Added support for DBARLite-PCIe firmware 1.2.0.0, #US4R-587.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed image reconstruction operators for the SimpleTxRxSequences (PwiSequence, StaSequence, etc.) with the start sample &gt; 0, #ARRUS-451.</p></li>
+<li><p>Exposed title property of the 2D ARRUS GUI, #ARRUS-452.</p></li>
+<li><p>Fixed us4OEM HVPS measurements and HVPS-based probe check, #ARRUS-454.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
 <p>0.11.0</p>
 <ul>
 <li><p>core (C++):</p>
 <blockquote>
 <div><ul>
-<li><p>The .prototxt field us4oem_channels_mask is no longer required #ARRUS-197.</p></li>
-<li><p>arrus::devices::Us4RSettings::getUs4OEMChannelsMask() is no longer available # ARRUS-197.</p></li>
+<li><p>Added support for OEM+ firmware 2.1.1.0, DBARLite-PCIe firmware 1.1.2.0.</p></li>
+<li><p>Implemented support for OEM+ setups with TX push functionality:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed TX pulser capabilities: the possibility to transmit with long impulses, empty TX/RX apertures, #US4R-403.</p></li>
+<li><p>Implemented push TX soft start, TX timeout mechanism #US4R-494.</p></li>
+<li><p>Disabled possibility to generate long pulses on level 2 (HV rail 0), #US4R-506.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Exposed the possibility to set the HV amplitude levels (rails), amplitude level (1 or 2) per pulse, enabled pulser TX timeout, added waveform memory verification, #US4R-403, #US4R-367, #US4R-419, #US4R-420, #US4R-622.</p></li>
+<li><p>Stop TX/RX sequence execution in case an OEM+ module signals pulser error (IRQ) #US4R-443.</p></li>
+<li><p>Implemented the possibility to configure and program multiple probes and sequences in a single Scheme #ARRUS-302 #ARRUS-301 #ARRUS-195.</p></li>
+<li><p>Added lens and matching layer to the probe model description #ARRUS-425.</p></li>
+<li><p>TX pulser interrupt logging, verify waveforms on the sequencer enable, #US4R-403.</p></li>
+<li><p>Implemented us4OEM+ watchdog mechanism, #US4R-630.</p></li>
+<li><p>Implemented IO bitstream-based probe selection for OEM+ and the legacy OEMs, #US4R-657.</p></li>
+<li><p>Implemented setSubsequence method for the legacy OEMs and us4R-lite systems, #US4R-467.</p></li>
+<li><p>Fixed the current limitations for the number of different TX/RXs to 4096 TX/RXs, max 1024 unique TX delay profiles, #US4R-510.</p></li>
+<li><p>Fixed an exception that occurred before/on OEM+ initialization, increased HVPS calibration time, #US4R-572.</p></li>
+<li><p>Implemented TX pulse inversion for OEM+ setups, #US4R-494.</p></li>
+<li><p>Increased the maximum PRF that can be set for OEM+ devices: decreased the TX pulsers reprogramming time #US4R-525.</p></li>
+<li><p>Fixed OEM+ clamping on channels with disabled TX, #US4R-529.</p></li>
+<li><p>Added default HVPS initialisation in bypass mode, #US4R-430.</p></li>
+<li><p>Implemented configuration of trigger source, #US4R-464.</p></li>
+<li><p>Improved ARRUS and HAL logging #ARRUS-432, #US4R-451.</p></li>
+<li><p>Adjusted RF/IQ data start sample number (i.e. corresponding to the TX delay = 0) #US4R-513.</p></li>
+<li><p>Added support for the <code class="docutils literal notranslate"><span class="pre">atl/philips2</span></code> (the ATL adapter rev 1.0) and <code class="docutils literal notranslate"><span class="pre">pau_rev1.0</span></code> (Ultrasonix) adapters, #US4R-475.</p></li>
+<li><p>Added RCA probe definitions in the default dictionary #ARRUS-408.</p></li>
+<li><p>Added Ultrasonix L9-4/38 probe definition to the default dictionary #US4R-475.</p></li>
+<li><p>Other changes in the API:</p>
+<blockquote>
+<div><ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">.prototxt</span></code> field <code class="docutils literal notranslate"><span class="pre">us4oem_channels_mask</span></code> is no longer required and becomes deprecated #ARRUS-197.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">arrus::devices::Us4RSettings::getUs4OEMChannelsMask()</span></code> is no longer available # ARRUS-197.</p></li>
 <li><p>The arrus::devices::Us4RSettings::Us4RSettings constructor now takes a different set of parameters #ARRUS-197:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>the us4oemChannelsMask is no longer available,</p></li>
+<li><p>the us4oemChannelsMask field is no longer available,</p></li>
 <li><p>the channelsMask now takes a list of unordered_sets; each set represents a channel mask for a given probe.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Adjusted RF/IQ data start sample number (i.e. corresponding to the TX delay = 0) #US4R-513.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Removed Us4OEM::getTxOffset() method.</p></li>
+<li><p>Removed Us4OEM::getTxOffset() method, #US4R-513,</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">*uploadResult-&gt;getConstMetadata(arrayId)-&gt;get&lt;float&gt;(&quot;rxOffset&quot;)</span></code> to the upload result metadata. The value of <code class="docutils literal notranslate"><span class="pre">rxOffset</span></code> indicates the time difference between the acquisition of the first sample and the start of TX. This value should be taken into account during reconstruction when using hardware DDC.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Increased the maximum PRF that can be set for the OEM+ devices: decreased the TX pulsers reprogramming time #US4R-525.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul>
+<li><p>Implemented DAG-based processing, the possibility to mix phased-array and moving window aperture (imaging package), the possibility to configure and program multiple probes and sequences, #ARRUS-302 #ARRUS-301 #ARRUS-195.</p></li>
+<li><p>Exposed probe’s voltage range in the <code class="docutils literal notranslate"><span class="pre">ProbeModel</span></code> #ARRUS-422.</p></li>
+<li><p>Implemented multi-TX ops (e.g. for the comb beam ultrasound transmissions) #ARRUS-321.</p></li>
+<li><p>Added ‘aspect’ parameter in Display2D object, #ARRUS-322.</p></li>
+<li><p>Other changes in the API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed setters and getters for RX settings to Python API, #ARRUS-421 (by Gordon Stevenson).</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">metadata.data_description.custom[&quot;rx_offset&quot;]</span></code> to the metadata model. The value of <code class="docutils literal notranslate"><span class="pre">rx_offset</span></code> indicates the time difference between the acquisition of the first sample and the start of TX. This value should be taken into account during reconstruction when using hardware DDC.</p></li>
+<li><p>Currently, the ARRUS 0.11.0 metadata model is not backward compatible (for example, metadata files previously saved using <code class="docutils literal notranslate"><span class="pre">pickle</span></code> Python package cannot be loaded with ARRUS 0.11.0).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>ARRUS explicitly requires the numpy package version to be &lt; 2.0.0.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -243,7 +327,9 @@
 <blockquote>
 <div><ul class="simple">
 <li><p>Fixed the RX apodization #ARRUS-288.</p></li>
-<li><p>Exposed SYNC/ASYNC modes and switchable multi-sequences; Added coherent filtering and compounding flags; Implemented cineloop buffers; Improved processing speed; Removed “nElements” option for tx/rx aperture size; #ARRUS-195;</p></li>
+<li><p>Exposed SYNC/ASYNC modes and switchable multi-sequences; Added coherent filtering and compounding flags; Implemented cineloop buffers; Improved processing speed; Removed “nElements” option for tx/rx aperture size; #ARRUS-195.</p></li>
+<li><p>Exposed amplitude level and voltage setting in the ARRUS MATLAB API, #ARRUS-409.</p></li>
+<li><p>Fixed POSIX path handling #ARRUS-377.</p></li>
 </ul>
 </div></blockquote>
 </li>
