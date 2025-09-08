@@ -118,6 +118,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#color-doppler">Color Doppler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Tips</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quick-switching-between-sequences">Quick switching between sequences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-tx-voltage-level">Variable TX voltage level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#long-acquisitions-time-regime">Long acquisitions &amp; time regime</a></li>
 </ul>
 </li>
 </ul>
@@ -196,17 +198,22 @@
 <p>In the following parts of this chapter we will show you how to use
 the ARRUS software to communicate with the system in order to:</p>
 <ul class="simple">
-<li><p>program the transmission/reception (TX/RX) sequence and reconstruction,</p></li>
+<li><p>program the sequence of transmission/reception events (TX/RX) and reconstruction,</p></li>
 <li><p>acquire raw RF data,</p></li>
 <li><p>acquire reconstructed B-mode data,</p></li>
-<li><p>obtain a real-time B-mode imaging.</p></li>
+<li><p>obtain a real-time RF/B-mode/Color Doppler display,</p></li>
+<li><p>deal with typical issues (time regime, quick switching between sequences, varying tx voltage, etc.).</p></li>
 </ul>
 <p>The source code of the ready-to-run examples can be found in examples directory:</p>
 <ul class="simple">
-<li><p>Us4R_control_bmodePwi - for B-Mode imaging using Plane Waves,</p></li>
-<li><p>Us4R_control_bmodeDwi - for B-Mode imaging using Diverging Waves,</p></li>
-<li><p>Us4R_control_bmodeLin - for B-Mode imaging using classical Line-by-line imaging,</p></li>
-<li><p>Us4R_control_colorPwi - for B-Mode &amp; Color Doppler imaging using Plane Waves.</p></li>
+<li><p>rawRfPwi - for raw RF data acquisition,</p></li>
+<li><p>bmodePwi - for B-Mode imaging using synthetic aperture &amp; Plane Waves,</p></li>
+<li><p>bmodeDwi - for B-Mode imaging using synthetic aperture &amp; Diverging Waves,</p></li>
+<li><p>bmodeLin - for B-Mode imaging using conventional focused line-by-line imaging,</p></li>
+<li><p>colorPwi - for B-Mode &amp; Color Doppler imaging using synthetic aperture &amp; Plane Waves,</p></li>
+<li><p>subSequence - for uploading multiple sequences and quick switching between them,</p></li>
+<li><p>longAcquisition - for long acquisitions and maintaining time regime,</p></li>
+<li><p>txVoltageLevels - for using different voltage levels for individual tx pulses.</p></li>
 </ul>
 <p>For more information on the parameters of individual functions please refer
 to section <a class="reference internal" href="api.html#arrus-api"><span class="std std-ref">API Reference</span></a>.</p>
@@ -302,8 +309,8 @@ class. The name-value input argument pairs allow you to control various aspects 
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rec</span> <span class="p">=</span> <span class="n">Reconstruction</span><span class="p">(</span><span class="s">&#39;xGrid&#39;</span><span class="p">,</span>            <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mf">0.10</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
                      <span class="s">&#39;zGrid&#39;</span><span class="p">,</span>            <span class="p">(</span>  <span class="mi">0</span><span class="p">:</span><span class="mf">0.10</span><span class="p">:</span><span class="mi">50</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
                      <span class="c">... % Optional parameters</span>
-                     <span class="s">&#39;bmodeRxTangLim&#39;</span><span class="p">,</span>   <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span> <span class="mf">0.5</span><span class="p">],</span> <span class="c">...</span>
-                     <span class="s">&#39;rxApod&#39;</span><span class="p">,</span>           <span class="n">hamming</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c">...</span>
+                     <span class="s">&#39;bmodeRxTangLim&#39;</span><span class="p">,</span>   <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span> <span class="mf">1.0</span><span class="p">],</span> <span class="c">...</span>
+                     <span class="s">&#39;rxApod&#39;</span><span class="p">,</span>           <span class="n">hamming</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span> <span class="c">...</span>
                      <span class="p">);</span>
 </pre></div>
 </div>
@@ -345,7 +352,7 @@ sequence, you need to pass the reconstruction object to the system:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">us</span><span class="p">.</span><span class="n">setReconstruction</span><span class="p">(</span><span class="n">rec</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Assigning the reconstruction to a selected sequence works until the next <code class="docutils literal notranslate"><span class="pre">selectSequence</span></code> call.</p>
+<p>The assignment of the reconstruction to a selected sequence works until the next <code class="docutils literal notranslate"><span class="pre">selectSequence</span></code> call.</p>
 </div>
 <div class="section" id="running-the-operations">
 <h3>Running the operations<a class="headerlink" href="#running-the-operations" title="Permalink to this headline">¶</a></h3>
@@ -429,7 +436,7 @@ For various ‘txFocus’ values we can get focused wave (finite positive values
 <img alt="../_images/txAng.png" src="../_images/txAng.png" />
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">‘txAngle’ set to -15*pi/180 (left), 0*pi/180 (middle), and 15*pi/180 (right).</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
-<p>Changing the ‘txApertureCenter’ and ‘txCenterElement’ move the aperture center along the probe surface.</p>
+<p>Changing the ‘txApertureCenter’ and ‘txCenterElement’ moves the aperture center along the probe surface.</p>
 <div class="figure align-default" id="id5">
 <img alt="../_images/txCent.png" src="../_images/txCent.png" />
 <p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">‘txApertureCenter’ set to -15e-3 (left), 0e-3 (middle), and 15e-3 (right).</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
@@ -575,6 +582,8 @@ with all the probe elements as well (TX/RX aperture centered at the probe center
 <img alt="../_images/color.png" src="../_images/color.png" />
 <p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Color Doppler image of the carotid artery</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
+<p>The source code of the ready-to-run example (colorPwi.m)
+can be found in the examples directory.</p>
 </div>
 <div class="section" id="id1">
 <h3>Tips<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -604,6 +613,92 @@ seq2 is selected using <code class="docutils literal notranslate"><span class="p
 <span class="n">rf</span> <span class="p">=</span> <span class="n">us</span><span class="p">.</span><span class="n">run</span><span class="p">;</span>
 </pre></div>
 </div>
+<p>The source code of the ready-to-run example (subSequence.m)
+can be found in the examples directory.</p>
+</div>
+<div class="section" id="variable-tx-voltage-level">
+<h3>Variable TX voltage level<a class="headerlink" href="#variable-tx-voltage-level" title="Permalink to this headline">¶</a></h3>
+<p>It was mentioned that some parameters of the <span class="xref std std-ref">arrus.CustomTxRxSequence</span>
+class can be defined as vectors providing values for each TX/RX event individually.
+Others must be defined as scalars as they are constant for all TX/RX events in a sequence.
+Well, the txVoltage parameter should be described individually, as it is somewhere between.
+You can define txVoltage in two ways:</p>
+<ul class="simple">
+<li><p>as a scalar v: the voltage range of all TX pulses will be from -v to +v.</p></li>
+<li><p>as a 2x2 matrix [vn1, vp1; vn2, vp2]: it defines two voltage ranges: first one from -vn1 to +vp1, and the second one from -vn2 to +vp2. Then, for each TX/RX event individually, we can select one of these voltage ranges using the ‘txVoltageId’ parameter. In the below example there is a sequence of plane waves transmissions. The odd ones (with TX angles of: -15,-5,+5,+15 deg) have txVoltageId equal 1, so their TX voltage ranges from -10 to 10 V. For the even ones (TX angle = 0 deg) txVoltageId equals 2, so their amplitude is from -20 to +20 V.</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span>   <span class="s">&#39;txFocus&#39;</span><span class="p">,</span>      <span class="nb">inf</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txAngle&#39;</span><span class="p">,</span>      <span class="p">[</span><span class="o">-</span><span class="mi">15</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">15</span> <span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txVoltage&#39;</span><span class="p">,</span>    <span class="p">[</span><span class="mi">10</span> <span class="mi">10</span><span class="p">;</span> <span class="n">20</span> <span class="s">20],</span> <span class="s">...</span>
+                            <span class="s">&#39;txVoltageId&#39;</span><span class="p">,</span>  <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">];</span>
+                            <span class="c">% some other parameters</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+<p>Note that all elements of the txVoltage matrix must be positive, and the
+values for the second voltage range must be higher than for the first one.</p>
+<p>The source code of the ready-to-run example (txVoltageLevels.m)
+can be found in the examples directory.</p>
+</div>
+<div class="section" id="long-acquisitions-time-regime">
+<h3>Long acquisitions &amp; time regime<a class="headerlink" href="#long-acquisitions-time-regime" title="Permalink to this headline">¶</a></h3>
+<p>In some applications it may be necessary to collect data at a high and
+undisturbed rate over a long period of time. There is a limit to the number
+of TX/RX events in a sequence. If the acquisition is short enough to be
+covered by a single TX/RX sequence, the time regime is maintained by design.
+Longer acquisitions may require a repeated executions of the sequence.</p>
+<p>Data acquired for a sequence execution are stored in a data buffer,
+occupying a single buffer element. Transfering the data from the buffer
+element to the host PC frees the buffer element. If the data are collected
+faster than they are transferred to the host PC, at some point there will
+be no free buffer elements for the new data to be stored into (buffer overflow).
+This, in turn, will result in breaking the time regime. The system can either
+wait for the buffer to be emptied, or can overwrite the data that were not
+transferred to the host PC yet (in Matlab this will cause an error).</p>
+<p>The example below highlights the parameters of the <span class="xref std std-ref">arrus.CustomTxRxSequence</span> class,
+that are critical for maintaining the time regime when the sequence is executed multiple times:</p>
+<ul class="simple">
+<li><p>workMode: must be set to “SYNC” (optionally “ASYNC” but buffer overflow will throw exceptions).</p></li>
+<li><p>bufferSize: larger buffer size can help absorb temporary problems with the data transfer to host PC. NOTE: increasing the bufferSize reduces the max. sequence length and increases the upload time.</p></li>
+<li><p>txPri: it must be adjusted so that it is &gt;= data transfer time.</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span>   <span class="s">&#39;workMode&#39;</span><span class="p">,</span>     <span class="s">&quot;SYNC&quot;</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;bufferSize&#39;</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txPri&#39;</span><span class="p">,</span>        <span class="mf">500e-6</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="c">% some other parameters</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+<p>The runLoop method of the <span class="xref std std-ref">arrus.Us4R</span> class offers a cineloop buffer
+functionality. This buffer is located on the host PC and is limited by its
+RAM capacity. This buffer should not be confused with the one defined in
+the <span class="xref std std-ref">arrus.CustomTxRxSequence</span> class, which is located in the Us4R
+system internal memory.
+To store the data in the host PC memory, the runLoop method should be called
+with the following additional arguments:</p>
+<ul class="simple">
+<li><p>bufferType: defines the data type to be collected: ‘none’,’raw’,’img’, or ‘all’;</p></li>
+<li><p>bufferMode: defines acquisition mode: ‘conc’ or ‘subs’, for the data acquisition being concurrent or subsequent to the preview, respectively;</p></li>
+<li><p>bufferSize: defines the number of acquisition executions to be stored in the buffer;</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">display</span> <span class="p">=</span> <span class="n">BModeDisplay</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="s">&#39;dynamicRange&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">80</span><span class="p">]);</span>
+
+<span class="p">[</span><span class="n">raw</span><span class="p">,</span><span class="n">img</span><span class="p">,</span><span class="n">sri</span><span class="p">]</span> <span class="p">=</span> <span class="n">us</span><span class="p">.</span><span class="n">runLoop</span><span class="p">(</span> <span class="p">@</span><span class="n">display</span><span class="p">.</span><span class="n">isOpen</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="p">@</span><span class="n">display</span><span class="p">.</span><span class="n">updateImg</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;bufferType&#39;</span><span class="p">,</span> <span class="s">&#39;all&#39;</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;bufferMode&#39;</span><span class="p">,</span> <span class="s">&#39;subs&#39;</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;bufferSize&#39;</span><span class="p">,</span> <span class="mi">1000</span> <span class="c">...</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+<p>The output of the runLoop method can contain:</p>
+<ul class="simple">
+<li><p>raw: raw data (if bufferType was set to ‘raw’ or ‘all’);</p></li>
+<li><p>img: image data (if bufferType was set to ‘img’ or ‘all’);</p></li>
+<li><p>sri: sequence repeting intervals for the acquired data;</p></li>
+</ul>
+<p>The source code of the ready-to-run example (longAcquisition.m)
+can be found in the examples directory.</p>
 </div>
 </div>
 </div>
