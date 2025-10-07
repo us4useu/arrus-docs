@@ -1,0 +1,762 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples &mdash; ARRUS (matlab) 0.13.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Reference" href="api.html" />
+    <link rel="prev" title="User Guide" href="user_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ARRUS (matlab)
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions.html">Glossary and assumptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#operations">Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tx-rx-sequence">TX/RX sequence</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interchangeability-of-parameters">Interchangeability of parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scalar-vector-parameters-sequence-length">Scalar/vector parameters, sequence length</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#typical-tx-rx-strategies">Typical TX/RX strategies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raw-data-format">Raw data format</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#reconstruction">Reconstruction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#running-operations-in-the-system">Running operations in the system</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-the-system">Preparing the system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-operations">Running the operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#specific-examples">Specific examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#beam-formation">Beam formation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compounding-scanning-strategies">Compounding/scanning strategies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linear-scanning">Linear scanning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#phased-angular-scanning">Phased (angular) scanning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-sequence">Custom sequence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#probe-geometry">Probe geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#color-doppler">Color Doppler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-switching-between-sequences">Quick switching between sequences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-tx-voltage-level">Variable TX voltage level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#long-acquisitions-time-regime">Long acquisitions &amp; time regime</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc/acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/release_notes.html">Release notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ARRUS (matlab)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>In the following parts of this chapter we will show you how to use
+the ARRUS software to communicate with the system in order to:</p>
+<ul class="simple">
+<li><p>program the sequence of transmission/reception events (TX/RX) and reconstruction,</p></li>
+<li><p>acquire raw RF data,</p></li>
+<li><p>acquire reconstructed B-mode data,</p></li>
+<li><p>obtain a real-time RF/B-mode/Color Doppler display,</p></li>
+<li><p>deal with typical issues (time regime, quick switching between sequences, varying tx voltage, etc.).</p></li>
+</ul>
+<p>The source code of the ready-to-run examples can be found in examples directory:</p>
+<ul class="simple">
+<li><p>rawRfPwi - for raw RF data acquisition,</p></li>
+<li><p>bmodePwi - for B-Mode imaging using synthetic aperture &amp; Plane Waves,</p></li>
+<li><p>bmodeDwi - for B-Mode imaging using synthetic aperture &amp; Diverging Waves,</p></li>
+<li><p>bmodeLin - for B-Mode imaging using conventional focused line-by-line imaging,</p></li>
+<li><p>colorPwi - for B-Mode &amp; Color Doppler imaging using synthetic aperture &amp; Plane Waves,</p></li>
+<li><p>subSequence - for uploading multiple sequences and quick switching between them,</p></li>
+<li><p>longAcquisition - for long acquisitions and maintaining time regime,</p></li>
+<li><p>txVoltageLevels - for using different voltage levels for individual tx pulses.</p></li>
+</ul>
+<p>For more information on the parameters of individual functions please refer
+to section <a class="reference internal" href="api.html#arrus-api"><span class="std std-ref">API Reference</span></a>.</p>
+<div class="section" id="operations">
+<h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
+<p>In ARRUS, you can define and run the <strong>operations</strong> available for the
+supported hardware. Transmission/reception (TX/RX) sequences and B-mode image
+reconstruction are examples of such operations.</p>
+<div class="section" id="tx-rx-sequence">
+<h3>TX/RX sequence<a class="headerlink" href="#tx-rx-sequence" title="Permalink to this headline">¶</a></h3>
+<p>To define a TX/RX sequence, you should create an instance of <span class="xref std std-ref">arrus.CustomTxRxSequence</span> class.
+The name-value input argument pairs allow you to control various aspects of TX/RX.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span><span class="s">&#39;txApertureCenter&#39;</span><span class="p">,</span> <span class="mf">0e-3</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txApertureSize&#39;</span><span class="p">,</span>   <span class="mi">128</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;rxApertureCenter&#39;</span><span class="p">,</span> <span class="mf">0e-3</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;rxApertureSize&#39;</span><span class="p">,</span>   <span class="mi">128</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txFocus&#39;</span><span class="p">,</span>          <span class="nb">inf</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txAngle&#39;</span><span class="p">,</span>          <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;speedOfSound&#39;</span><span class="p">,</span>     <span class="mi">1540</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txFrequency&#39;</span><span class="p">,</span>      <span class="mf">6.5e6</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txNPeriods&#39;</span><span class="p">,</span>       <span class="mi">2</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txVoltage&#39;</span><span class="p">,</span>        <span class="mi">20</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;rxDepthRange&#39;</span><span class="p">,</span>     <span class="mf">50e-3</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="c">... % Optional parameters</span>
+                         <span class="s">&#39;hwDdcEnable&#39;</span><span class="p">,</span>      <span class="n">true</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;decimation&#39;</span><span class="p">,</span>       <span class="mi">10</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;nRepetitions&#39;</span><span class="p">,</span>     <span class="mi">1</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txPri&#39;</span><span class="p">,</span>            <span class="mf">400e-6</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;tgcStart&#39;</span><span class="p">,</span>         <span class="mi">14</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;tgcSlope&#39;</span><span class="p">,</span>         <span class="mi">200</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txInvert&#39;</span><span class="p">,</span>         <span class="n">false</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>The above example shows how to create the CustomTxRxSequence object with a complete set of
+input parameters. First 11 parameters are obligatory, others are optional.</p>
+<div class="section" id="interchangeability-of-parameters">
+<h4>Interchangeability of parameters<a class="headerlink" href="#interchangeability-of-parameters" title="Permalink to this headline">¶</a></h4>
+<p>For your convenience:</p>
+<ul class="simple">
+<li><p>txApertureCenter [m] can be replaced with txCenterElement [elem],</p></li>
+<li><p>rxApertureCenter [m] can be replaced with rxCenterElement [elem],</p></li>
+<li><p>rxDepthRange [m] can be replaced with rxNSamples [samp].</p></li>
+</ul>
+</div>
+<div class="section" id="scalar-vector-parameters-sequence-length">
+<h4>Scalar/vector parameters, sequence length<a class="headerlink" href="#scalar-vector-parameters-sequence-length" title="Permalink to this headline">¶</a></h4>
+<p>The following parameters can be scalars or vectors:</p>
+<ul class="simple">
+<li><p>txApertureCenter or txCenterElement,</p></li>
+<li><p>txApertureSize,</p></li>
+<li><p>rxApertureCenter or rxCenterElement,</p></li>
+<li><p>txFocus,</p></li>
+<li><p>txAngle,</p></li>
+<li><p>txFrequency,</p></li>
+<li><p>txNPeriods,</p></li>
+<li><p>txInvert.</p></li>
+</ul>
+<p>If any of them is a vector, then its length determines the number of TXs in the sequence.
+All the other parameters must be scalars or vectors of the same length. If any parameter
+is defined as a scalar, then it is assumed to be constant over the whole sequence.
+If all parameters are scalars, then the sequence contains a single TX/RX.</p>
+<p>All the remaining parameters must be scalars, i.e. they are constant for every TX/RX.</p>
+</div>
+<div class="section" id="typical-tx-rx-strategies">
+<h4>Typical TX/RX strategies<a class="headerlink" href="#typical-tx-rx-strategies" title="Permalink to this headline">¶</a></h4>
+<p>To program the typical TX waves:</p>
+<ul class="simple">
+<li><p>focused wave: set txFocus to positive finite values [m],</p></li>
+<li><p>diverging wave: set txFocus to negative finite values [m],</p></li>
+<li><p>plane wave: set txFocus to inf (as in the code example above).</p></li>
+</ul>
+<p>To program the typical scanning strategies:</p>
+<ul class="simple">
+<li><p>phased scanning: set txAngle to a vector of scanning angles [rad] (as in the code example above),</p></li>
+<li><p>scanning TX aperture: set txApertureCenter [m] or txCenterElement [elem] to a vector of TX aperture positions,</p></li>
+<li><p>scanning RX aperture: set rxApertureCenter [m] or rxCenterElement [elem] to a vector of RX aperture positions,</p></li>
+</ul>
+</div>
+<div class="section" id="raw-data-format">
+<h4>Raw data format<a class="headerlink" href="#raw-data-format" title="Permalink to this headline">¶</a></h4>
+<p>The collected raw data format depends on the hwDdcEnable setting:</p>
+<ul class="simple">
+<li><p>set hwDdcEnable to <strong>false</strong> to acquire the original raw RF data,</p></li>
+<li><p>set hwDdcEnable to <strong>true</strong> to reduce the data stream, the collected data is in complex IQ format.</p></li>
+</ul>
+<p>For more information, see the documentation of available <span class="xref std std-ref">arrus-api-sequences</span>.</p>
+</div>
+</div>
+<div class="section" id="reconstruction">
+<h3>Reconstruction<a class="headerlink" href="#reconstruction" title="Permalink to this headline">¶</a></h3>
+<p>To define how to perform B-mode image reconstruction, you should create an instance of <span class="xref std std-ref">arrus.Reconstruction</span>
+class. The name-value input argument pairs allow you to control various aspects of reconstruction.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rec</span> <span class="p">=</span> <span class="n">Reconstruction</span><span class="p">(</span><span class="s">&#39;xGrid&#39;</span><span class="p">,</span>            <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mf">0.10</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
+                     <span class="s">&#39;zGrid&#39;</span><span class="p">,</span>            <span class="p">(</span>  <span class="mi">0</span><span class="p">:</span><span class="mf">0.10</span><span class="p">:</span><span class="mi">50</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
+                     <span class="c">... % Optional parameters</span>
+                     <span class="s">&#39;bmodeRxTangLim&#39;</span><span class="p">,</span>   <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span> <span class="mf">1.0</span><span class="p">],</span> <span class="c">...</span>
+                     <span class="s">&#39;rxApod&#39;</span><span class="p">,</span>           <span class="n">hamming</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span> <span class="c">...</span>
+                     <span class="p">);</span>
+</pre></div>
+</div>
+<p>The xGrid and zGrid inputs define the reconstruction grid and thus they are obligatory. Other inputs are optional
+and allow you to set the size of the dynamic RX aperture (bmodeRxTangLim) and the RX apodization function (rxApod).
+There are many more optional inputs for setting the raw data filtration, reconstruction mode, Color Doppler, etc.</p>
+</div>
+</div>
+<div class="section" id="running-operations-in-the-system">
+<h2>Running operations in the system<a class="headerlink" href="#running-operations-in-the-system" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="preparing-the-system">
+<h3>Preparing the system<a class="headerlink" href="#preparing-the-system" title="Permalink to this headline">¶</a></h3>
+<p>First, you should create a handle to the system on which you want to perform operations. To communicate
+with the Us4R system, create an instance of the Us4R class. You will need to indicate a prototxt config file
+containing the information on the probe, adapter, gains, etc. It is <strong>extremly important</strong> to make sure that the
+<strong>system configuration agrees with the content of the config file</strong>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">us</span>  <span class="s">=</span> <span class="s">Us4R(&#39;configFile&#39;,</span> <span class="s">&#39;us4r.prototxt&#39;)</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>To run the TX/RX sequence and the reconstruction (optionally), upload them onto the system:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">us</span><span class="p">.</span><span class="n">upload</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">rec</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Depending on the sequence length, its upload can take a while. In the use cases that at some point need switching
+to another sequence (uploading a new sequence), this upload time can significantly delay the switching. To overcome
+this you can upload multiple sequences at once using <code class="docutils literal notranslate"><span class="pre">uploadSequence</span></code> method:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">us</span><span class="p">.</span><span class="n">uploadSequence</span><span class="p">([</span><span class="n">seq</span><span class="p">,</span> <span class="n">anotherSeq</span><span class="p">,</span> <span class="n">yetAnotherSeq</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>The first of the uploaded sequences is selected for execution by default. You can select
+any other sequence using its index from the vector of sequences passed to <code class="docutils literal notranslate"><span class="pre">uploadSequence</span></code>
+(indices start from 1):</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">us</span><span class="p">.</span><span class="n">selectSequence</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c">% selects anotherSeq</span>
+</pre></div>
+</div>
+<p>Note that unlike in case of <code class="docutils literal notranslate"><span class="pre">upload</span></code>, <code class="docutils literal notranslate"><span class="pre">uploadSequence</span></code> does not assign a reconstruction object
+to the uploaded sequences. If you want to do a reconstruction on the data acquired using the selected
+sequence, you need to pass the reconstruction object to the system:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">us</span><span class="p">.</span><span class="n">setReconstruction</span><span class="p">(</span><span class="n">rec</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The assignment of the reconstruction to a selected sequence works until the next <code class="docutils literal notranslate"><span class="pre">selectSequence</span></code> call.</p>
+</div>
+<div class="section" id="running-the-operations">
+<h3>Running the operations<a class="headerlink" href="#running-the-operations" title="Permalink to this headline">¶</a></h3>
+<p>If you only want to run the uploaded/selected operation once (for example, to acquire a single RF frame),
+use the <code class="docutils literal notranslate"><span class="pre">run</span></code> function. It will return the raw RF data (or IQ data if the hwDdcEnable is set to true)
+and the reconstructed image data if the reconstruction was uploaded together with the TX/RX sequence.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">rf</span><span class="p">,</span><span class="n">img</span><span class="p">]</span> <span class="p">=</span> <span class="n">us</span><span class="p">.</span><span class="n">run</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If you want to run the uploaded operation in a loop e.g. for real-time imaging, use the <code class="docutils literal notranslate"><span class="pre">runLoop</span></code> function together
+with a display-dedicated object. We prepared two classes of display objects: <span class="xref std std-ref">arrus.BModeDisplay</span> and
+<span class="xref std std-ref">arrus.DuplexDisplay</span> (for simultaneous display of B-mode and Color Doppler).</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">display</span> <span class="p">=</span> <span class="n">BModeDisplay</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="s">&#39;dynamicRange&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span> <span class="mi">70</span><span class="p">]);</span>
+<span class="n">us</span><span class="p">.</span><span class="n">runLoop</span><span class="p">(@</span><span class="n">display</span><span class="p">.</span><span class="n">isOpen</span><span class="p">,</span> <span class="p">@</span><span class="n">display</span><span class="p">.</span><span class="n">updateImg</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">display</span> <span class="p">=</span> <span class="n">DuplexDisplay</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="s">&#39;dynamicRange&#39;</span><span class="p">,</span>    <span class="p">[</span><span class="mi">10</span> <span class="mi">70</span><span class="p">],</span> <span class="c">...</span>
+                             <span class="s">&#39;powerThreshold&#39;</span><span class="p">,</span>  <span class="mi">20</span><span class="p">);</span>
+<span class="n">us</span><span class="p">.</span><span class="n">runLoop</span><span class="p">(@</span><span class="n">display</span><span class="p">.</span><span class="n">isOpen</span><span class="p">,</span> <span class="p">@</span><span class="n">display</span><span class="p">.</span><span class="n">updateImg</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Below is an example of image from a wire phantom obtained and displayed with use of the CustomTxRxSequence,
+Reconstruction, and BModeDisplay objects defined as above.</p>
+<div class="figure align-default" id="id2">
+<img alt="../_images/bmode_pwi_phantom_wires.png" src="../_images/bmode_pwi_phantom_wires.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Image of the ATS549 phantom (wires part) obtained with use of the Plane Wave Imaging.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>See the <a class="reference internal" href="api.html#arrus-us4r"><span class="std std-ref">High-level MATLAB scripts</span></a> docs for more information.</p>
+</div>
+<div class="section" id="tips">
+<h3>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h3>
+<p>If you have the object of class Us4R, then you can easily obtain the number of probe elements using getNProbeElem method:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">us</span><span class="p">.</span><span class="n">getNProbeElem</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="specific-examples">
+<h2>Specific examples<a class="headerlink" href="#specific-examples" title="Permalink to this headline">¶</a></h2>
+<p>To present the typical TX/RX issues (except for Color Doppler example), we will use a very simple Reconstruction object
+with only the reconstruction grid defined (other parameters are assigned default values).</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rec</span> <span class="p">=</span> <span class="n">Reconstruction</span><span class="p">(</span><span class="s">&#39;xGrid&#39;</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">:</span><span class="mf">0.10</span><span class="p">:</span><span class="mi">30</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
+                     <span class="s">&#39;zGrid&#39;</span><span class="p">,</span> <span class="p">(</span>  <span class="mi">0</span><span class="p">:</span><span class="mf">0.10</span><span class="p">:</span><span class="mi">40</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-3</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>As the reconstruction operates only on the image areas covered by the TX beams, the resulting images will give us
+insight into the shape, orientation, and position of the TX beams.</p>
+<div class="section" id="beam-formation">
+<h3>Beam formation<a class="headerlink" href="#beam-formation" title="Permalink to this headline">¶</a></h3>
+<p>The following parameters determine the beam shape, position and orientation:</p>
+<ul class="simple">
+<li><p>txFocus [m] - distance between the TX aperture center and the focal point,</p></li>
+<li><p>txAngle [rad] - angle between the TX beam and the normal to the probe surface at the TX aperture center,</p></li>
+<li><p>txApertureCenter [m] (or txCenterElement [elem]) - position of the TX aperture center along the probe surface,</p></li>
+<li><p>txApertureSize [elem] - size of the TX aperture.</p></li>
+</ul>
+<p>Let the following to be our default set of sequence parameters:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span><span class="s">&#39;txApertureCenter&#39;</span><span class="p">,</span> <span class="mf">0e-3</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txApertureSize&#39;</span><span class="p">,</span>   <span class="mi">48</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;rxApertureCenter&#39;</span><span class="p">,</span> <span class="mf">0e-3</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;rxApertureSize&#39;</span><span class="p">,</span>   <span class="n">us</span><span class="p">.</span><span class="n">getNProbeElem</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txFocus&#39;</span><span class="p">,</span>          <span class="nb">inf</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txAngle&#39;</span><span class="p">,</span>          <span class="mi">0</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;speedOfSound&#39;</span><span class="p">,</span>     <span class="mi">1540</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txFrequency&#39;</span><span class="p">,</span>      <span class="mf">5e6</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txNPeriods&#39;</span><span class="p">,</span>       <span class="mi">2</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;txVoltage&#39;</span><span class="p">,</span>        <span class="mi">10</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;rxDepthRange&#39;</span><span class="p">,</span>     <span class="mf">50e-3</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;tgcStart&#39;</span><span class="p">,</span>         <span class="mi">14</span><span class="p">,</span> <span class="c">...</span>
+                         <span class="s">&#39;tgcSlope&#39;</span><span class="p">,</span>         <span class="mi">200</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>Now, let us manipulate the parameters determining the TX beam.
+For various ‘txFocus’ values we can get focused wave (finite positive values), plane wave (infinity), or diverging wave (finite negative values):</p>
+<div class="figure align-default" id="id3">
+<img alt="../_images/txFoc.png" src="../_images/txFoc.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">‘txFocus’ set to 20e-3 (left), inf (middle), and -10e-3 (right).</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>When changing the ‘txAngle’ the TX beam axis is angled clockwise (negative values) or counter-clockwise (positive values):</p>
+<div class="figure align-default" id="id4">
+<img alt="../_images/txAng.png" src="../_images/txAng.png" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">‘txAngle’ set to -15*pi/180 (left), 0*pi/180 (middle), and 15*pi/180 (right).</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>Changing the ‘txApertureCenter’ and ‘txCenterElement’ moves the aperture center along the probe surface.</p>
+<div class="figure align-default" id="id5">
+<img alt="../_images/txCent.png" src="../_images/txCent.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">‘txApertureCenter’ set to -15e-3 (left), 0e-3 (middle), and 15e-3 (right).</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>The ‘txApertureSize’ determines how many elements are included in the TX aperture.</p>
+<div class="figure align-default" id="id6">
+<img alt="../_images/txSize.png" src="../_images/txSize.png" />
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">‘txApertureSize’ set to 48 (left), 24 (middle), and 12 (right).</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>In case of a combination of aperture position and size resulting in TX aperture extending beyond the probe, the TX aperture is clipped.</p>
+</div>
+<div class="section" id="compounding-scanning-strategies">
+<h3>Compounding/scanning strategies<a class="headerlink" href="#compounding-scanning-strategies" title="Permalink to this headline">¶</a></h3>
+<p>The above examples contained single TXs. It is however typical to use multiple emissions to image wider area (scanning), improve image quality (compounding), etc.
+The basic scanning strategies will be presented using TX/RX sequences of plane waves emitted from a narrow TX aperture with coarse scanning step, to clearly visualize the process.</p>
+<div class="section" id="linear-scanning">
+<h4>Linear scanning<a class="headerlink" href="#linear-scanning" title="Permalink to this headline">¶</a></h4>
+<p>In the linear scanning the TX aperture moves along the probe surface. Usually, the RX aperture does the same. Other parameters are constant:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span>   <span class="s">&#39;txApertureCenter&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txApertureSize&#39;</span><span class="p">,</span>   <span class="mi">32</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;rxApertureCenter&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;rxApertureSize&#39;</span><span class="p">,</span>   <span class="mi">64</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txFocus&#39;</span><span class="p">,</span>          <span class="nb">inf</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txAngle&#39;</span><span class="p">,</span>          <span class="mi">0</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="c">% some other parameters</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span>   <span class="s">&#39;txCenterElement&#39;</span><span class="p">,</span>  <span class="mi">1</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="n">us</span><span class="p">.</span><span class="n">getNProbeElem</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txApertureSize&#39;</span><span class="p">,</span>   <span class="mi">32</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;rxCenterElement&#39;</span><span class="p">,</span>  <span class="mi">1</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="n">us</span><span class="p">.</span><span class="n">getNProbeElem</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;rxApertureSize&#39;</span><span class="p">,</span>   <span class="mi">64</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txFocus&#39;</span><span class="p">,</span>          <span class="nb">inf</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txAngle&#39;</span><span class="p">,</span>          <span class="mi">0</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="c">% some other parameters</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="phased-angular-scanning">
+<h4>Phased (angular) scanning<a class="headerlink" href="#phased-angular-scanning" title="Permalink to this headline">¶</a></h4>
+<p>In the phased scanning the aperture position is constant, but the TX angle varies.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span>   <span class="s">&#39;txApertureCenter&#39;</span><span class="p">,</span> <span class="mf">0e-3</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txApertureSize&#39;</span><span class="p">,</span>   <span class="mi">32</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;rxApertureCenter&#39;</span><span class="p">,</span> <span class="mf">0e-3</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;rxApertureSize&#39;</span><span class="p">,</span>   <span class="mi">64</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txFocus&#39;</span><span class="p">,</span>          <span class="nb">inf</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txAngle&#39;</span><span class="p">,</span>          <span class="p">[</span><span class="o">-</span><span class="mi">30</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="c">% some other parameters</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-sequence">
+<h4>Custom sequence<a class="headerlink" href="#custom-sequence" title="Permalink to this headline">¶</a></h4>
+<p>Typical imaging schemes use consistent types of waves (e.g. plane wave only) and scanning approaches (e.g. angular scanning only).
+However, nothing stops us from designing a TX sequence in which all the discussed parameters are varying.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span>   <span class="s">&#39;txApertureCenter&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span> <span class="mi">0</span> <span class="mi">20</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txApertureSize&#39;</span><span class="p">,</span>   <span class="p">[</span><span class="mi">32</span> <span class="mi">16</span> <span class="mi">8</span><span class="p">],</span> <span class="c">...</span>
+                            <span class="s">&#39;txFocus&#39;</span><span class="p">,</span>          <span class="p">[</span><span class="mi">30</span> <span class="nb">inf</span> <span class="o">-</span><span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txAngle&#39;</span><span class="p">,</span>          <span class="p">[</span><span class="o">-</span><span class="mi">10</span> <span class="mi">0</span> <span class="mi">10</span><span class="p">]</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="c">% some other parameters</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="id7">
+<img alt="../_images/txScan.png" src="../_images/txScan.png" />
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Example of linear scan (left), angular/phased scan (middle), and custom scan (right).</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="probe-geometry">
+<h3>Probe geometry<a class="headerlink" href="#probe-geometry" title="Permalink to this headline">¶</a></h3>
+<p>What seems clear for linear array, may become not that obvious in the case of convex probe (or any other curved array).
+To program the TX/RX sequence for a convex probe correctly, one has to remember that:</p>
+<ul class="simple">
+<li><p>TX/RX aperture positions are measured <strong>along the probe surface</strong>, not necessarily along the x-axis (horizontal axis),</p></li>
+<li><p>TX angles are measured <strong>relative to the normal to the head surface at the center of the TX aperture</strong>,</p></li>
+<li><p>TX focuses are measured <strong>relative to the center of the TX aperture</strong>,</p></li>
+<li><p>the z-coordinate is adjusted so that z=0 refers to the most withdrawn elements of the probe, which in case of the convex probes are their side elements.</p></li>
+</ul>
+<p>For example, if we set the TX as follows:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span>   <span class="s">&#39;txApertureCenter&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mf">20e-3</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txApertureSize&#39;</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txFocus&#39;</span><span class="p">,</span>          <span class="nb">inf</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txAngle&#39;</span><span class="p">,</span>          <span class="mi">0</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="c">% some other parameters</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+<p>then we obtain the following behaviour depending on the geometry of the probe:</p>
+<div class="figure align-default" id="id8">
+<img alt="../_images/txGeom.png" src="../_images/txGeom.png" />
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Example of the probe geometry influence on the programmed TX beams: linear probe (left) and convex probe (right).</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="color-doppler">
+<h3>Color Doppler<a class="headerlink" href="#color-doppler" title="Permalink to this headline">¶</a></h3>
+<p>To enable the Color Doppler mode, one has to:</p>
+<ul class="simple">
+<li><p>create the TX/RX Sequence that will <strong>collect the echoes the same way a given number of times</strong>,</p></li>
+<li><p>create the Reconstruction that will enable and define the Doppler processing.</p></li>
+</ul>
+<p>Below is an example of a sequence that will acquire the data for both: B-mode and Color Doppler. In both modes
+the sequence utilizes plane waves (‘txFocus’ set to inf) emitted from the whole aperture of the probe, and the echoes are recorded
+with all the probe elements as well (TX/RX aperture centered at the probe center x=0, aperture size equal to number of probe elements).</p>
+<ul class="simple">
+<li><p>In case of B-mode the plane waves will be emitted at 7 different angles for compounding purposes: (-15:5:15)*pi/180.</p></li>
+<li><p>In case of Color Doppler there will be 32 plane waves, all emitted at 15*pi/180 angle.</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span>   <span class="s">&#39;txApertureCenter&#39;</span><span class="p">,</span> <span class="mf">0e-3</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txApertureSize&#39;</span><span class="p">,</span>   <span class="n">us</span><span class="p">.</span><span class="n">getNProbeElem</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;rxApertureCenter&#39;</span><span class="p">,</span> <span class="mf">0e-3</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;rxApertureSize&#39;</span><span class="p">,</span>   <span class="n">us</span><span class="p">.</span><span class="n">getNProbeElem</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txFocus&#39;</span><span class="p">,</span>          <span class="nb">inf</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txAngle&#39;</span><span class="p">,</span>          <span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">32</span><span class="p">)]</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="c">% some other parameters</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+<p>The Reconstruction parameters, apart from the reconstruction grid, must contain:</p>
+<ul class="simple">
+<li><p>Color Doppler enable flag (‘colorEnable’ set to true),</p></li>
+<li><p>frame identifiers: frames 1-7 are utilized by B-mode (‘bmodeFrames’ set to 1:7), the following 32 frames are used for Color Doppler (‘colorFrames’ set to 7+(1:32)),</p></li>
+<li><p>limits of RX tangents for Color Doppler reconstruction (‘colorRxTangLim’). The default is [-0.5 0.5]. It is reasonable to add an offset to make the RX beam angled the same way as the TX beam.</p></li>
+<li><p>coefficients of a high-pass Wall Clutter Filter (‘wcFilterBCoeff’ and ‘wcFilterACoeff’). Optionally there is a possibility to omit first n output samples of the filter (‘wcFiltInitSize’) to reduce the influence of its transient characteristics.</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">wcfB</span><span class="p">,</span> <span class="n">wcfA</span><span class="p">]</span> <span class="p">=</span> <span class="n">butter</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="s">&#39;high&#39;</span><span class="p">);</span>
+
+<span class="n">rec</span> <span class="p">=</span> <span class="n">Reconstruction</span><span class="p">(</span>   <span class="s">&#39;xGrid&#39;</span><span class="p">,</span>            <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mf">0.10</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
+                        <span class="s">&#39;zGrid&#39;</span><span class="p">,</span>            <span class="p">(</span>  <span class="mi">0</span><span class="p">:</span><span class="mf">0.10</span><span class="p">:</span><span class="mi">30</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="c">...</span>
+                        <span class="s">&#39;bmodeFrames&#39;</span><span class="p">,</span>      <span class="mi">1</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="c">...</span>
+                        <span class="s">&#39;colorEnable&#39;</span><span class="p">,</span>      <span class="n">true</span><span class="p">,</span> <span class="c">...</span>
+                        <span class="s">&#39;colorFrames&#39;</span><span class="p">,</span>      <span class="mi">7</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">32</span><span class="p">),</span> <span class="c">...</span>
+                        <span class="s">&#39;colorRxTangLim&#39;</span><span class="p">,</span>   <span class="nb">tan</span><span class="p">(</span><span class="mi">15</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span> <span class="mf">0.5</span><span class="p">],</span> <span class="c">...</span>
+                        <span class="s">&#39;wcFilterBCoeff&#39;</span><span class="p">,</span>   <span class="n">wcfB</span><span class="p">,</span> <span class="c">...</span>
+                        <span class="s">&#39;wcFilterACoeff&#39;</span><span class="p">,</span>   <span class="n">wcfA</span><span class="p">,</span> <span class="c">...</span>
+                        <span class="s">&#39;wcFiltInitSize&#39;</span><span class="p">,</span>   <span class="mi">8</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="id9">
+<img alt="../_images/color.png" src="../_images/color.png" />
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Color Doppler image of the carotid artery</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<p>The source code of the ready-to-run example (colorPwi.m)
+can be found in the examples directory.</p>
+</div>
+<div class="section" id="id1">
+<h3>Tips<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To obtain good Doppler signal it is suggested to use longer TX pulses (‘txNPeriods’ equal 4 or more).</p>
+<p>The Color Doppler scale corresponds to a range from -pi to pi [rad per sample]. To convert it to the Doppler frequencies,
+one has to know the Pulse Repetition Frequency (PRF) which is given by the formula: PRF = 1/txPri/nFirePerTx. ‘txPri’ is
+the time between physical emissions and is one of the parameters of the CustomTxRxSequence. nFirePerTx is the number of
+repeting the emissions needed to acquire the echoes with the programmed RX aperture (e.g. ‘rxApertureSize’ is 192, number
+of system RX channels is 64, then each TX must be repeated 3 times so that the 64-channel system can acquire 192-channel data).</p>
+</div>
+<div class="section" id="quick-switching-between-sequences">
+<h3>Quick switching between sequences<a class="headerlink" href="#quick-switching-between-sequences" title="Permalink to this headline">¶</a></h3>
+<p>Let’s assume that we want a live preview (using sequence seq1 and reconstruction rec1) immediately followed by a collection
+of raw data using another sequence (seq2). To avoid time delay due to uploading seq2 after closing the preview, all sequences
+should be uploaded together before running the preview, using <code class="docutils literal notranslate"><span class="pre">uploadSequence</span></code> method. First of the uploaded sequences (seq1)
+is selected by default, we just need to set the reconstruction parameters for it using <code class="docutils literal notranslate"><span class="pre">setReconstruction</span></code> method. To display
+the preview, a <code class="docutils literal notranslate"><span class="pre">BModeDisplay</span></code> object will be used.
+Now the system is ready for running live preview using the <code class="docutils literal notranslate"><span class="pre">runLoop</span></code> method. Immediately after closing the preview window,
+seq2 is selected using <code class="docutils literal notranslate"><span class="pre">selectSequence</span></code> and the raw data is collected using <code class="docutils literal notranslate"><span class="pre">run</span></code>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">us</span><span class="p">.</span><span class="n">uploadSequence</span><span class="p">([</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">]);</span>
+<span class="n">us</span><span class="p">.</span><span class="n">setReconstruction</span><span class="p">(</span><span class="n">rec1</span><span class="p">);</span>
+
+<span class="n">display</span> <span class="p">=</span> <span class="n">BModeDisplay</span><span class="p">(</span><span class="n">rec1</span><span class="p">,</span> <span class="s">&#39;dynamicRange&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span> <span class="mi">70</span><span class="p">]);</span>
+<span class="n">us</span><span class="p">.</span><span class="n">runLoop</span><span class="p">(@</span><span class="n">display</span><span class="p">.</span><span class="n">isOpen</span><span class="p">,</span> <span class="p">@</span><span class="n">display</span><span class="p">.</span><span class="n">updateImg</span><span class="p">);</span>
+
+<span class="n">us</span><span class="p">.</span><span class="n">selectSequence</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">rf</span> <span class="p">=</span> <span class="n">us</span><span class="p">.</span><span class="n">run</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The source code of the ready-to-run example (subSequence.m)
+can be found in the examples directory.</p>
+</div>
+<div class="section" id="variable-tx-voltage-level">
+<h3>Variable TX voltage level<a class="headerlink" href="#variable-tx-voltage-level" title="Permalink to this headline">¶</a></h3>
+<p>It was mentioned that some parameters of the <span class="xref std std-ref">arrus.CustomTxRxSequence</span>
+class can be defined as vectors providing values for each TX/RX event individually.
+Others must be defined as scalars as they are constant for all TX/RX events in a sequence.
+Well, the txVoltage parameter should be described individually, as it is somewhere between.
+You can define txVoltage in two ways:</p>
+<ul class="simple">
+<li><p>as a scalar v: the voltage range of all TX pulses will be from -v to +v.</p></li>
+<li><p>as a 2x2 matrix [vn1, vp1; vn2, vp2]: it defines two voltage ranges: first one from -vn1 to +vp1, and the second one from -vn2 to +vp2. Then, for each TX/RX event individually, we can select one of these voltage ranges using the ‘txVoltageId’ parameter. In the below example there is a sequence of plane waves transmissions. The odd ones (with TX angles of: -15,-5,+5,+15 deg) have txVoltageId equal 1, so their TX voltage ranges from -10 to 10 V. For the even ones (TX angle = 0 deg) txVoltageId equals 2, so their amplitude is from -20 to +20 V.</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span>   <span class="s">&#39;txFocus&#39;</span><span class="p">,</span>      <span class="nb">inf</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txAngle&#39;</span><span class="p">,</span>      <span class="p">[</span><span class="o">-</span><span class="mi">15</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">15</span> <span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txVoltage&#39;</span><span class="p">,</span>    <span class="p">[</span><span class="mi">10</span> <span class="mi">10</span><span class="p">;</span> <span class="n">20</span> <span class="s">20],</span> <span class="s">...</span>
+                            <span class="s">&#39;txVoltageId&#39;</span><span class="p">,</span>  <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">];</span>
+                            <span class="c">% some other parameters</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+<p>Note that all elements of the txVoltage matrix must be positive, and the
+values for the second voltage range must be higher than for the first one.</p>
+<p>The source code of the ready-to-run example (txVoltageLevels.m)
+can be found in the examples directory.</p>
+</div>
+<div class="section" id="long-acquisitions-time-regime">
+<h3>Long acquisitions &amp; time regime<a class="headerlink" href="#long-acquisitions-time-regime" title="Permalink to this headline">¶</a></h3>
+<p>In some applications it may be necessary to collect data at a high and
+undisturbed rate over a long period of time. There is a limit to the number
+of TX/RX events in a sequence. If the acquisition is short enough to be
+covered by a single TX/RX sequence, the time regime is maintained by design.
+Longer acquisitions may require a repeated executions of the sequence.</p>
+<p>Data acquired for a sequence execution are stored in a data buffer,
+occupying a single buffer element. Transfering the data from the buffer
+element to the host PC frees the buffer element. If the data are collected
+faster than they are transferred to the host PC, at some point there will
+be no free buffer elements for the new data to be stored into (buffer overflow).
+This, in turn, will result in breaking the time regime. The system can either
+wait for the buffer to be emptied, or can overwrite the data that were not
+transferred to the host PC yet (in Matlab this will cause an error).</p>
+<p>The example below highlights the parameters of the <span class="xref std std-ref">arrus.CustomTxRxSequence</span> class,
+that are critical for maintaining the time regime when the sequence is executed multiple times:</p>
+<ul class="simple">
+<li><p>workMode: must be set to “SYNC” (optionally “ASYNC” but buffer overflow will throw exceptions).</p></li>
+<li><p>bufferSize: larger buffer size can help absorb temporary problems with the data transfer to host PC. NOTE: increasing the bufferSize reduces the max. sequence length and increases the upload time.</p></li>
+<li><p>txPri: it must be adjusted so that it is &gt;= data transfer time.</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="p">=</span> <span class="n">CustomTxRxSequence</span><span class="p">(</span>   <span class="s">&#39;workMode&#39;</span><span class="p">,</span>     <span class="s">&quot;SYNC&quot;</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;bufferSize&#39;</span><span class="p">,</span>   <span class="mi">8</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;txPri&#39;</span><span class="p">,</span>        <span class="mf">500e-6</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="c">% some other parameters</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+<p>The runLoop method of the <span class="xref std std-ref">arrus.Us4R</span> class offers a cineloop buffer
+functionality. This buffer is located on the host PC and is limited by its
+RAM capacity. This buffer should not be confused with the one defined in
+the <span class="xref std std-ref">arrus.CustomTxRxSequence</span> class, which is located in the Us4R
+system internal memory.
+To store the data in the host PC memory, the runLoop method should be called
+with the following additional arguments:</p>
+<ul class="simple">
+<li><p>bufferType: defines the data type to be collected: ‘none’,’raw’,’img’, or ‘all’;</p></li>
+<li><p>bufferMode: defines acquisition mode: ‘conc’ or ‘subs’, for the data acquisition being concurrent or subsequent to the preview, respectively;</p></li>
+<li><p>bufferSize: defines the number of acquisition executions to be stored in the buffer;</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">display</span> <span class="p">=</span> <span class="n">BModeDisplay</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="s">&#39;dynamicRange&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">80</span><span class="p">]);</span>
+
+<span class="p">[</span><span class="n">raw</span><span class="p">,</span><span class="n">img</span><span class="p">,</span><span class="n">sri</span><span class="p">]</span> <span class="p">=</span> <span class="n">us</span><span class="p">.</span><span class="n">runLoop</span><span class="p">(</span> <span class="p">@</span><span class="n">display</span><span class="p">.</span><span class="n">isOpen</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="p">@</span><span class="n">display</span><span class="p">.</span><span class="n">updateImg</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;bufferType&#39;</span><span class="p">,</span> <span class="s">&#39;all&#39;</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;bufferMode&#39;</span><span class="p">,</span> <span class="s">&#39;subs&#39;</span><span class="p">,</span> <span class="c">...</span>
+                            <span class="s">&#39;bufferSize&#39;</span><span class="p">,</span> <span class="mi">1000</span> <span class="c">...</span>
+                            <span class="p">);</span>
+</pre></div>
+</div>
+<p>The output of the runLoop method can contain:</p>
+<ul class="simple">
+<li><p>raw: raw data (if bufferType was set to ‘raw’ or ‘all’);</p></li>
+<li><p>img: image data (if bufferType was set to ‘img’ or ‘all’);</p></li>
+<li><p>sri: sequence repeting intervals for the acquired data;</p></li>
+</ul>
+<p>The source code of the ready-to-run example (longAcquisition.m)
+can be found in the examples directory.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="user_guide.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, us4us Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
