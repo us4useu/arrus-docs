@@ -1,0 +1,1144 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Release notes &mdash; ARRUS (cpp) 0.14.0-dev20251013 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Acknowledgments" href="acknowledgments.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> ARRUS (cpp)
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions.html">Glossary and assumptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">C++ API Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Miscellaneous</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#x">0.14.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">0.13.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">0.12.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">0.11.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">0.10.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">0.9.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">0.8.x</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">0.8.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">0.7.x</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">0.7.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">0.7.7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">0.7.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">0.7.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">0.7.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">0.7.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">0.7.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">0.7.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">0.7.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">0.6.x</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id19">0.6.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">0.6.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">0.6.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">0.6.3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id23">0.6.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">0.6.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">0.6.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id26">0.5.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id27">0.4.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id28">0.3.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id29">0.2.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id30">0.1.x</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ARRUS (cpp)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Release notes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="release-notes">
+<h1>Release notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="x">
+<h2>0.14.x<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>core (driver):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed the possibility to mask DVDD pulser interrupt, #M_OEM-198</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>0.13.x<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>0.13.1</p>
+<ul>
+<li><p>core (driver)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed minor memory leakage issues #M_US4R-42.</p></li>
+<li><p>C++ API: made RxSettings backward compatible #M_US4R-44.</p></li>
+<li><p>Fixed nullptr_t namespace in UniqueHandle class (C++ API) #ARRUS-496.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed Session.setParameters method #ARRUS-492.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.13.0</p>
+<ul>
+<li><p>core (driver)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Accelerated HV voltage setting by storing HVPS coefficients in the flash memory on OEM+. To take advantage of this, calibration must be performed using Us4OEMStatus; otherwise, there will be no acceleration. #M_OEM-155</p></li>
+<li><p>Added the Us4R::setSubsequences(slices, sris) method. #M_US4R-36.</p></li>
+<li><p>Changed the behavior of <code class="docutils literal notranslate"><span class="pre">Us4R::setSubsequence</span></code> and <code class="docutils literal notranslate"><span class="pre">Us4R::setSubsequences</span></code>: from now on, start and end define the range [start, end) (right-open). Previously, it was [start, end] (right-closed). #M_US4R-36.</p></li>
+<li><p>Increased HVP1/HVM1 standby current limits from 50 mA to 100 mA #M_OEM-203.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Provided arrus.io package for const metadata backward compatibility (up to ARRUS 0.9.0 and 0.10.0), see <cite>arrus.io.read_metadata</cite> function #ARRUS-488.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>0.12.x<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>0.12.0</p>
+<ul>
+<li><p>core (driver):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed the possibility to program custom TX waveforms. #US4R-507, #M_OEM-188.</p></li>
+<li><p>Added support for us4OEM+ HF. #US4R-588, #US4R-576, #US4R-424, #M_OEM-142, #M_OEM-174, #M_US4R-9, #US4R-651, #US4R-644.</p></li>
+<li><p>Removed in the us4OEM+ HVPS HV1 &lt; HV0 PWM constraint #M_OEM-169.</p></li>
+<li><p>Exposed digital backplane firmware version number in the API #M_US4R-24.</p></li>
+<li><p>Exposed DDC digital gain parameter (after the decimation filter) #M_OEM-153.</p></li>
+<li><p>Changed the delay between TX and RX, now the OEM pulsers will change to OEM after all channels of the given pulser finish transmitting (changed RX_DELAY_MODE to all TX mode) #M_US4R-29.</p></li>
+<li><p>Exposed the possibility to set VCAT (setVCat method) #US4R-656.</p></li>
+<li><p>Implemented 10V voltage difference limit on HV rails for push pulses, #M_US4R-35.</p></li>
+<li><p>Added support for DBARLitePCIE firmware 1.2.1.0.</p></li>
+<li><p>Changed HVPS voltage calibration tolerance to 1.0V #M_OEM-154.</p></li>
+<li><p>Added support for LNA HPF for AFE58JD18 and AFE58JD48 #US4R-424.</p></li>
+<li><p>Reduced minimum TX timeout value to 2 us #M_OEM-204.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added support for Python 3.11 and Python 3.12 #ARRUS-489.</p></li>
+<li><p>Exposed the possibility to program custom TX waveforms #US4R-507, #M_OEM-188.</p></li>
+<li><p>Exposed digital backplane firmware version number in the API #M_US4R-24.</p></li>
+<li><p>Exposed HPF setters #M_US4R-358.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed the possibility to program custom TX waveforms #US4R-507, #M_OEM-188.</p></li>
+<li><p>Fixed timestamp calculations for Color Doppler #ARRUS-474.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>0.11.x<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>0.11.3</p>
+<ul>
+<li><p>core (driver):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added support for long (12 characters) OEM+ serial numbers #M_OEM-190.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.11.2</p>
+<ul>
+<li><p>core (driver):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed start/stop/start scheme call sequence for the legacy OEM devices, #US4R-726.</p></li>
+<li><p>Fixed an issue where a firmware-software mismatch could cause the computer to restart on some setups with PCIe connections, #M_OEM-178.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.11.1</p>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Fixed 1.5 cycle TX waveform setting bug</strong>, #M_OEM-176.</p></li>
+<li><p>Fixed US4RPSC voltage check skip with us4OEM+, #M_US4R-12.</p></li>
+<li><p>Fixed voltage limits verification for the legacy us4OEM, #M_US4R-25.</p></li>
+<li><p>Set timeout on OEM watchdog disable, #M_OEM-157.</p></li>
+<li><p>Added support for DBARLite-PCIe firmware 1.2.0.0, #US4R-587.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed image reconstruction operators for the SimpleTxRxSequences (PwiSequence, StaSequence, etc.) with the start sample &gt; 0, #ARRUS-451.</p></li>
+<li><p>Exposed title property of the 2D ARRUS GUI, #ARRUS-452.</p></li>
+<li><p>Fixed us4OEM HVPS measurements and HVPS-based probe check, #ARRUS-454.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.11.0</p>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul>
+<li><p>Added support for OEM+ firmware 2.1.1.0, DBARLite-PCIe firmware 1.1.2.0.</p></li>
+<li><p>Implemented support for OEM+ setups with TX push functionality:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed TX pulser capabilities: the possibility to transmit with long impulses, empty TX/RX apertures, #US4R-403.</p></li>
+<li><p>Implemented push TX soft start, TX timeout mechanism #US4R-494.</p></li>
+<li><p>Disabled possibility to generate long pulses on level 2 (HV rail 0), #US4R-506.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Exposed the possibility to set the HV amplitude levels (rails), amplitude level (1 or 2) per pulse, enabled pulser TX timeout, added waveform memory verification, #US4R-403, #US4R-367, #US4R-419, #US4R-420, #US4R-622.</p></li>
+<li><p>Stop TX/RX sequence execution in case an OEM+ module signals pulser error (IRQ) #US4R-443.</p></li>
+<li><p>Implemented the possibility to configure and program multiple probes and sequences in a single Scheme #ARRUS-302 #ARRUS-301 #ARRUS-195.</p></li>
+<li><p>Added lens and matching layer to the probe model description #ARRUS-425.</p></li>
+<li><p>TX pulser interrupt logging, verify waveforms on the sequencer enable, #US4R-403.</p></li>
+<li><p>Implemented us4OEM+ watchdog mechanism, #US4R-630.</p></li>
+<li><p>Implemented IO bitstream-based probe selection for OEM+ and the legacy OEMs, #US4R-657.</p></li>
+<li><p>Implemented setSubsequence method for the legacy OEMs and us4R-lite systems, #US4R-467.</p></li>
+<li><p>Fixed the current limitations for the number of different TX/RXs to 4096 TX/RXs, max 1024 unique TX delay profiles, #US4R-510.</p></li>
+<li><p>Fixed an exception that occurred before/on OEM+ initialization, increased HVPS calibration time, #US4R-572.</p></li>
+<li><p>Implemented TX pulse inversion for OEM+ setups, #US4R-494.</p></li>
+<li><p>Increased the maximum PRF that can be set for OEM+ devices: decreased the TX pulsers reprogramming time #US4R-525.</p></li>
+<li><p>Fixed OEM+ clamping on channels with disabled TX, #US4R-529.</p></li>
+<li><p>Added default HVPS initialisation in bypass mode, #US4R-430.</p></li>
+<li><p>Implemented configuration of trigger source, #US4R-464.</p></li>
+<li><p>Improved ARRUS and HAL logging #ARRUS-432, #US4R-451.</p></li>
+<li><p>Adjusted RF/IQ data start sample number (i.e. corresponding to the TX delay = 0) #US4R-513.</p></li>
+<li><p>Added support for the <code class="docutils literal notranslate"><span class="pre">atl/philips2</span></code> (the ATL adapter rev 1.0) and <code class="docutils literal notranslate"><span class="pre">pau_rev1.0</span></code> (Ultrasonix) adapters, #US4R-475.</p></li>
+<li><p>Added RCA probe definitions in the default dictionary #ARRUS-408.</p></li>
+<li><p>Added Ultrasonix L9-4/38 probe definition to the default dictionary #US4R-475.</p></li>
+<li><p>Other changes in the API:</p>
+<blockquote>
+<div><ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">.prototxt</span></code> field <code class="docutils literal notranslate"><span class="pre">us4oem_channels_mask</span></code> is no longer required and becomes deprecated #ARRUS-197.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">arrus::devices::Us4RSettings::getUs4OEMChannelsMask()</span></code> is no longer available # ARRUS-197.</p></li>
+<li><p>The arrus::devices::Us4RSettings::Us4RSettings constructor now takes a different set of parameters #ARRUS-197:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>the us4oemChannelsMask field is no longer available,</p></li>
+<li><p>the channelsMask now takes a list of unordered_sets; each set represents a channel mask for a given probe.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Removed Us4OEM::getTxOffset() method, #US4R-513,</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">*uploadResult-&gt;getConstMetadata(arrayId)-&gt;get&lt;float&gt;(&quot;rxOffset&quot;)</span></code> to the upload result metadata. The value of <code class="docutils literal notranslate"><span class="pre">rxOffset</span></code> indicates the time difference between the acquisition of the first sample and the start of TX. This value should be taken into account during reconstruction when using hardware DDC.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul>
+<li><p>Implemented DAG-based processing, the possibility to mix phased-array and moving window aperture (imaging package), the possibility to configure and program multiple probes and sequences, #ARRUS-302 #ARRUS-301 #ARRUS-195.</p></li>
+<li><p>Exposed probe’s voltage range in the <code class="docutils literal notranslate"><span class="pre">ProbeModel</span></code> #ARRUS-422.</p></li>
+<li><p>Implemented multi-TX ops (e.g. for the comb beam ultrasound transmissions) #ARRUS-321.</p></li>
+<li><p>Added ‘aspect’ parameter in Display2D object, #ARRUS-322.</p></li>
+<li><p>Other changes in the API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed setters and getters for RX settings to Python API, #ARRUS-421 (by Gordon Stevenson).</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">metadata.data_description.custom[&quot;rx_offset&quot;]</span></code> to the metadata model. The value of <code class="docutils literal notranslate"><span class="pre">rx_offset</span></code> indicates the time difference between the acquisition of the first sample and the start of TX. This value should be taken into account during reconstruction when using hardware DDC.</p></li>
+<li><p>Currently, the ARRUS 0.11.0 metadata model is not backward compatible (for example, metadata files previously saved using <code class="docutils literal notranslate"><span class="pre">pickle</span></code> Python package cannot be loaded with ARRUS 0.11.0).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>ARRUS explicitly requires the numpy package version to be &lt; 2.0.0.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed the RX apodization #ARRUS-288.</p></li>
+<li><p>Exposed SYNC/ASYNC modes and switchable multi-sequences; Added coherent filtering and compounding flags; Implemented cineloop buffers; Improved processing speed; Removed “nElements” option for tx/rx aperture size; #ARRUS-195.</p></li>
+<li><p>Exposed amplitude level and voltage setting in the ARRUS MATLAB API, #ARRUS-409.</p></li>
+<li><p>Fixed POSIX path handling #ARRUS-377.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>0.10.x<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>0.10.5</p>
+<ul>
+<li><p>core (C++, HAL):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed exception handling for exceptions that occurred before/on OEM+ initialization and might cause host PC restart #US4R-572.</p></li>
+<li><p>AFE58JD18 PGA LPF setting bugfix #US4R-584.</p></li>
+<li><p>Initial HVPS calibration time adjustment #US4R-585.</p></li>
+<li><p>Do not verify voltages measured by OEM+ with the external HV #US4R-586.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.10.4</p>
+<ul>
+<li><p>core (C++, HAL):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added support for DBARLitePcie fw version 1.2.0.x #US4R-579.</p></li>
+<li><p>Provided possibility to get measured HV voltages on us4OEM+ #US4R-561.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.10.3</p>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul>
+<li><p>Exposed HVPS measurements and MANUAL_OP work mode #US4R-395.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Implemented MANUAL_OP work mode #US4R-395.</p></li>
+<li><p>Exposed the Us4R::setMaximumPulseLength(pulseLength) function, which allows you to set what is the maximum allowable pulse length. The function was prepared in order to provide the possibility to transmit with more than 32 cycles (available only for OEM+), and that is necessary for the new probe_check function to get reliable results. By default (when the method is not explicitly called), the maximum pulse length is set to 32 cycles.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul>
+<li><p>Reduced memory overhead of the data structures stroed in the Python Pipeline #ARRUS-351.</p></li>
+<li><p>Implement HVPS-based probe check and MANUAL_OP work mode #US4R-395.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed HVPS measurement in the Python API</p></li>
+<li><p>Implemented MANUAL_OP work mode</p></li>
+<li><p>Updated arrus.utils.probe_check module to use the HVPS measurements (OEM+ rev1 only). Exposed the new parameters: signal_type (rf or hvps), current (hvps only).</p></li>
+<li><p>Exposed the us4r.set_maximum_pulse_length(pulse_length) function. See the core (C++) release notes for more details.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.10.2</p>
+<ul class="simple">
+<li><p>core:</p>
+<ul>
+<li><p>Fixed the subsequence selection in case of the start_scheme/stop_scheme sequence of calls #US4R-505</p></li>
+<li><p>us4R/us4R-lite systems with the external HV: added OEM+ bypass mode, enabled suport for DBAR rev3, fixed HV256 initialization procedure #US4R-535, #US4R-538.</p></li>
+</ul>
+</li>
+</ul>
+<p>0.10.1</p>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed buffer overflow handling in case setSubsequence method was called #US4R-474.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.10.0</p>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Implemented the possibility to select TX/RX subsequence #ARRUS-280.</p></li>
+<li><p>Fixed SYNC mode fixed the SYNC mode mechanism to work in a expected manner; fixed user-defined buffer overflow interrupts handling, #US4R-456.</p></li>
+<li><p>Removed HV enable on HVPS initialization #US4R-455.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Implemented the possibility to select TX/RX subsequence #ARRUS-280.</p></li>
+<li><p>Added set_stop_on_overflow method #US4R-456.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>0.9.x<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>0.9.3</p>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul>
+<li><p>updated us4r-api to 0.10.3:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added support for DBARLite PCIe rev2 (firmware: 1.1.0).</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.9.2</p>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul>
+<li><p>updated us4r-api to 0.10.2:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed FPGA decimation setting when hardware DDC not used #US4R-398.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.9.1</p>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul>
+<li><p>updated us4r-api to 0.10.1:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed AFE test patterns generation (RAMP, etc.) #US4R-381.</p></li>
+<li><p>Added HVP1/M1 voltages calibration skip when not used #US4R-376.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.9.0</p>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>us4R: exposed SYNC mode #ARRUS-83.</p></li>
+<li><p>Fixed RX aperture &lt; 32 elements #ARRUS-206</p></li>
+<li><p>Added support for us4OEM+ hardware with and without external HVPS. #MD_us4OEM-12, #M_OEM-10, #M_OEM52, #ARRUS-272, #ARRUS-274.</p></li>
+<li><p>Added support for DBARLite-PCIe and DBARLite 8-bit #M_USSS2-103, #US4R-333.</p></li>
+<li><p>Implemented probe connected check functionality for atl/philips2 adapter #US4R-314.</p></li>
+<li><p>Made it possible to execute the sequence of: triggerStart, triggerStop, triggerStart #US4R-147</p></li>
+<li><p>Implemented File device (for simulated mode) #ARRUS-221, #ARRUS-248.</p></li>
+<li><p>us4R: exposed us4OEM and digital backplane serial number and revision #ARRUS-267.</p></li>
+<li><p>Made it possible to choose which us4OEM produces frame metadata #US4R-324.</p></li>
+<li><p>Added Session::getCurrentState method, which returns the current state of the session (e.g if the devices are running or not) #ARRUS-273.</p></li>
+<li><p>us4R: Provided the possibility to explicitly specify what digital backplane is used #US4R-352.</p></li>
+<li><p>us4R Linux driver: disabled trigger stopping in the linux character device release: NOTE: please make sure to stop the system before disconnecting the probe #US4R-338.</p></li>
+<li><p>Default HV voltage (5V) is set on us4r device initialization #ARRUS-41.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>us4R: exposed SYNC mode #ARRUS-83.</p></li>
+<li><p>Added support for Python 3.9 and Python 3.10 #ARRUS-208.</p></li>
+<li><p>Added the possibility to change session medium after its initialization #ARRUS-232.</p></li>
+<li><p>Added the possibility to specify rx depth range in the SimpleTxRxSequences #ARRUS-232.</p></li>
+<li><p>Exposed OX min/max position of the probe elements #ARRUS-232.</p></li>
+<li><p>Created cupy -&gt; DL pack operator #ARRUS-232.</p></li>
+<li><p>Created an example for file device (simulated mode) #221, #ARRUS-248.</p></li>
+<li><p>Created dictionary of media #ARRUS-231, #ARRUS-247.</p></li>
+<li><p>Added spacing to echo data description #ARRUS-251.</p></li>
+<li><p>Python API minor package fixes: fixed imaging pipeline parameter setting #ARRUS-265.</p></li>
+<li><p>us4R: exposed us4OEM and digital backplane serial number and revision #ARRUS-267.</p></li>
+<li><p>us4R: provided the possibility to dynamically change TX focus, #US4R-326.</p></li>
+<li><p>us4R: added high pass filter in the probe check implementation to support us4OEM+ #US4R-356.</p></li>
+<li><p>Made tgc_curve parameter optional (default: no TGC) #ARRUS-278.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed issues with TGC in Matlab, enable the RF display #ARRUS-202, ARRUS-203.</p></li>
+<li><p>Color Doppler - thresholding and wall clutter filtration #ARRUS-239.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>0.8.x<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>0.8.0<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>us4R: exposed hardware Digital Down Conversion,</p></li>
+<li><p>us4R: scheme stopping procedure was improved (should take less time)</p></li>
+<li><p>us4R: exposed a function that allows to read us4OEM FPGA Wallclock</p></li>
+<li><p>us4R: enabled hardware high-pass filter, by default us4OEMs will be initialized with 300 kHz cutoff frequency</p></li>
+<li><p>us4R: exposed the possibility to change hardware high-pass filter (HPF) cutoff frequency or to disable HPF</p></li>
+<li><p>us4R: exposed methods to read us4OEM serial and revision number (currently mocked up)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed Us4OEM FPGA, UCD, UCD external temperature.</p></li>
+<li><p>Implemented new module <cite>arrus.utils.probe_check</cite> for probe checking and automatic channel health, see example: examples/check_probe.py</p></li>
+<li><p>implemented following features for probe checking: amplitude, signal duration, normalized energy and Pearson correlation coefficient (for comparing acquired signal with previous acquired ‘footprint’ of a probe)</p></li>
+<li><p>exposed hardware Digital Down Conversion</p></li>
+<li><p>us4R: exposed the possibility to change hardware high-pass filter cutoff frequency</p></li>
+<li><p>arrus.utils.imaging: changed the default filter type for BandpassFilter to hamming windows (firwin)</p></li>
+<li><p>Implemented a general delay and sum look up table beamformer for 3D output volume reconstruction</p></li>
+<li><p>From now on TGC curve gain values will be clipped to the [min hardware gain, max hardware gain] range by default. Change arrus.ops.tgc.LinearTGC.clip to False to restore the previous behavior.</p></li>
+<li><p>Changed stop_scheme behavior to close processing runner (fixes the issue with closing arrus.utils processing on session close).</p></li>
+<li><p>Exposed the possibility to change LNA/PGA gain and DTGC attenuation.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exposed ARRUS core API to MATLAB interface.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>0.7.x<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>0.7.8<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>core (C++): Fixed frame channel mapping for RX aperture smaller than 32 elements, and for non-standard probe adapters (that do not satisfy channel group modulo-32 congruency).</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>0.7.7<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Python API: Fixed classical beamforming RF data reordering for rx aperture &lt; 64 elements, n_repeats &gt; 1.</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>0.7.6<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Python API: Now it should be possible to use arrus.devices.us4r.Us4r.set_tgc when arrus.ops.us4r.TxRxSequence is uploaded.</p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>0.7.5<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Python API: Fixed CUDA host memory unpinning on the arrus session close.</p></li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>0.7.4<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Python API: Fixed 2D display for scheme with multiple outputs (layers).</p></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>0.7.3<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>core: Updated us4r-api to 0.8.7 (support multiple versions of US4RDBAR firmware).</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h3>0.7.2<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Matlab API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Removed the requirement of integer values for txNPeriods in MATLAB API.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h3>0.7.1<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>us4R: Limited the range of available voltage to [5, 90] V.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h3>0.7.0<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>core (C++):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Now it is possible to set how many times the TxRxSequence should be repeated: check TxRxSequence’s nRepeats parameter. By default nRepeats is set to 1.</p></li>
+<li><p>Because now it is possible to acquire batch of RF frame sequences (the nRepeats parameter was added), there were some breaking changes in the implementation of the FrameChannelMapping class. The getLogical method now returns three values: us4oem number, frame number and channel number. For each us4OEM module each frame number is counted from 0 (previously the each physical frame had consecutive numbers from 0 to n, where n is the total number of physical frames acquired by all us4OEM modules). To get the number of frames preceding a given us4OEM frame, use getFirstFrame method.</p></li>
+<li><p>Now it is possible to turn on test AFE patterns, see Us4R::setTestPattern.</p></li>
+<li><p>Now it is possible to remap the order of us4OEM modules numbering in the system configuration, see Us4RSettings, adapterToUs4RModuleNumber. By deafult identity mapping is used.</p></li>
+<li><p>Now it is possible to specify number of us4OEM modules the system is using, check Us4RSettings, nUs4OEMs parameter.</p></li>
+<li><p>Implemented MANUAL scheme work mode, i.e. it is possible to trigger TX/RX sequence programatically, see Session::run method.</p></li>
+<li><p>Added Us4R::{is,set}StopOnOverflow method, which gives the possibility to continue data acquisition even if the system has detected buffer overflow. By default this property is set to true, i.e. the system will stop on buffer overflow.</p></li>
+<li><p>Added possibility to measure HV P and M voltage (see Us4R::{getVoltage, getMeasuredPVoltage, getMeasuredMVoltage). Supported only by the system with us4us HV hardware (e.g. HV256 or Us4RPSC).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>added n_repeats parameter to the simple TX/RX sequences available in ARRUS, the parameter allows to specify the number of times the sequence should be repeated (“batch size”),</p></li>
+<li><p>arrus.utils.imaging reconstruction operators now requires that the input data are in the format (batch size, n TX, n RX, n samples),</p></li>
+<li><p>arrus.utils.imaging.RxBeamformingImg is no longer available. Please use ReconstructLri + some form of compouding (e.g. Mean(axis=1)),</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id18">
+<h2>0.6.x<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id19">
+<h3>0.6.6<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>core (C++):</dt><dd><ul>
+<li><p>implemented Us4R::checkState and Us4OEM::checkState methods to verify if the us4OEM module is still available (currently by checking us4OEM module firmware version)</p></li>
+<li><p>implemented Us4OEM::getFirmwareVersion and Us4OEM::getTxFirmwareVersion() to get us4OEM device firmware version</p></li>
+<li><p>implemented Us4OEM::getFPGATemperature() to get the temperature measured by Us4OEM’s FPGA</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h3>0.6.5<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>core (C++ API):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>fixed memory leak on subsequent re-uploads</p></li>
+<li><p>some improvements in the us4R-lite driver compatibility with the us4R-lite system</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h3>0.6.4<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed linear scanning for tx apertures starting from channels &gt; 0.</p></li>
+<li><p>Added phased array scanning example.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id22">
+<h3>0.6.3<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added phased array scanning.</p></li>
+<li><p>Added definition for the probe adapter atl/philips-us4r4.</p></li>
+<li><p>Improved IQ raw to LRI CUDA kernel performance.</p></li>
+<li><p>Increased the maximum allowable voltage for Esaote probes to 90 V.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="id23">
+<h4>0.6.2<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>core (C++ API): virtual destructor for LoggerFactory.</p></li>
+</ul>
+</div>
+<div class="section" id="id24">
+<h4>0.6.1<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>core (C++ API): fixed exception type thrown at us4OEM initialization phase.</p></li>
+</ul>
+</div>
+<div class="section" id="id25">
+<h4>0.6.0<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>core (C++ API):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Introducing C++ API initial version.</p></li>
+<li><p>Added support for ALS, APEX, ultrasonix probes and adapters.</p></li>
+<li><p>Made it compatible wit Linux x64 and arm64 (tested on NVIDIA Xavier AGX, Jetpack 4.4.).</p></li>
+<li><p>Added reprogramming mode PARALLEL.</p></li>
+<li><p>Exposed DTGC, LPF, ActiveTermination, PGA, LNA setters in C++ interface.</p></li>
+<li><p>Support for esaote2-us4r6 and esoate2-us4r6 adapters.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added extent and colorbar to arrus.utils.gui.Display2D.</p></li>
+<li><p>PWI and diverging beams for convex and linear probes in Python.</p></li>
+<li><p>Now it’s possible to set subapertures for Pwi and Sta schemes - check Python examples.</p></li>
+<li><p>Made it possible to display multiple layers of data using Display2D.</p></li>
+<li><p>Changed arrus.utils.imaging.Operation interface: renamed _initialize to initialize, _prepare to prepare, _process to process.</p></li>
+<li><p>arrus.utils.gui.Display2D: now metadata parameter must be set explicitly, see Python example scripts.</p></li>
+<li><p>Now it’s possible to nest arrus.utils.imaging.Pipeline into another arrus.utils.imaging.Pipeline (then the buffer.get returns a tuple of arrays, session.upload returns a tuple of metadata)</p></li>
+<li><p>Now session.upload returns a buffer that stores the output of the uploaded Pipeline.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Matlab API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Doppler extension and examples.</p></li>
+<li><p>Fixed memory issue with digitalDownConv.</p></li>
+<li><p>Created possibility to acquire data tin Us4MEX internal buffer, fixed RF batch acquisition in MATLAB.</p></li>
+<li><p>Verified RX subapertures for Convex PWI.</p></li>
+<li><p>Support for esaote2-us4r6 and esaote2-us4r8 adapters.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="id26">
+<h2>0.5.x<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added <cite>__version__</cite> attribute in ARRUS Python main module.</p></li>
+<li><p>Fixed Decimation step output shape.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Moved scanline location to the center of aperture, when it has even elements.</p></li>
+<li><p>Implemented custom FIR filter.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul class="simple">
+<li><p>core: now us4r-api 0.5.4 is used.</p></li>
+</ul>
+<ul class="simple">
+<li><p>core and Python API: Added function that allows to close session in run-time.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Python API: Added an option to start recording after burst factor and TX delay center time.</p></li>
+</ul>
+<ul>
+<li><p>core:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added ATL/philips L7-4 probe to dictionary file.</p></li>
+<li><p>Set rx time lower limit to 80 us (equal to minimum PRI).</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Implemented CIC FIR GPU kernel for Python DDC.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Reimplemented us4r remap to be performed on GPU.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul>
+<li><p>core:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Now us4r-api 0.5.3 is used.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Made the scan conversion interpolator an op field.</p></li>
+<li><p>Changed the required numpy version.</p></li>
+<li><p>Fixed scan conversion for startSample &gt; 0.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Python API: Fixed GPU pipeline initialization warning.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Python API: Made tx/rx center elements to accept a list of values.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Python API: minor fixes in classical beamforming procedure.</p></li>
+</ul>
+<ul class="simple">
+<li><p>core and Python API: Implemented streaming feature handling for us4rlite device.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Implemented core data model for us4oem devices: probe, adapter, us4r system, channel mapping and so on.</p></li>
+<li><p>Restructured Python interface for new core data model, implemented classical beamforming reconstruction pipeline.</p></li>
+</ul>
+</div>
+<div class="section" id="id27">
+<h2>0.4.x<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Added parameter <code class="docutils literal notranslate"><span class="pre">channelsMask</span></code> to structure <code class="docutils literal notranslate"><span class="pre">probe</span></code>. The parameter disables selected channels from Tx/Rx.</p></li>
+<li><p>The list of Us4R class constructor parameters has been changed from list of positional parameters to a list of pairs (name, value). E.g. use <code class="docutils literal notranslate"><span class="pre">Us4R('nArius',</span> <span class="pre">2,</span> <span class="pre">'voltage',</span> <span class="pre">20,</span> <span class="pre">'probeName',</span> <span class="pre">'SL1543',</span> <span class="pre">'adapterType',</span> <span class="pre">'esaote3')</span></code>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">dynamicRange</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">BModeDisplay</span></code> class.</p></li>
+<li><p>Temporarily, the maximum number of tx/rxs is limited to 2048.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Support for Esaote SP2430 has been added. The new probe is identified by <code class="docutils literal notranslate"><span class="pre">SP2430</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The Us4R constructor now requires the <code class="docutils literal notranslate"><span class="pre">adapterType</span></code> parameter to be explicitly provided. Please check <span class="xref std std-ref">arrus-Us4R</span> documentation.</p></li>
+<li><p>Support for the new Esaote probes adapter has been added. The new Esaote adapter is identified by the name <code class="docutils literal notranslate"><span class="pre">'esaote2'</span></code>. The new adapter design allows for wider rx aperture: 64 elements in a single tx/rx. However, due to the adapter design, it may occur that a single rx channel is connected to two probe elements in the rx aperture. In this case, the second of the elements is switched off in the receive. In the worst scenario, this workaround switches off 4 of 64 rx elements. The size of the acquired rf data is unaffected.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Added signed drivers for Windows, changed driver name from
+<code class="docutils literal notranslate"><span class="pre">ARIUS</span></code> to <code class="docutils literal notranslate"><span class="pre">us4OEM</span></code>.
+Check <span class="xref std std-ref">arrus-installation</span> procedure for information on how to
+update drivers.</p></li>
+</ul>
+<ul>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rxApertureCenter</span></code>, <code class="docutils literal notranslate"><span class="pre">rxCenterElement</span></code>, and <code class="docutils literal notranslate"><span class="pre">rxApertureSize</span></code> parameters added to control the rx aperture. Use them the same way as parameters for tx aperture control. The rx aperture is now fully defined by those parameters and sequence type no longer affects it.</p></li>
+<li><p>rx delay is set to zero to allow for shallow region imaging.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nRepetitions</span></code>: set it to “max” to acquire the maximum number of repetitions allowable.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nRepetitions</span></code> parameter added to control the number of rf-data frames to be recorded.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rxDepthRange</span></code> parameter added to control the starting &amp; ending depth of recorded data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rxNSamples</span></code> parameter, if it is a 2-element vector, allows for the setting of the starting &amp; ending sample number for the recorded data. The 1-element option is still valid.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Created new API with a model of <code class="docutils literal notranslate"><span class="pre">operations</span></code> executed on available devices.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">fs_divider</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">arrus.ops.Rx</span></code> operation, which allows to reduce the sampling frequency of the module.</p></li>
+<li><p>Added asynchronous communication with the device using the <code class="docutils literal notranslate"><span class="pre">arrus.ops.Loop</span></code> operation.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">arrus.Us4OEMCfg</span></code> parameter that turns on data transfer loggging time.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ul>
+<li><p>MATLAB API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Created a new version of the Matlab API (with STA and PWI sequences, for Esaote and Ultrasonix probes).</p></li>
+<li><p>Added a simplified TGC control through tgcStart and tgcSlope parameters.</p></li>
+<li><p>Added a classical linear scanning example (check <code class="xref py py-class docutils literal notranslate"><span class="pre">arrus.LINSequence</span></code>).</p></li>
+<li><p>From now on, txPri takes values in seconds (previously in [us]).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Simplified <code class="docutils literal notranslate"><span class="pre">Us4OEM.set_tgc_samples</span></code> - it now takes values from range range [0, 1], where 0 means maximum gain, 1 means minimum gain</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">Us4OEM.set_active_channel_group</span></code>, which allows to choose which groups of channels can be active.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id28">
+<h2>0.3.x<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Added a function to set an rx/tx aperture mask - see Us4OEM.SetTxAperture(aperture) and Us4OEM.SetRxAperture(aperture)</p></li>
+<li><p>Renamed the Arius project to ARRUS. Renamed <code class="docutils literal notranslate"><span class="pre">Arius</span></code> module to <code class="docutils literal notranslate"><span class="pre">Us4OEM</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="id29">
+<h2>0.2.x<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Added functions to trigger TX pulse asynchronously (Us4OEM.{TriggerStart, TriggerStop}).</p></li>
+<li><p>Added functions to enable/disable TGC and set TGC samples.</p></li>
+<li><p>Function Us4OEM.SetTxPeriods is no longer available; use Us4OEM.SetTxHalfPeriods instead.</p></li>
+</ul>
+</div>
+<div class="section" id="id30">
+<h2>0.1.x<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Fixed some of the important bugs and errors in python API.</p></li>
+</ul>
+<p>Initial release of arrus.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="acknowledgments.html" class="btn btn-neutral float-left" title="Acknowledgments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, us4us Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
