@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Reference &mdash; ARRUS (matlab) 0.13.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Acknowledgments" href="misc/acknowledgments.html" />
+    <link rel="prev" title="Examples" href="examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ARRUS (matlab)
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions.html">Glossary and assumptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#high-level-matlab-scripts">High-level MATLAB scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc/acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/release_notes.html">Release notes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ARRUS (matlab)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-reference">
+<span id="arrus-api"></span><h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="high-level-matlab-scripts">
+<span id="arrus-us4r"></span><h2>High-level MATLAB scripts<a class="headerlink" href="#high-level-matlab-scripts" title="Permalink to this headline">¶</a></h2>
+<dl class="mat class">
+<dt id="arrus.Us4R">
+<em class="property">class </em><code class="sig-prename descclassname">arrus.</code><code class="sig-name descname">Us4R</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">handle</span></code></p>
+<p>A handle to the Us4R system.</p>
+<p>This class provides functions to configure the system and perform data acquisition using the Us4R.</p>
+<dl class="mat staticmethod">
+<dt id="arrus.Us4R.clear">
+<em class="property">static </em><code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears Us4R object.</p>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.closeSession">
+<code class="sig-name descname">closeSession</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.closeSession" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes session</p>
+</dd></dl>
+
+<dl class="mat staticmethod">
+<dt id="arrus.Us4R.create">
+<em class="property">static </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a handle to the Us4R system.</p>
+<p>Syntax:
+obj = Us4R.create(name, value, …, name, value)</p>
+<p>All inputs are organized in name-value pairs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>configFile</strong> – Name of the prototxt file that contains the setup information. String scalar or character vector. Obligatory input.</p></li>
+<li><p><strong>logTime</strong> – Enables display of acquisition/processing time. Logical scalar. Optional.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Us4R handle.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.delete">
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the Us4R object</p>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.disableAdcHpf">
+<code class="sig-name descname">disableAdcHpf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.disableAdcHpf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables digital high-pass filter (dHPF).</p>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.disableLnaHpf">
+<code class="sig-name descname">disableLnaHpf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.disableLnaHpf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables analog high-pass filter (aHPF).</p>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.getImagingMetadata">
+<code class="sig-name descname">getImagingMetadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.getImagingMetadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the system and sequence metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>system metadata and sequence metadata.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.getNProbeElem">
+<code class="sig-name descname">getNProbeElem</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.getNProbeElem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of probe elements.</p>
+<p>NOTE: the returned value comes from the prototxt config file. If the probe model in the config file is different from the one actuually attached to the system, the returned value may be wrong.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of probe elements.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.getSamplingFrequency">
+<code class="sig-name descname">getSamplingFrequency</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.getSamplingFrequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns nominal sampling frequency of the system. The actual sampling frequency may be reduced by using decimation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>nominal sampling frequency of the system [Hz].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.getSessionState">
+<code class="sig-name descname">getSessionState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.getSessionState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns session state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Us4R session state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.imageRawRf">
+<code class="sig-name descname">imageRawRf</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.imageRawRf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a color-coded image of raw RF data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>selectedLines</strong> – vector indicating the rf lines to be displayed. Rf lines are numbered as follows: 1:rxApertureSize*nTx*nRep. (optional name-value argument)</p></li>
+<li><p><strong>amplitudeLim</strong> – scalar defining the displayed amplitude range as [-amplitudeLim, amplitudeLim] (optional name-value argument)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.plotRawRf">
+<code class="sig-name descname">plotRawRf</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.plotRawRf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a plot of raw RF data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>selectedLines</strong> – vector indicating the rf lines to be displayed. Rf lines are numbered as follows: 1:rxApertureSize*nTx*nRep. (optional name-value argument)</p></li>
+<li><p><strong>amplitudeLim</strong> – scalar defining the displayed amplitude range as [-amplitudeLim, amplitudeLim] (optional name-value argument)</p></li>
+<li><p><strong>boundsModeEnable</strong> – logical scalar determining if min and max values of each sample from a set of rf lines are displayed instead of individual rf lines. (optional name-value argument)</p></li>
+<li><p><strong>linRangeEnable</strong> – logical scalar determining if range of undistorted amplitudes is displayed. (optional name-value argument)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.reconstructOffline">
+<code class="sig-name descname">reconstructOffline</code><span class="sig-paren">(</span><em class="sig-param">raw</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.reconstructOffline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs offline reconstruction of raw data. The Us4R system should be prepared as if the data were to be collected and processed online.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw</strong> – raw data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs uploaded operations in the us4R system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>raw data frame, reconstructed image (if <code class="xref py py-class docutils literal notranslate"><span class="pre">Reconstruction</span></code> operation was uploaded), and frame metadata.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.runLoop">
+<code class="sig-name descname">runLoop</code><span class="sig-paren">(</span><em class="sig-param">isContinue</em>, <em class="sig-param">callback</em>, <em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.runLoop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the uploaded operations in a loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>isContinue</strong> – should the system continue executing the op? Takes no parameters and returns a boolean value.</p></li>
+<li><p><strong>callback</strong> – a function to call after executing the operation. Should take one parameter, which will be feed with the output of the executed op.</p></li>
+<li><p><strong>bufferType</strong> – type of data stored in the cineloop buffer, can be “none”, “raw”, “img”, or “all”. Optional, default=”none”.</p></li>
+<li><p><strong>bufferMode</strong> – mode of buffer operation. Can be “conc” for concurrent or “subs” for subsequent operation with the callback function. For “conc” the buffer is used as long as isContinue is true. For “subs” the buffer is used as soon as isContinue is false until the buffer is full.</p></li>
+<li><p><strong>bufferSize</strong> – size of the cineloop buffer as a number of sequence executions. Optional, default=1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>buffers containing raw data (rawBuffer), image data (imgBuffer), and sequence repetition intervals (sriBuffer).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.selectSequence">
+<code class="sig-name descname">selectSequence</code><span class="sig-paren">(</span><em class="sig-param">seqId</em>, <em class="sig-param">sri</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.selectSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects from pre-uploaded sequences the one to be executed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seqId</strong> – Tx/Rx sequence ID (index of the selected sequence in the vector of sequences passed to the uploadSequence method, counting from 1). Numerical scalar.</p></li>
+<li><p><strong>sri</strong> – sequence repeting interval [s]. Numerical scalar. Optional, default = as defined in the selected sequence.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>updated Us4R object.</p>
+</dd>
+</dl>
+<p>NOTE: selecting sequence erases the information on the previously uploaded reconstruction parameters.</p>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setActiveTermination">
+<code class="sig-name descname">setActiveTermination</code><span class="sig-paren">(</span><em class="sig-param">impedance</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setActiveTermination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets active termination (input impedance).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>impedance</strong> – input impedance [ohm]. Numerical scalar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setAdcHpfCornerFrequency">
+<code class="sig-name descname">setAdcHpfCornerFrequency</code><span class="sig-paren">(</span><em class="sig-param">frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setAdcHpfCornerFrequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets corner frequency of digital high-pass filter (dHPF).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> – dHPF corner frequency [Hz]. Numerical scalar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setDtgcAttenuation">
+<code class="sig-name descname">setDtgcAttenuation</code><span class="sig-paren">(</span><em class="sig-param">attenuation</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setDtgcAttenuation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets digital TGC attenuation.</p>
+<p>Digital TGC is an alternative for analog TGC. It is limited to a number of constant but precise attenuation levels.</p>
+<p>Analog TGC/VCAT has to be disabled prior to setting digital TGC.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attenuation</strong> – attenuation level [dB]. Numerical scalar.</p>
+</dd>
+</dl>
+<p>Setting attenuation empty disables digital TGC.</p>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setLnaGain">
+<code class="sig-name descname">setLnaGain</code><span class="sig-paren">(</span><em class="sig-param">gain</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setLnaGain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets LNA (Low Noise Amplifier) gain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>gain</strong> – LNA gain [dB]. Numerical scalar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setLnaHpfCornerFrequency">
+<code class="sig-name descname">setLnaHpfCornerFrequency</code><span class="sig-paren">(</span><em class="sig-param">frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setLnaHpfCornerFrequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets corner frequency of analog high-pass filter (aHPF).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> – aHPF corner frequency [Hz]. Numerical scalar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setLpfCutoff">
+<code class="sig-name descname">setLpfCutoff</code><span class="sig-paren">(</span><em class="sig-param">frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setLpfCutoff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets cutoff frequency of analog low-pass filter (aLPF).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> – aLPF cutoff frequency [Hz]. Numerical scalar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setMaximumPulseLength">
+<code class="sig-name descname">setMaximumPulseLength</code><span class="sig-paren">(</span><em class="sig-param">maxPulseLength</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setMaximumPulseLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets Tx pulse length limit.</p>
+<p>WARNING: this function is for experienced users only. It allows to change the safety limits which may lead to system damage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>maxPulseLength</strong> – Max pulse length [s]. Numerical scalar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setPgaGain">
+<code class="sig-name descname">setPgaGain</code><span class="sig-paren">(</span><em class="sig-param">gain</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setPgaGain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets PGA (Programmable Gain Amplifier) gain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>gain</strong> – PGA gain [dB]. Numerical scalar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setReconstruction">
+<code class="sig-name descname">setReconstruction</code><span class="sig-paren">(</span><em class="sig-param">reconstructOperation</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setReconstruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads reconstruction parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reconstructOperation</strong> – reconstruction to perform with the collected data. <code class="xref py py-class docutils literal notranslate"><span class="pre">Reconstruction</span></code> scalar.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>updated Us4R object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setTgcCurve">
+<code class="sig-name descname">setTgcCurve</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setTgcCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets analog TGC (Time Gain Control) curve.</p>
+<p>TGC curve here includes all the analog gains/attenuation in the system, i.e. LNA gain, PGA gain, and VCAT attenuation. However, the setTgcCurve method adjust the TGC curve by modifying only the VCAT curve. It does not affect the LNA gain and PGA gain. Any of these can be controlled individually using dedicated methods. The setTgcCurve method is for controlling the overall gain curve.</p>
+<p>Syntax:
+Us4RObj.create(time,gain,applyCharacteristic)
+Us4RObj.create(gain,applyCharacteristic)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – sampling time with respect to the “sample 0” [s]. Numerical vector. Optional, must be the same length as gain, default = hardware sampling time.</p></li>
+<li><p><strong>gain</strong> – gain samples [dB]. Numerical vector. Obligatory.</p></li>
+<li><p><strong>applyCharacteristic</strong> – If set to true, enables compensation of nonlinear TGC characteristic. Logical scalar. Obligatory.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The actual TGC curve is a result of a linear interpolation of the provided curve to the hardware sampling points. If curve extrapolation is needed, curve boundary samples are used.</p>
+<p>If the input curve contains values that cannot be achieved for the current LNA/PGA settings, the TGC curve is modified (saturated).</p>
+<p>Setting time and gain as empty vectors disables analog TGC.</p>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.setVcatCurve">
+<code class="sig-name descname">setVcatCurve</code><span class="sig-paren">(</span><em class="sig-param">time</em>, <em class="sig-param">attenuation</em>, <em class="sig-param">applyCharacteristic</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.setVcatCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets analog VCAT (Voltage Controlled Attenuator) curve.</p>
+<p>Syntax:
+Us4RObj.create(time,attenuation,applyCharacteristic)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – sampling time with respect to the “sample 0” [s]. Numerical vector. Must be the same length as attenuation.</p></li>
+<li><p><strong>attenuation</strong> – attenuation samples [dB]. Numerical vector.</p></li>
+<li><p><strong>applyCharacteristic</strong> – If set to true, enables compensation of nonlinear VCAT characteristic. Logical scalar.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The actual VCAT curve is a result of a linear interpolation of the provided curve to the hardware sampling points. If curve extrapolation is needed, curve boundary samples are used.</p>
+<p>Setting time and attenuation as empty vectors disables analog VCAT.</p>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.stopScheme">
+<code class="sig-name descname">stopScheme</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.stopScheme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops running scheme</p>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.upload">
+<code class="sig-name descname">upload</code><span class="sig-paren">(</span><em class="sig-param">sequenceOperation</em>, <em class="sig-param">reconstructOperation</em>, <em class="sig-param">enableHardwareProgramming</em>, <em class="sig-param">preset</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads operations to the us4R system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sequenceOperation</strong> – Tx/Rx sequence to perform on the us4R system. <code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTxRxSequence</span></code> scalar.</p></li>
+<li><p><strong>reconstructOperation</strong> – reconstruction to perform with the collected data. <code class="xref py py-class docutils literal notranslate"><span class="pre">Reconstruction</span></code> scalar.</p></li>
+<li><p><strong>enableHardwareProgramming</strong> – determines if the hardware is programmed or not. Logical scalar. Optional, default = true.</p></li>
+<li><p><strong>preset</strong> – set of system presets. <code class="xref py py-class docutils literal notranslate"><span class="pre">CustomPreset</span></code> vector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>updated Us4R object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.Us4R.uploadSequence">
+<code class="sig-name descname">uploadSequence</code><span class="sig-paren">(</span><em class="sig-param">sequenceOperation</em>, <em class="sig-param">enableHardwareProgramming</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Us4R.uploadSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads multiple sequences to the us4R system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sequenceOperation</strong> – Tx/Rx sequence to perform on the us4R system. <code class="xref py py-class docutils literal notranslate"><span class="pre">CustomTxRxSequence</span></code> vector.</p></li>
+<li><p><strong>enableHardwareProgramming</strong> – determines if the hardware is programmed or not. Logical scalar. Optional, default = true.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>updated Us4R object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="arrus-customtxrxsequence"></span><dl class="mat class">
+<dt id="arrus.CustomTxRxSequence">
+<em class="property">class </em><code class="sig-prename descclassname">arrus.</code><code class="sig-name descname">CustomTxRxSequence</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.CustomTxRxSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that stores parameters of the sequence of Tx/Rx operations to be performed on the device.</p>
+<dl class="mat method">
+<dt id="arrus.CustomTxRxSequence.CustomTxRxSequence">
+<code class="sig-name descname">CustomTxRxSequence</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.CustomTxRxSequence.CustomTxRxSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a CustomTxRxSequence object.</p>
+<p>Syntax:
+obj = CustomTxRxSequence(name, value, …, name, value)</p>
+<p>All inputs are organized in name-value pairs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>txCenterElement</strong> – Center elements of the Tx apertures [elem]. Numerical vector.</p></li>
+<li><p><strong>txApertureCenter</strong> – Center positions of the Tx apertures [m]. Numerical vector.</p></li>
+<li><p><strong>txApertureSize</strong> – Sizes of the Tx apertures [elem]. Numerical vector.</p></li>
+<li><p><strong>rxCenterElement</strong> – Center elements of the Rx apertures [elem]. Numerical vector.</p></li>
+<li><p><strong>rxApertureCenter</strong> – Center positions of the Rx apertures [m]. Numerical vector.</p></li>
+<li><p><strong>rxApertureSize</strong> – Size of the Rx apertures [elem]. Numerical scalar.</p></li>
+<li><p><strong>txFocus</strong> – Tx focal distances [m]. Numerical vector.</p></li>
+<li><p><strong>txAngle</strong> – Tx angles [rad]. Numerical vector.</p></li>
+<li><p><strong>speedOfSound</strong> – Speed of sound determining the Tx delay profiles [m/s]. Numerical scalar.</p></li>
+<li><p><strong>txVoltage</strong> – Tx voltage level [V]. Can be: a scalar (pulse voltage range is [-txVoltage +txVoltage] for the whole sequence), or a 2x2 array (defines two sets of negative and positive Tx voltage amplitudes: [v1neg, v1pos; v2neg, v2pos]; the voltage range can be selected individually for each Tx using txVoltageId). txVoltage must always be nonnegative and v1 must be higher than v2. “Legacy” systems only support scalar txVoltage.</p></li>
+<li><p><strong>txVoltageId</strong> – Tx voltage level identifiers (can be 1 for range [-v1neg +v1pos], or 2 for [-v2neg +v2pos]). Numerical vector.</p></li>
+<li><p><strong>txFrequency</strong> – Tx frequencies [Hz]. Numerical vector.</p></li>
+<li><p><strong>txNPeriods</strong> – Numbers of sine periods in the Tx burst (can be 0.5, 1, 1.5, etc.). Numerical vector.</p></li>
+<li><p><strong>rxDepthRange</strong> – Acquisition depth range [m]. If scalar, it defines the upper depth limit (the lower one is set to 0). If 2-elem vector, it defines the lower and upper depth limits. Numerical scalar/2-elem vector.</p></li>
+<li><p><strong>rxNSamples</strong> – Number of acquired samples. Numerical scalar.</p></li>
+<li><p><strong>hwDdcEnable</strong> – Enables hardware DDC (Digital Down Conversion). It results in complex iq output data. Logical scalar.</p></li>
+<li><p><strong>decimation</strong> – Hardware decimation factor. Numerical scalar, positive integer.</p></li>
+<li><p><strong>nRepetitions</strong> – Number of repetitions of the sequence. Numerical scalar, positive integer.</p></li>
+<li><p><strong>txPri</strong> – Tx pulse repetition interval [s]. Numerical scalar.</p></li>
+<li><p><strong>tgcStart</strong> – TGC starting gain [dB]. Numerical scalar.</p></li>
+<li><p><strong>tgcSlope</strong> – TGC gain slope [dB/m]. Numerical scalar.</p></li>
+<li><p><strong>txInvert</strong> – Tx pulse polarity inversion. Logical vector.</p></li>
+<li><p><strong>workMode</strong> – System mode of operation. String scalar, can be “MANUAL”, “HOST”, “SYNC”, or “ASYNC”.</p></li>
+<li><p><strong>sri</strong> – Sequence repeting interval [s]. Numerical scalar.</p></li>
+<li><p><strong>bufferSize</strong> – number of buffer elements (each element contains data for a single sequence execution). Numerical scalar.</p></li>
+<li><p><strong>txWaveform</strong> – TX waveform to use. Scalar object of arrus.ops.us4r.Waveform class.</p></li>
+</ul>
+</dd>
+</dl>
+<p>TGC gain = tgcStart + tgcSlope * propagation distance</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="arrus-reconstruction"></span><dl class="mat class">
+<dt id="arrus.Reconstruction">
+<em class="property">class </em><code class="sig-prename descclassname">arrus.</code><code class="sig-name descname">Reconstruction</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Reconstruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that stores parameters of the reconstruction operation to be performed in the system.</p>
+<dl class="mat method">
+<dt id="arrus.Reconstruction.Reconstruction">
+<code class="sig-name descname">Reconstruction</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.Reconstruction.Reconstruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Reconstruction object.</p>
+<p>Syntax:
+obj = Reconstruction(name, value, …, name, value)</p>
+<p>All inputs are organized in name-value pairs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gridModeEnable</strong> – If set to true, enables grid-based reconstruction. If set to false, reconstruction is done classically, in a line-by-line manner. Logical scalar, default = true.</p></li>
+<li><p><strong>filterEnable</strong> – Enables filtration of the raw data. Logical scalar, default = false.</p></li>
+<li><p><strong>filterACoeff</strong> – Denominator coefficients of the raw data filter. Numerical vector, default = [].</p></li>
+<li><p><strong>filterBCoeff</strong> – Numerator coefficients of the raw data filter. Numerical vector, default = [].</p></li>
+<li><p><strong>filterDelay</strong> – Delay introduced by the filter [samples].Numerical scalar, default = 0. Not yet implemented.</p></li>
+<li><p><strong>swDdcEnable</strong> – Enables software DDC (Digital Down
+Convertion). Logical scalar.</p></li>
+<li><p><strong>decimation</strong> – Software decimation factor. Numerical scalar.</p></li>
+<li><p><strong>xGrid</strong> – Coordinate grid x [m]. Numerical vector, default = [].</p></li>
+<li><p><strong>zGrid</strong> – Coordinate grid z [m]. Numerical vector, default = [].</p></li>
+<li><p><strong>sos</strong> – Speed of sound value used for reconstruction [m/s]. Numerical scalar.</p></li>
+<li><p><strong>rxApod</strong> – Rx apodization window. Numerical vector, default = [1 1].</p></li>
+<li><p><strong>bmodeEnable</strong> – Enables B-Mode reconstruction. Logical scalar, default = true.</p></li>
+<li><p><strong>colorEnable</strong> – Enables Color Doppler reconstruction and Duplex imaging. Logical scalar, default = false.</p></li>
+<li><p><strong>vectorEnable</strong> – Enables Vector Doppler reconstruction and Duplex imaging. Logical scalar, default = false.</p></li>
+<li><p><strong>bmodeFrames</strong> – Frame numbers to be used in B-Mode reconstruction. Numerical vector.</p></li>
+<li><p><strong>colorFrames</strong> – Frame numbers to be used in Color Doppler reconstruction. Numerical vector.</p></li>
+<li><p><strong>vector0Frames</strong> – Frame numbers to be used in Vector Doppler reconstruction as 1st projection. Numerical vector.</p></li>
+<li><p><strong>vector1Frames</strong> – Frame numbers to be used in Vector Doppler reconstruction as 2nd projection.  Numerical vector.</p></li>
+<li><p><strong>bmodeRxTangLim</strong> – Rx tangent limits for B-Mode. Numerical array (K*, 2), default = [-0.5 0.5].</p></li>
+<li><p><strong>colorRxTangLim</strong> – Rx tangent limits for Color Doppler. Numerical array (M*, 2), default = [-0.5 0.5].</p></li>
+<li><p><strong>vector0RxTangLim</strong> – Rx tangent limits for Vector Doppler (1st projection). Numerical array (N*, 2), default = [-0.5 0.5].</p></li>
+<li><p><strong>vector1RxTangLim</strong> – Rx tangent limits for Vector Doppler (2nd projection). Numerical array (N*, 2), default = [-0.5 0.5].</p></li>
+<li><p><strong>wcFilterACoeff</strong> – Denominator coefficients of the Wall Clutter Filter (WCF) for Color/Vector Doppler. Numerical vector.</p></li>
+<li><p><strong>wcFilterBCoeff</strong> – Numerator coefficients of the Wall Clutter Filter (WCF) for Color/Vector Doppler. Numerical vector.</p></li>
+<li><p><strong>wcFiltInitSize</strong> – Number of initial WCF output samples to be rejected due to the filter initialization. Numerical scalar.</p></li>
+<li><p><strong>cohFiltEnable</strong> – Enables coherence-weighted filtration. Logical scalar, default = false.</p></li>
+<li><p><strong>cohCompEnable</strong> – Enables coherent compounding.  If set to false, the compounding is performed on envelope images (incoherently). Logical scalar, default = false.</p></li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>K, M, N - length of bmodeFrames, colorFrames, and vector0Frames or vector1Frames, respectively.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Reconstruction object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="utilities">
+<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="arrus-bmodedisplay"></span><dl class="mat class">
+<dt id="arrus.BModeDisplay">
+<em class="property">class </em><code class="sig-prename descclassname">arrus.</code><code class="sig-name descname">BModeDisplay</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.BModeDisplay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">handle</span></code></p>
+<p>B-mode image display class.</p>
+<p>Currently implemented as a simple MATLAB figure with dynamically updated content.</p>
+<p>Includes a cineloop buffer. The content of the buffer can be accessed through the getCineLoop method.</p>
+<dl class="mat method">
+<dt id="arrus.BModeDisplay.BModeDisplay">
+<code class="sig-name descname">BModeDisplay</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.BModeDisplay.BModeDisplay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a BModeDisplay object.</p>
+<p>Syntax:
+obj = BModeDisplay(reconstructionObject, name, value, …, name, value)</p>
+<p>First input is obligatory, further inputs are optional and are organized in name-value pairs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reconstructionObject</strong> – Object of class “Reconstruction”. Obligatory input.</p></li>
+<li><p><strong>dynamicRange</strong> – Dynamic range limits [dB]. Two-element vector [min, max]. Optional name-value argument, default = [0 80].</p></li>
+<li><p><strong>cineLoopLength</strong> – Cineloop buffer size (number of frames stored in the buffer). Positive scalar. Optional name-value argument, default = 1.</p></li>
+<li><p><strong>persistence</strong> – If given, enables persistence. If scalar, it defines the persistence filter length. If vector, it defines the persistence filter coefficients. Optional name-value argument, default = 1 (no persistence).</p></li>
+<li><p><strong>bmodeTgc</strong> – If given, enables linear TGC from 0 dB at the top to the given value [dB] at the bottom of the image. Scalar. Optional name-value argument, default = 0.</p></li>
+<li><p><strong>bmodeAutoTgcResp</strong> – If given, enables linear TGC that adapts in time to the imaging conditions. The responsiveness of the adaptation: 0-no adaptation, 1-instant adaptation. Scalar, in the range &lt;0,1&gt;. Optional name-value argument, default = 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>BModeDisplay object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.BModeDisplay.getCineLoop">
+<code class="sig-name descname">getCineLoop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.BModeDisplay.getCineLoop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the cineloop buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Cineloop buffer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.BModeDisplay.isOpen">
+<code class="sig-name descname">isOpen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.BModeDisplay.isOpen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the display window is open.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the display window was not closed, false otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.BModeDisplay.updateImg">
+<code class="sig-name descname">updateImg</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.BModeDisplay.updateImg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates currently displayed image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – B-mode data to be displayed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="arrus-duplexdisplay"></span><dl class="mat class">
+<dt id="arrus.DuplexDisplay">
+<em class="property">class </em><code class="sig-prename descclassname">arrus.</code><code class="sig-name descname">DuplexDisplay</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.DuplexDisplay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">handle</span></code></p>
+<p>Duplex image display class.</p>
+<p>Currently implemented as a simple MATLAB figure with dynamically updated content.</p>
+<p>Includes a cineloop buffer. The content of the buffer can be accessed through the getCineLoop method.</p>
+<dl class="mat method">
+<dt id="arrus.DuplexDisplay.DuplexDisplay">
+<code class="sig-name descname">DuplexDisplay</code><span class="sig-paren">(</span><em class="sig-param">varargin</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.DuplexDisplay.DuplexDisplay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a DuplexDisplay object.</p>
+<p>Syntax:
+obj = DuplexDisplay(reconstructionObject, name, value, …, name, value)</p>
+<p>First input is obligatory, further inputs are optional and are organized in name-value pairs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reconstructionObject</strong> – Object of class “Reconstruction”. Obligatory input.</p></li>
+<li><p><strong>dynamicRange</strong> – Dynamic range limits [dB]. Two-element vector [min, max]. Optional name-value argument, default = [0 80].</p></li>
+<li><p><strong>cineLoopLength</strong> – Cineloop buffer size (number of frames stored in the buffer). Positive scalar. Optional name-value argument, default = 1.</p></li>
+<li><p><strong>persistence</strong> – If given, enables persistence. If scalar, it defines the persistence filter length. If vector, it defines the persistence filter coefficients. Optional name-value argument, default = 1 (no persistence).</p></li>
+<li><p><strong>bmodeTgc</strong> – If given, enables linear TGC from 0 dB at the top to the given value [dB] at the bottom of the image. Scalar. Optional name-value argument, default = 0.</p></li>
+<li><p><strong>bmodeAutoTgcResp</strong> – If given, enables linear TGC that adapts in time to the imaging conditions. The responsiveness of the adaptation: 0-no adaptation, 1-instant adaptation. Scalar, in the range &lt;0,1&gt;. Optional name-value argument, default = 0.</p></li>
+<li><p><strong>powerThreshold</strong> – Power limit [dB] BELOW which the color data is not displayed. Scalar. Optional name-value argument, default = -inf (no thresholding).</p></li>
+<li><p><strong>turbuThreshold</strong> – Turbulence limit ABOVE which the color data is not displayed. Scalar. Optional name-value argument, default = 1 (no thresholding, as turbulence is limited to 0-1 range by definition).</p></li>
+<li><p><strong>stdevThreshold</strong> – Limit of standard deviation of color data ABOVE which the color data is not displayed. Scalar. Optional name-value argument, default = inf (no thresholding).</p></li>
+<li><p><strong>thresholdSmooth</strong> – Size [pix] of the circular smoothing kernel applied to the data that are used for thresholding, i.e. power, turbulence, and st. deviation. Scalar. Optional name-value argument, default = 0 (no smoothing).</p></li>
+<li><p><strong>subplotEnable</strong> – Enables separate display of Duplex, B-mode, power, and turbulence images. Logical scalar. Optional name-value argument, default = false.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>DuplexDisplay object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.DuplexDisplay.getCineLoop">
+<code class="sig-name descname">getCineLoop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.DuplexDisplay.getCineLoop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the cineloop buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Cineloop buffer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.DuplexDisplay.isOpen">
+<code class="sig-name descname">isOpen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arrus.DuplexDisplay.isOpen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the display window is open.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the display window was not closed, false otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat method">
+<dt id="arrus.DuplexDisplay.updateImg">
+<code class="sig-name descname">updateImg</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#arrus.DuplexDisplay.updateImg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates currently displayed image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – Duplex data to be displayed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="misc/acknowledgments.html" class="btn btn-neutral float-right" title="Acknowledgments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, us4us Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
