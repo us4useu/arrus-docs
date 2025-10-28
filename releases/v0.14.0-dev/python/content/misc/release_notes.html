@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Release notes &mdash; ARRUS (python) 0.14.0-dev20251013 documentation</title>
+  <title>Release notes &mdash; ARRUS (python) 0.14.0-dev20251028 documentation</title>
   
 
   
@@ -215,6 +215,47 @@
 </div>
 <div class="section" id="id1">
 <h2>0.13.x<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>0.13.3</p>
+<ul>
+<li><p>core (driver)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>…</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Python API:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed ultrasound imaging for “start_scheme -&gt; stop_scheme -&gt; start_scheme” (without the imaging pipeline re-upload in between) sequence of calls #ARRUS-511.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>0.13.2</p>
+<ul>
+<li><p>core (driver)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed the external trigger source on us4R platforms #M_US4R-46.</p></li>
+<li><p>Fixed the getFPGAWallclock() method behavior – this method assumed 120 MHz clock ARRUS 0.12.0 (now it depends on the OEM variant) #M_OEM-214.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>C++ API:</p>
+<blockquote>
+<div><ul>
+<li><p>Deprecations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">us4us::us4r::RxSettings</span></code> (alias: <code class="docutils literal notranslate"><span class="pre">arrus::devices::RxSettings</span></code>) constructor (scheduled for remove: ARRUS 0.15.0)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
 <p>0.13.1</p>
 <ul>
 <li><p>core (driver)</p>

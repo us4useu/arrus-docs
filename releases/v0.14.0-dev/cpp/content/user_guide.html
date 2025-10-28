@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>User Guide &mdash; ARRUS (cpp) 0.14.0-dev20251013 documentation</title>
+  <title>User Guide &mdash; ARRUS (cpp) 0.14.0-dev20251028 documentation</title>
   
 
   
@@ -99,7 +99,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-example-programs">Running example programs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-tx-waveforms">Custom TX waveforms</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">C++ API Reference</a></li>
@@ -712,8 +716,10 @@ session configuration file.</p>
 </div>
 </div>
 </div>
+<div class="section" id="running-example-programs">
+<span id="running-example"></span><h2>Running example programs<a class="headerlink" href="#running-example-programs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="example">
-<span id="running-example"></span><h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;condition_variable&gt;</span><span class="cp"></span>
@@ -827,6 +833,84 @@ session configuration file.</p>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="custom-tx-waveforms">
+<h3>Custom TX waveforms<a class="headerlink" href="#custom-tx-waveforms" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Custom TX waveforms are available only for the OEM+ systems.</p>
+</div>
+<p>It is possible to specify arbitrary waveforms using
+<code class="docutils literal notranslate"><span class="pre">arrus::ops::us4r::Waveform</span></code>, <code class="docutils literal notranslate"><span class="pre">arrus::ops::us4r::WaveformSegment</span></code>
+<code class="docutils literal notranslate"><span class="pre">arrus.ops.us4r.WaveformBuilder</span></code>
+classes.  See also <code class="docutils literal notranslate"><span class="pre">arrus/core/api/ops/us4r/Waveform.h</span></code> header file.</p>
+<p>Conceptually, <code class="docutils literal notranslate"><span class="pre">WaveformSegment</span></code> is one particular fragment of a <code class="docutils literal notranslate"><span class="pre">Waveform</span></code>:
+it is a sequence of states <code class="docutils literal notranslate"><span class="pre">WaveformSegment.getState()</span></code> along with their duration <code class="docutils literal notranslate"><span class="pre">Waveform.getDuration()</span></code>.
+<strong>Importantly, the entire segment can be repeated multiple times (using the ``Waveform.getNRepetitions`` value) without consuming the internal memory
+of TX pulsers (which is limited to 256 registers for the OEM+ rev 1).</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Waveform</span></code> is a collection of segments to be set on the device ultrasound pulsers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">WaveformBuilder</span></code> is a convenience class that allows to build the waveform as a sequence of states and duration. We recommend using it to build custom TX waveforms.</p>
+<p><strong>5-level Waveforms</strong></p>
+<p>In the us4OEM+ there are 2 positive HV <strong>rails</strong> (HVP0 and HVP1) and 2 negative rails (HVM0 and HVM1).</p>
+<p>In ARRUS, we translate the concept of the <strong>rail</strong> to the concepts of the <strong>amplitude</strong> and Waveform <strong>states</strong> in the following way:</p>
+<ul>
+<li><p>The waveform <strong>state</strong> is a <code class="docutils literal notranslate"><span class="pre">WaveformSegment</span></code> attribute <code class="docutils literal notranslate"><span class="pre">s</span></code>: it can be one of {-2, -1, 0, 1, 2} The value <code class="docutils literal notranslate"><span class="pre">s</span></code> is translated to HV rail in the following way:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>s = -2 corresponds to HVM0, s = +2 corresponds to HVP0,</p></li>
+<li><p>s = -1 corresponds to HVM1, s = +1 corresponds to HVP1,</p></li>
+<li><p>s = 0 corresponds to CLAMP state.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">amplitude</span></code> is a <code class="docutils literal notranslate"><span class="pre">Pulse</span></code> attribute: it can be one of {1, 2}.
+The <code class="docutils literal notranslate"><span class="pre">Pulse</span></code> object is translated to a periodic pulse (<code class="docutils literal notranslate"><span class="pre">Waveform</span></code>) (l, -l),
+repeated a given number of times (<code class="docutils literal notranslate"><span class="pre">getNPeriods</span></code>), with the given transmitting
+frequency (<code class="docutils literal notranslate"><span class="pre">getCenterFrequency</span></code>).</p></li>
+</ul>
+<p>You can set the voltage amplitudes -2, -1, +1, +2 using the <code class="docutils literal notranslate"><span class="pre">arrus::devices::Us4R::setVoltage(const</span> <span class="pre">std::vector&lt;HVVoltage&gt;</span> <span class="pre">&amp;voltages)</span></code> method, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">us4r</span><span class="o">-&gt;</span><span class="n">setVoltage</span><span class="p">({</span><span class="n">HVVoltage</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">p1</span><span class="p">),</span> <span class="n">HVVoltage</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">p2</span><span class="p">)})</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m1</span></code> is the HV voltage for the state -1 (<strong>absolute value</strong>),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p1</span></code> is the voltage for the state +1,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m2</span></code> is the voltage for the state -2 (<strong>absolute value</strong>),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p2</span></code> is the voltage for the state +2.</p></li>
+</ul>
+<p><strong>NOTE: all of the set_hv_voltage values must be positive</strong>.</p>
+<p>The following restrictions apply: <code class="docutils literal notranslate"><span class="pre">m1</span> <span class="pre">&lt;</span> <span class="pre">m2</span></code> and <code class="docutils literal notranslate"><span class="pre">p1</span> <span class="pre">&lt;</span> <span class="pre">p2</span></code>.</p>
+<p><strong>Example</strong></p>
+<div class="figure align-default" id="id2">
+<img alt="../_images/custom_waveform.png" src="../_images/custom_waveform.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Example custom TX waveform.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Please also see the <a class="reference external" href="https://github.com/us4useu/arrus/blob/v0.13.x/arrus/core/examples/CustomTxWaveform.cpp">CustomTxWaveform.cpp</a> example.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">us4r</span><span class="o">-&gt;</span><span class="n">setVoltage</span><span class="p">({</span><span class="n">HVVoltage</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">HVVoltage</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)});</span>
+
+<span class="n">WaveformBuilder</span> <span class="n">waveformBuilder</span><span class="p">{};</span>
+
+<span class="c1">// Set states -1 (0.2 us), 1 (0.5 us), -1 (1 us), and repeat that twice.</span>
+<span class="n">waveformBuilder</span><span class="p">.</span><span class="n">add</span><span class="p">(</span>
+   <span class="n">WaveformSegment</span> <span class="p">{</span>
+       <span class="p">{</span><span class="mf">0.2e-6</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.5e-6</span><span class="n">f</span><span class="p">,</span> <span class="mf">1e-6</span><span class="n">f</span><span class="p">},</span> <span class="c1">// durations</span>
+       <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>      <span class="mi">1</span><span class="p">,</span>       <span class="o">-</span><span class="mi">1</span><span class="p">}</span>     <span class="c1">// states (levels)</span>
+   <span class="p">},</span>
+   <span class="mi">2</span> <span class="c1">// how many times to repeat this segment</span>
+<span class="p">);</span>
+<span class="c1">// Set states 2 (1.5 us), 0 (2 us), 2 (3 us), run it only once (n repeats = 1).</span>
+<span class="n">waveformBuilder</span><span class="p">.</span><span class="n">add</span><span class="p">(</span>
+   <span class="n">WaveformSegment</span> <span class="p">{</span>
+       <span class="p">{</span><span class="mf">1.5e-6</span><span class="n">f</span><span class="p">,</span> <span class="mf">2e-6</span><span class="n">f</span><span class="p">,</span> <span class="mf">3e-6</span><span class="n">f</span><span class="p">},</span> <span class="c1">// durations</span>
+       <span class="p">{</span><span class="mi">2</span><span class="p">,</span>      <span class="mi">0</span><span class="p">,</span>   <span class="mi">2</span><span class="p">}</span>         <span class="c1">// states (levels)</span>
+   <span class="p">}</span>
+<span class="p">);</span>
+<span class="k">auto</span> <span class="n">waveform</span> <span class="o">=</span> <span class="n">waveformBuilder</span><span class="p">.</span><span class="n">build</span><span class="p">();</span>
+<span class="n">Tx</span> <span class="n">tx</span><span class="p">{</span><span class="n">aperture</span><span class="p">,</span> <span class="n">delays</span><span class="p">,</span> <span class="n">waveform</span><span class="p">};</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

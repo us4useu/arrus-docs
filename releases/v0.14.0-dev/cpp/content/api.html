@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>C++ API Reference &mdash; ARRUS (cpp) 0.14.0-dev20251013 documentation</title>
+  <title>C++ API Reference &mdash; ARRUS (cpp) 0.14.0-dev20251028 documentation</title>
   
 
   
@@ -630,7 +630,7 @@
 <dt id="_CPPv4N5arrus3ops4us4r5PulseE">
 <span id="_CPPv3N5arrus3ops4us4r5PulseE"></span><span id="_CPPv2N5arrus3ops4us4r5PulseE"></span><span id="arrus::ops::us4r::Pulse"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Pulse"></span><em class="property">class </em><code class="sig-prename descclassname">arrus::ops::us4r<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Pulse</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r5PulseE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A single pulse (sine wave) produced by us4r device.</p>
-<p>DEPRECATED: please use the arrus::ops::us4r::Waveform </p>
+<p>DEPRECATED: please use the <a class="reference internal" href="#classarrus_1_1ops_1_1us4r_1_1Waveform"><span class="std std-ref">arrus::ops::us4r::Waveform</span></a> </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -660,7 +660,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N5arrus3ops4us4r5Pulse12fromWaveformERK8Waveform">
-<span id="_CPPv3N5arrus3ops4us4r5Pulse12fromWaveformERK8Waveform"></span><span id="_CPPv2N5arrus3ops4us4r5Pulse12fromWaveformERK8Waveform"></span><span id="arrus::ops::us4r::Pulse::fromWaveform__WaveformCR"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Pulse_1a790495747ce4f6ba9ecd270e17544d63"></span><em class="property">static</em> <em class="property">inline</em> std::optional&lt;<a class="reference internal" href="#_CPPv4N5arrus3ops4us4r5PulseE" title="arrus::ops::us4r::Pulse">Pulse</a>&gt; <code class="sig-name descname">fromWaveform</code><span class="sig-paren">(</span><em class="property">const</em> Waveform &amp;<em>waveform</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r5Pulse12fromWaveformERK8Waveform" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N5arrus3ops4us4r5Pulse12fromWaveformERK8Waveform"></span><span id="_CPPv2N5arrus3ops4us4r5Pulse12fromWaveformERK8Waveform"></span><span id="arrus::ops::us4r::Pulse::fromWaveform__WaveformCR"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Pulse_1a790495747ce4f6ba9ecd270e17544d63"></span><em class="property">static</em> <em class="property">inline</em> std::optional&lt;<a class="reference internal" href="#_CPPv4N5arrus3ops4us4r5PulseE" title="arrus::ops::us4r::Pulse">Pulse</a>&gt; <code class="sig-name descname">fromWaveform</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N5arrus3ops4us4r8WaveformE" title="arrus::ops::us4r::Waveform">Waveform</a> &amp;<em>waveform</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r5Pulse12fromWaveformERK8Waveform" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Converts the input waveform to a pulse. The conversion is possible only when the structure of the waveform is conformant with the output of the toWaveform method &amp;#8212; the nullopt is returned otherwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -860,6 +860,43 @@
 <dt id="_CPPv4N5arrus3ops4us4r8TGCCurveE">
 <span id="_CPPv3N5arrus3ops4us4r8TGCCurveE"></span><span id="_CPPv2N5arrus3ops4us4r8TGCCurveE"></span><span class="target" id="tgc_8h_1addb36278331efa0aef7c74e840d7505b"></span><em class="property">using </em><code class="sig-prename descclassname">arrus::ops::us4r<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">TGCCurve</code> = std::vector&lt;TGCSampleValue&gt;<a class="headerlink" href="#_CPPv4N5arrus3ops4us4r8TGCCurveE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>TGC curve to apply on the us4r device. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv4N5arrus3ops4us4r8WaveformE">
+<span id="_CPPv3N5arrus3ops4us4r8WaveformE"></span><span id="_CPPv2N5arrus3ops4us4r8WaveformE"></span><span id="arrus::ops::us4r::Waveform"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1Waveform"></span><em class="property">class </em><code class="sig-name descname">Waveform</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r8WaveformE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A complete <a class="reference internal" href="#classarrus_1_1ops_1_1us4r_1_1Tx"><span class="std std-ref">Tx</span></a> waveform to be applied on the ultrasound pulsers.</p>
+<p>NOTE: please use <a class="reference internal" href="#classarrus_1_1ops_1_1us4r_1_1WaveformBuilder"><span class="std std-ref">WaveformBuilder</span></a> class to create new TX Waveforms (avoid constructing objects of this class directly).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segments</strong> – subsequent segments of the waveform </p></li>
+<li><p><strong>nRepetitions</strong> – how many times the segments[i] should be repeated </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv4N5arrus3ops4us4r15WaveformSegmentE">
+<span id="_CPPv3N5arrus3ops4us4r15WaveformSegmentE"></span><span id="_CPPv2N5arrus3ops4us4r15WaveformSegmentE"></span><span id="arrus::ops::us4r::WaveformSegment"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1WaveformSegment"></span><em class="property">class </em><code class="sig-name descname">WaveformSegment</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r15WaveformSegmentE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Us4R TX waveform segment.</p>
+<p><a class="reference internal" href="#classarrus_1_1ops_1_1us4r_1_1WaveformSegment"><span class="std std-ref">WaveformSegment</span></a> is a part of the TX waveform, that can be repated multiple times.</p>
+<p>The duration[i] is the duration of the i-th state, i.e. state[i].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> – the sequence of of states, one of the following values: -2 (HVM0), -1 (HVM1), 0 (CLAMP), 1 (HVP1), 2 (HVP0) </p></li>
+<li><p><strong>duration</strong> – the duration of the i-th state [seconds] </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv4N5arrus3ops4us4r15WaveformBuilderE">
+<span id="_CPPv3N5arrus3ops4us4r15WaveformBuilderE"></span><span id="_CPPv2N5arrus3ops4us4r15WaveformBuilderE"></span><span id="arrus::ops::us4r::WaveformBuilder"></span><span class="target" id="classarrus_1_1ops_1_1us4r_1_1WaveformBuilder"></span><em class="property">class </em><code class="sig-name descname">WaveformBuilder</code><a class="headerlink" href="#_CPPv4N5arrus3ops4us4r15WaveformBuilderE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classarrus_1_1ops_1_1us4r_1_1Tx"><span class="std std-ref">Tx</span></a> <a class="reference internal" href="#classarrus_1_1ops_1_1us4r_1_1Waveform"><span class="std std-ref">Waveform</span></a> builder class. </p>
 </dd></dl>
 
 </div>
@@ -1464,7 +1501,7 @@
 <dt id="_CPPv4N5us4us4us4r10RxSettingsE">
 <span id="_CPPv3N5us4us4us4r10RxSettingsE"></span><span id="_CPPv2N5us4us4us4r10RxSettingsE"></span><span id="us4us::us4r::RxSettings"></span><span class="target" id="classus4us_1_1us4r_1_1RxSettings"></span><em class="property">class </em><code class="sig-prename descclassname">us4us::us4r<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">RxSettings</code><a class="headerlink" href="#_CPPv4N5us4us4us4r10RxSettingsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>AFE (RX) settings.</p>
-<p>NOTE: to create the instance of this object please use the RxSettingsBuilder.</p>
+<p>NOTE: to create the instance of this object please use the <a class="reference internal" href="#classus4us_1_1us4r_1_1RxSettingsBuilder"><span class="std std-ref">RxSettingsBuilder</span></a>.</p>
 <p>Us4R AFE settings currently includes: AFE 58JD18:<ul class="simple">
 <li><p>DTGC attenuation, available: 0, 6, 12, 18, 24, 30, 36, 42 [dB] or std::nullopt; nullopt turns off DTGC.</p></li>
 <li><p>LNA gain, available: 12, 18, 24 [dB].</p></li>
@@ -1540,6 +1577,12 @@
 </dd></dl>
 
 </div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv4N5us4us4us4r17RxSettingsBuilderE">
+<span id="_CPPv3N5us4us4us4r17RxSettingsBuilderE"></span><span id="_CPPv2N5us4us4us4r17RxSettingsBuilderE"></span><span id="us4us::us4r::RxSettingsBuilder"></span><span class="target" id="classus4us_1_1us4r_1_1RxSettingsBuilder"></span><em class="property">class </em><code class="sig-name descname">RxSettingsBuilder</code><a class="headerlink" href="#_CPPv4N5us4us4us4r17RxSettingsBuilderE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classus4us_1_1us4r_1_1RxSettings"><span class="std std-ref">RxSettings</span></a> builder. </p>
 </dd></dl>
 
 <dl class="cpp class">
