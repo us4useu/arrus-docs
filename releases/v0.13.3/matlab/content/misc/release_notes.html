@@ -230,6 +230,12 @@
 </div></blockquote>
 </li>
 </ul>
+<p><strong>Known issues</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Due to HVPS PWM precision setting, when using memory stored PWM factors it may occur that some voltages fall outside +/- 1V tolerance range and the system does not start properly. To mitigate this issue user may: adjust voltage by 1-2 volts (up or down) or not use memory stored HVPS PWM factors.</p></li>
+</ul>
+</div></blockquote>
 <p>0.13.2</p>
 <ul>
 <li><p>core (driver)</p>
