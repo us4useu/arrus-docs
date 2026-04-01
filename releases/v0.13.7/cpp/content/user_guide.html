@@ -13,6 +13,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
 
   
   
@@ -102,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#running-example-programs">Running example programs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-tx-waveforms">Custom TX waveforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frame-metadata">Frame metadata</a></li>
 </ul>
 </li>
 </ul>
@@ -911,6 +913,38 @@ frequency (<code class="docutils literal notranslate"><span class="pre">getCente
 <span class="n">Tx</span> <span class="n">tx</span><span class="p">{</span><span class="n">aperture</span><span class="p">,</span> <span class="n">delays</span><span class="p">,</span> <span class="n">waveform</span><span class="p">};</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="frame-metadata">
+<h3>Frame metadata<a class="headerlink" href="#frame-metadata" title="Permalink to this headline">¶</a></h3>
+<p>Every RF frame acquired by the OEMs has its first collected sample replaced by
+<strong>frame metadata</strong>. Frame metadata consists of 64 bytes of data describing the
+details of the acquisition of that frame.</p>
+<p>Currently, frame metadata is composed of two parts:</p>
+<ol class="arabic simple">
+<li><p>The first 32 bytes are the “common” part, which contains metadata as shown
+in the figure below.</p></li>
+</ol>
+<div class="figure align-default" id="id3">
+<img alt="../_images/frame_metadata.png" src="../_images/frame_metadata.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Frame metadata structure (common part).</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><strong>trigger counter</strong>: trigger counter, counted from the moment the system is
+powered on.</p></li>
+<li><p><strong>timestamp</strong>: the acquisition time of the frame, counted from the moment
+the system is started. Unit: number of system clock cycles
+(see: <code class="docutils literal notranslate"><span class="pre">Us4R::getSamplingFrequency</span></code>).</p></li>
+<li><p><strong>Tx/Rx idx</strong>: the index of the physical TX/RX that resulted in the
+acquisition of this frame.</p></li>
+<li><p><strong>prev. Tx/Rx idx</strong>: the index of the physical TX/RX preceding the
+execution of this frame.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>The next 32 bytes are reserved for user-specific needs. Depending on the user’s
+requirements, us4us can prepare a firmware variant containing the data that
+the user would like to include in the frame metadata.</p></li>
+</ol>
 </div>
 </div>
 </div>
