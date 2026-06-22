@@ -1092,9 +1092,9 @@ arrus.ops.us4r.Rx()</p></td>
 <td><p>No</p></td>
 <td><p>session.upload(),
 arrus.ops.us4r.Rx()</p></td>
-<td><p>Yes (local), however all Rxs
-must acquire the same number of
-samples</p></td>
+<td><p>Yes (local),
+however all Rxs must acquire the
+same number of samples</p></td>
 </tr>
 <tr class="row-odd"><td><p>Downsampling factor</p></td>
 <td><p>No</p></td>
@@ -1162,6 +1162,16 @@ arrus.ops.us4r.Tx()</p></td>
 <td><p>No</p></td>
 <td><p>session.upload(), arrus.ops.us4r.TxRx()</p></td>
 <td><p>Yes (local)</p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>TX/RX sequence</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Sequence first, last TX/RX</p></td>
+<td><p>Yes</p></td>
+<td><p>session.set_subsequences()</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
